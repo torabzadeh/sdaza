@@ -49,7 +49,7 @@ My dissertation project follows a different approach. Instead of providing anoth
 
 ### Chile Re-entry study (with Pilar Larroulet and Catalina Droppelmann)
 
-<blockquote>The study, funded by the San Carlos de Maipo Foundation, is an intensive longitudinal data collection of a sample of about 300  women leaving prison in Santiago, Chile. We are using interviews over a period of a year to examine the employment, family life, housing, and health of women just released from prison, but also, qualitative interviews to examine in more detail the re-entry experience. We are in the early stages of the project, designing questionnaire and organizing the fieldwork. </blockquote>
+<blockquote>The study, funded by the San Carlos de Maipo Foundation, is an intensive longitudinal data collection of a sample of about 300  women leaving prison in Santiago, Chile. We are using interviews over a period of a year to examine the employment, family life, housing, and health of women just released from prison, but also, qualitative interviews to examine in more detail re-entry experience. We are in the early stages of the project, designing questionnaire and organizing the fieldwork. </blockquote>
 
 
 <b>

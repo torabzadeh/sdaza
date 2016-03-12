@@ -3,7 +3,6 @@ layout: post
 title: "Functions for sample size and error"
 description: ""
 category: survey
-tags: [sampling, home]
 ---
 
 

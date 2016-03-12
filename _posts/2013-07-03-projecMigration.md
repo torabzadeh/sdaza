@@ -3,7 +3,6 @@ layout: post
 title: "Migration: forward survival method"
 description: 
 category: demography
-tags: [prelim, R, home]
 ---
 
 

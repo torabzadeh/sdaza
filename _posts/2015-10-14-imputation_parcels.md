@@ -3,7 +3,6 @@ layout: post
 title: "Imputing scales using parcels of items as auxiliary variables"
 description: ""
 category: imputation
-tags: [home]
 ---
 
 

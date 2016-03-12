@@ -3,7 +3,6 @@ layout: post
 title: "Life tables: A super brief introduction"
 description: ""
 category: demography
-tags: [prelim, R, home]
 ---
 
 A _life table_ is just one way of summarizing a cohort's mortality experience. Below a simple way to build a life table using R.

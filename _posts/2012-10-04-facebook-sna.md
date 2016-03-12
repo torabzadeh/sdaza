@@ -3,8 +3,6 @@ layout: post
 title: "My Facebook Network"
 description: ""
 category: SNA
-tags: [igraph, home]
-
 ---
 
 

@@ -19,18 +19,3 @@ paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
 
 gems: [jekyll-paginate, jekyll-feed]
-
-# All Jekyll-Bootstrap specific configurations are namespaced into this hash
-
-JB :
-  version : 0.2.13
-
-# Settings for analytics helper
-  analytics :
-    provider : google
-    google :
-        tracking_id : 'UA-34554402-2'
-    getclicky :
-      site_id :
-    # mixpanel :
-    #     token : '_MIXPANEL_TOKEN_'

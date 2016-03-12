@@ -5,7 +5,7 @@ description: "What can we learn from small and large worlds?"
 header-img: "img/research-seg.jpg"
 ---
 
-<p>My research interests include social demography, deviance and crime,  complexity and social network analysis, computational sociology, and survey and quantitative methods. Although, most of the time, I find more fun to read about theory and qualitative research.</p>
+<p>My research interests include social demography, deviance and crime,  complexity and social network analysis, computational sociology, and quantitative methods. Although, most of the time, I find more fun to read about theory and qualitative research.</p>
 
 
 <h2 class="section-heading">Working Papers</h2>
@@ -43,7 +43,7 @@ header-img: "img/research-seg.jpg"
 
 <blockquote>The expansion of the criminal justice system in the United States over the past four decades has triggered an academic and public discussion about the intended and unintended consequences of incarceration, stressing the limitations of imprisonment as a strategy to prevent crime. This debate is not new and has occupied centuries of scholarship on crime and punishment: Does punishment prevent crime, and if it does, how? Despite well-developed and coherent theories on the incarceration and crime dynamic, empirical evidence to date is far for conclusive. Data limitations and methodological challenges make causal inference and disentangling mechanisms difficult. 
 
-My dissertation project follows a different approach. Instead of providing another causal estimate of incarceration on crime, I use agent-based modeling (ABM) to explore the dynamic of imprisonment and crime at the community level by creating artificial environments based on theory and empirical research. This enables me to examine how and under which conditions the mechanisms discussed in the literature can reproduce the patterns they predict, in addition to exploring hypothetical situations that are not possible to observe in the real world. The project will provide a guide for future research through the identification of the most relevant processes and parameters. These insights can also illuminate the public debate on the consequences of incarceration, and the trade-off between public safety and social and monetary costs.</blockquote>
+My dissertation project follows a different approach. Instead of providing another causal estimate of incarceration on crime, I use agent-based modeling (ABM) to explore the dynamic of imprisonment and crime at the community level by creating artificial environments based on theory and empirical research. This enables me to examine how and under which conditions the mechanisms discussed in the literature can reproduce the patterns they predict, in addition to exploring hypothetical situations that are not possible to observe in the real world. This project will provide a guide for future research through the identification of the most relevant processes and parameters. These insights can also illuminate the public debate on the consequences of incarceration, and the trade-off between public safety and social and monetary costs.</blockquote>
 
 <b>
 

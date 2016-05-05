@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1459780384 "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/cv_sdaza.tex" "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.pdf" "cv_sdaza" 1459780385
-  "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.aux" 1459780385 662 b2b94621371df8d9296b8bf5bec1b851 ""
-  "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/cv_sdaza.tex" 1459780384 13367 57ee965e679412980dbaf8eec3290cc0 ""
+["pdflatex"] 1462473393 "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/cv_sdaza.tex" "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.pdf" "cv_sdaza" 1462473394
+  "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.aux" 1462473394 662 b2b94621371df8d9296b8bf5bec1b851 ""
+  "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/cv_sdaza.tex" 1462473392 13344 a34788150d003ed6343fff2edcb1a510 ""
   "/Users/sdaza/Library/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1436202016 1764887 054cd6e6e9f7b0485b63028cdc319738 ""
   "/Users/sdaza/Library/texmf/fonts/type1/urw/garamond/ugmr8a.pfb" 1094491920 70277 baa4b3da2c0fdc989d3b086e9f92a592 ""
   "/Users/sdaza/Library/texmf/fonts/type1/urw/garamond/ugmri8a.pfb" 1103659140 66721 aae1e34dbea6ae724b3013b45285b454 ""
@@ -92,13 +92,13 @@
   "/usr/local/texlive/2015/texmf-dist/web2c/texmf.cnf" 1428852030 31983 18aeec08f48baa3cf3508d538dd5f459 ""
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1432479681 3849859 39a7d258195bde2394e244961601fbc5 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
-  "Output/cv_sdaza.aux" 1459780385 662 b2b94621371df8d9296b8bf5bec1b851 ""
-  "Output/cv_sdaza.out" 1459780385 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "cv_sdaza.tex" 1459780384 13367 57ee965e679412980dbaf8eec3290cc0 ""
+  "Output/cv_sdaza.aux" 1462473394 662 b2b94621371df8d9296b8bf5bec1b851 ""
+  "Output/cv_sdaza.out" 1462473394 0 d41d8cd98f00b204e9800998ecf8427e ""
+  "cv_sdaza.tex" 1462473392 13344 a34788150d003ed6343fff2edcb1a510 ""
   (generated)
-  "Output/cv_sdaza.out"
+  "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.log"
   "Output/cv_sdaza.aux"
   "Output/cv_sdaza.log"
+  "Output/cv_sdaza.out"
   "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.pdf"
   "Output/cv_sdaza.pdf"
-  "/Users/sdaza/Dropbox/github/sdaza.github.com/docs/Output/cv_sdaza.log"

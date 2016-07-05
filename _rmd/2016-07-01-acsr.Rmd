@@ -11,65 +11,60 @@ The `acsr` package allows to easily extract and compute statistics from the Amer
 
 <h2 class="section-heading">Installation</h2>
 
-The functions depends on the `acs` and `data.table`, so it is a good idea to install those packages before. The `acsr` package is hosted on a github repository and we will  use the `devtools` library to install the package:
+The functions depends on the `acs` and `data.table`, so it is necessary to install those packages before. The `acsr` package is hosted on a github repository and we install it using the `devtools` library :
 
 ```{r, eval = FALSE}
 devtools::install_github("sdaza/acsr")
 library(acsr)
 ```
 
-<h2 class="section-heading">Getting variables</h2>
+Remember to set the ACS api key, in case you haven't: `r  api.key.install(key="")`. And also rember to check the help documentation and the default values of the functions.
+
+```{r, eval = FALSE}
+?sumacs
+?acsdata
+```
+
+The default level is `state` and the state specified is Wisconsin (`state = "WI"`). The `endyear` is 2014, and the confidence level to compute margins of error (MOEs) is 90%.
+
+<h2 class="section-heading">Levels</h2>
+
+The `acsr` function can extract all the level available in the `acs` package. The table below shows the summary level and required levels:
+
+010 us
+020 region
+030 division
+040 state
+050 state, county
+060 state, county, county.subdivision
+140 state, county, tract
+150 state, county, tract, block.group
+160 state, place
+250 american.indian.area
+320 state, msa
+340 state, csa
+350 necta
+400 urban.area
+500 state, congressional.district
+610 state, state.legislative.district.upper
+620 state, state.legislative.district.lower
+795 state, puma
+860 zip.code
+950 state, school.district.elementary
+960 state, school.district.secondary
+970 state, school.district.unified
+
+
+<h2 class="section-heading">Getting variables and statistics</h2>
 
 
 <h2 class="section-heading">Computing statistics</h2>
 
 
 
-## Install `acsr` package in `R`
 
 
-```{r, eval = FALSE}
-# set a server
-options(repos=structure(c(CRAN="http://rweb.quant.ku.edu/cran/")))
 
-# install devtoos and acs from CRAN
-install.packages("devtools")
-install.packages("acs")
-
-# install data.table from github
-devtools::install_github("Rdatatable/data.table", build_vignettes = FALSE)
-
-# install acsr from github
-devtools::install_github("sdaza/acsr")
-```
-
----
-
-## Load `acsr` and help files
-
-- Remember to set the API key for the `acs` package. You have to do it only once
-
-    ```{r, eval = FALSE}
-    api.key.install(key="")
-    ```
-
-- Explore help files of the main functions
-
-    ```{r, eval = FALSE}
-    library(acsr)
-    ?acsdata
-    ?sumacs
-    ```
-
-- Check defaults!
-    ```
-    state = WI
-    year  = 2013
-    span = 5
-    level = county
-    ```
-
----
 
 ## Why to use the `acsdata` function?
 
@@ -328,9 +323,7 @@ tab2[, c(1,6, 11:12), with = FALSE]
     - Not the fastest function (loops involved despite some vectorization)
     - It takes less than a minute to create 90 indicators
     - Limited to only eight levels
+    -
 **Last Update: `r format(Sys.time(), '%m/%d/%Y')`**
 
------
-
-### References
 

@@ -19,7 +19,9 @@
                     <a href="{{ site.baseurl }}/">Home</a>
                 </li>
                   <li>
-                    <a href="{{ site.baseurl }}/docs/cv_sdaza.pdf">CV</a>
+                    <a href="{{ site.baseurl }}/docs/cv_sdaza.pdf" onClick="ga('send', 'event', 'documents', 'download', 'My CV', 10);">CV</a>
+
+
                 </li>
                 {% for page in site.pages %}{% if page.title %}
 				{% if page.url != '/404.html' and page.url != '/thanks/'  %}

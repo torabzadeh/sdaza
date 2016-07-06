@@ -7,17 +7,4 @@
   ga('create', 'UA-34554402-2', 'sdaza.com');
   ga('send', 'pageview');
 
-$(document).ready(function(){
-	$('.ga-link').on('click', function(){
-		if (typeof(ga)!=="undefined"){
-			ga('send',{
-				hitType: 'event',
-				eventCategory: 'click',
-				eventAction: 'outbound',
-				eventLabel: $(this).attr('href')
-			});
-	  	}
-	});
-)};
-
 </script>

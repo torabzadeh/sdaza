@@ -5,6 +5,16 @@ description: "What can we learn from small and large worlds?"
 header-img: "img/research-seg.jpg"
 ---
 
+<script>
+var trackOutboundLink = function(url) {
+   ga('send', 'event', 'outbound', 'click', url, {'hitCallback':
+     function () {
+     document.location = url;
+     }
+   });
+}
+</script> 
+
 <p>My research interests include social demography, deviance and crime,  complexity and social network analysis, computational sociology, and quantitative methods. Although, most of the time, I find more fun to read about theory and qualitative research.</p>
 
 
@@ -18,11 +28,7 @@ header-img: "img/research-seg.jpg"
 <b> -->
 
 
-<!-- ### [Income Inequality, Social Mobility and Mortality in the U.S.](http://dl.getdropbox.com/u/18116710/mortality_SM_palloni_daza.pdf) (with [Alberto Palloni](https://www.ssc.wisc.edu/soc/faculty/show-person.php?person_id=38))
- -->
-
-
-<h3><a href="http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf" onClick="ga('send', 'event', 'papers', 'download-paper', '2016-02.pdf', 10);">Income Inequality, Social Mobility and Mortality in the U.S. (with Alberto Palloni)</a></h3>
+### [Income Inequality, Social Mobility and Mortality in the U.S.](http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf) (with [Alberto Palloni](https://www.ssc.wisc.edu/soc/faculty/show-person.php?person_id=38))
 
 
 <blockquote>We test the conjecture that intergenerational social mobility is tightly linked to adult mortality even after accounting for income levels, income inequality, and indicators of social capital, health behaviors and levels of access to health services. We use a large dataset from The Health Inequality Project and estimate simple multivariate models with U.S. counties and commuting zones as units of analysis. We find that the estimated effects of indicators of social mobility are strong and in the expected direction, robust to model specification, and translate into differences in life expectancy at age 40 as large 2.0-4.8 years among males and 0.1-2.0 among females. These are equivalent to 5.1-12.5 and 0.2-4.7 percent of the U.S. average life expectancy at age 40 among males and females respectively. On average, the magnitude of these effects is 1.5 to 2.5 times as large as those of income inequality and about 40 (males) and 25 (females) percent of the magnitude of a change from the lowest to the highest quartile of the U.S. income distribution.</blockquote>

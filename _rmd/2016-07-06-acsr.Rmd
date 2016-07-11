@@ -163,3 +163,8 @@ In sum, the `acsr` package:
 - Provides an easy way to adjust MOEs to different confidence levels
 - Includes a variable-by-variable ratio adjustment of standard errors
 - Includes the zero-option when computing standard errors for proportions, ratios and aggregations
+
+
+
+**Last Update: `r format(Sys.time(), '%m/%d/%Y')`**
+

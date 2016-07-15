@@ -155,6 +155,27 @@ sumacs(formula = "(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
             file = "myfile.out")
 ```
 
+<h2 class="section-heading">A map?</h2>
+
+Let's color a map using poverty by county:
+
+```{r,  warning=FALSE, message=FALSE}
+pov <- sumacs(formula = "b17001_002 / b17001_001 * 100",
+        varname = c("pov"),
+        method = c("prop"),
+        level = c("county"),
+        state = "*")
+```
+
+```{r,  warning=FALSE, message=FALSE}
+library(choroplethr)
+library(choroplethrMaps)
+pov[, region := as.numeric(geoid)]
+setnames(pov, "pov_est", "value")
+county_choropleth(pov, num_colors = 5)
+```
+
+
 In sum, the `acsr` package:
 
 - Reads formulas directly and extract any ACS variable

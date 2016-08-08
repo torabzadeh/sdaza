@@ -175,10 +175,9 @@ setnames(pov, "pov_est", "value")
 county_choropleth(pov, num_colors = 5)
 ```
 
-
 In sum, the `acsr` package:
 
-- Reads formulas directly and extract any ACS variable
+- Reads formulas directly and extracts any ACS variable
 - Provides an automatized and tailored way to obtain indicators and MOEs
 - Allows different outputs' formats (wide and long, csv)
 - Provides an easy way to adjust MOEs to different confidence levels

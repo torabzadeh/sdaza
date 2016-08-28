@@ -10,7 +10,7 @@ tags: [ACS, R]
 options(replace.assign=TRUE, tidy=TRUE, width=110, scipen = 4, digits = 3)
 ```
 
-The `acsr` package can be used to extract and compute statistics from the America Community Survey in a more systematic way. It was created for the [Applied Population Laboratory](http://www.apl.wisc.edu/) (APT) at the University of Wisconsin-Madison.
+The `acsr` package can be used to extract variables and compute statistics from the America Community Survey in a more systematic way. It was created for the [Applied Population Laboratory](http://www.apl.wisc.edu/) (APT) at the University of Wisconsin-Madison.
 
 <h2 class="section-heading">Installation</h2>
 

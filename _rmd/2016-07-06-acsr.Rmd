@@ -14,7 +14,7 @@ The `acsr` package can be used to extract variables and compute statistics from 
 
 <h2 class="section-heading">Installation</h2>
 
-The functions depends on the `acs` and `data.table` packages, so it is necessary to install then before using `acsr`. The `acsr` package is hosted on a github repository and can be installed using `devtools`:
+The functions depend on the `acs` and `data.table` packages, so it is necessary to install then before using `acsr`. The `acsr` package is hosted on a github repository and can be installed using `devtools`:
 
 ```{r, eval = FALSE}
 devtools::install_github("sdaza/acsr")
@@ -182,9 +182,8 @@ In sum, the `acsr` package:
 - Allows different outputs' formats (wide and long, csv)
 - Provides an easy way to adjust MOEs to different confidence levels
 - Includes a variable-by-variable ratio adjustment of standard errors
-- Includes the zero-option when computing standard errors for proportions, ratios and aggregations
+- Includes the zero-option when computing standard errors for proportions, ratios, and aggregations
 
 
 
 **Last Update: `r format(Sys.time(), '%m/%d/%Y')`**
-

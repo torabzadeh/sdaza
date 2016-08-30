@@ -167,11 +167,11 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-				<p>The <code class="highlighter-rouge">acsr</code> package can be used to extract and compute statistics from the America Community Survey in a more systematic way. It was created for the <a href="http://www.apl.wisc.edu/">Applied Population Laboratory</a> (APT) at the University of Wisconsin-Madison.</p>
+				<p>The <code class="highlighter-rouge">acsr</code> package is to extract variables and compute statistics using the America Community Survey in a <em>systematic way</em>. It was created for the <a href="http://www.apl.wisc.edu/">Applied Population Laboratory</a> (APT) at the University of Wisconsin-Madison.</p>
 
 <h2 class="section-heading">Installation</h2>
 
-<p>The functions depends on the <code class="highlighter-rouge">acs</code> and <code class="highlighter-rouge">data.table</code> packages, so it is necessary to install then before using <code class="highlighter-rouge">acsr</code>. The <code class="highlighter-rouge">acsr</code> package is hosted on a github repository and can be installed using <code class="highlighter-rouge">devtools</code>:</p>
+<p>The functions depend on the <code class="highlighter-rouge">acs</code> and <code class="highlighter-rouge">data.table</code> packages, so it is necessary to install then before using <code class="highlighter-rouge">acsr</code>. The <code class="highlighter-rouge">acsr</code> package is hosted on a github repository and can be installed using <code class="highlighter-rouge">devtools</code>:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"sdaza/acsr"</span><span class="p">)</span>
 <span class="n">library</span><span class="p">(</span><span class="n">acsr</span><span class="p">)</span></code></pre></figure>
@@ -292,66 +292,31 @@
 <p>We can use the <code class="highlighter-rouge">sumacs</code> function to extract variable and statistics. We have to specify the corresponding method (e.g., <em>proportion</em> or just <em>variable</em>), and the name of the statistic or variable to be included in the output.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span> <span class="s2">"b16004_026"</span><span class="p">),</span>
-        <span class="n">varname</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"langspan0913"</span><span class="p">,</span> <span class="s2">"myvar"</span><span class="p">),</span>
+        <span class="n">varname</span> <span class="o">=</span> <span class="n">c</span><span class="s2">"mynewvar"</span><span class="p">,</span> <span class="s2">"myvar"</span><span class="p">),</span>
         <span class="n">method</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"prop"</span><span class="p">,</span> <span class="s2">"variable"</span><span class="p">),</span>
         <span class="n">level</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"division"</span><span class="p">))</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  ACS variables : 4"
-## [1] ". . . . . .  Levels : 1"
-## [1] ". . . . . .  New variables : 2"
-## [1] ". . . . . .  Getting division data"
-## [1] ". . . . . .  Done!"
-## [1] ". . . . . .  Creating variables"
-## [1] ". . . . . .  50%"
-## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel geoid division langspan0913_est langspan0913_moe myvar_est myvar_moe
-## 1:      030    NA        1           0.0762         0.000347    770306      3490
-## 2:      030    NA        2           0.1182         0.000278   3332150      9171
-## 3:      030    NA        3           0.0599         0.000196   1819417      7209
-## 4:      030    NA        4           0.0411         0.000277    547577      4461
-## 5:      030    NA        5           0.1108         0.000246   4526480     11869
-## 6:      030    NA        6           0.0320         0.000265    402475      3781
-## 7:      030    NA        7           0.2203         0.000469   5318126     13044
-## 8:      030    NA        8           0.1582         0.000602   2279303     10746
-## 9:      030    NA        9           0.2335         0.000501   7765838     20289</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error: &lt;text&gt;:2:20: unexpected string constant
+## 1: sumacs(formula = c("(b16004_004 + b16004_026 + b16004_048 / b16004_001)", "b16004_026"),
+## 2:         varname = c"mynewvar"
+##                       ^</code></pre></figure>
 
 <p>To download the data can be slow, especially when many levels are being used (e.g., blockgroup). A better approach in those case is to download the data first using the function <code class="highlighter-rouge">acsdata</code>, and then use them as input.</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">mydata</span> <span class="o">&lt;-</span> <span class="n">acsdata</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"(b16004_004 + b16004_026 + b16004_048 /  b16004_001)"</span><span class="p">,</span>
         <span class="s2">"b16004_026"</span><span class="p">),</span>
-        <span class="n">level</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"division"</span><span class="p">))</span></code></pre></figure>
+        <span class="n">level</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"division"</span><span class="p">))</span>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  Getting division data"
-## [1] ". . . . . .  Done!"</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span> <span class="s2">"b16004_026"</span><span class="p">),</span>
-        <span class="n">varname</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"langspan0913"</span><span class="p">,</span> <span class="s2">"myvar"</span><span class="p">),</span>
+<span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span> <span class="s2">"b16004_026"</span><span class="p">),</span>
+        <span class="n">varname</span> <span class="o">=</span> <span class="n">c</span><span class="s2">"mynewvar"</span><span class="p">,</span> <span class="s2">"myvar"</span><span class="p">),</span>
         <span class="n">method</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"prop"</span><span class="p">,</span> <span class="s2">"variable"</span><span class="p">),</span>
         <span class="n">level</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"division"</span><span class="p">),</span>
         <span class="n">data</span> <span class="o">=</span> <span class="n">mydata</span><span class="p">)</span></code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  ACS variables : 4"
-## [1] ". . . . . .  Levels : 1"
-## [1] ". . . . . .  New variables : 2"
-## [1] ". . . . . .  Creating variables"
-## [1] ". . . . . .  50%"
-## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
-
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel geoid division langspan0913_est langspan0913_moe myvar_est myvar_moe
-## 1:      030    NA        1           0.0762         0.000347    770306      3490
-## 2:      030    NA        2           0.1182         0.000278   3332150      9171
-## 3:      030    NA        3           0.0599         0.000196   1819417      7209
-## 4:      030    NA        4           0.0411         0.000277    547577      4461
-## 5:      030    NA        5           0.1108         0.000246   4526480     11869
-## 6:      030    NA        6           0.0320         0.000265    402475      3781
-## 7:      030    NA        7           0.2203         0.000469   5318126     13044
-## 8:      030    NA        8           0.1582         0.000602   2279303     10746
-## 9:      030    NA        9           0.2335         0.000501   7765838     20289</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## Error: &lt;text&gt;:6:20: unexpected string constant
+## 5: sumacs(formula = c("(b16004_004 + b16004_026 + b16004_048 / b16004_001)", "b16004_026"),
+## 6:         varname = c"mynewvar"
+##                       ^</code></pre></figure>
 
 <h2 class="section-heading">Standard errors</h2>
 
@@ -368,10 +333,11 @@
 <p>Below an example when estimating proportions and using <code class="highlighter-rouge">one.zero = FALSE</code>:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s2">"(b16004_004 + b16004_026 + b16004_048) / b16004_001"</span><span class="p">,</span>
-            <span class="n">varname</span> <span class="o">=</span> <span class="s2">"langspan0913"</span><span class="p">,</span>
+            <span class="n">varname</span> <span class="o">=</span><span class="s2">"mynewvar"</span><span class="p">,</span>
             <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
             <span class="n">level</span> <span class="o">=</span> <span class="s2">"tract"</span><span class="p">,</span>
-            <span class="n">county</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">tract</span> <span class="o">=</span> <span class="m">950501</span><span class="p">,</span>
+            <span class="n">county</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+            <span class="n">tract</span> <span class="o">=</span> <span class="m">950501</span><span class="p">,</span>
             <span class="n">endyear</span> <span class="o">=</span> <span class="m">2013</span><span class="p">,</span>
             <span class="n">one.zero</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span></code></pre></figure>
 
@@ -385,18 +351,19 @@
 ## [1] ". . . . . .  Formatting output"
 ## [1] ". . . . . .  Done!"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel       geoid st_fips cnty_fips tract_fips langspan0913_est langspan0913_moe
-## 1:      140 55001950501      55         1     950501           0.0226           0.0252</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel       geoid st_fips cnty_fips tract_fips mynewvar_est mynewvar_moe
+## 1:      140 55001950501      55         1     950501       0.0226       0.0252</code></pre></figure>
 
 <script type="math/tex; mode=display">SE = \sqrt{ \frac{(5.47 ^ 2 + 22.49 ^ 2 + 5.47 ^ 2) - ( 0.02 ^ 2 \times 102.13 ^ 2)}{1546} } \times 1.645 = 0.0252</script>
 
 <p>When <code class="highlighter-rouge">one.zero = TRUE</code>:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s2">"(b16004_004 + b16004_026 + b16004_048) / b16004_001"</span><span class="p">,</span>
-            <span class="n">varname</span> <span class="o">=</span> <span class="s2">"langspan0913"</span><span class="p">,</span>
+            <span class="n">varname</span> <span class="o">=</span><span class="s2">"mynewvar"</span><span class="p">,</span>
             <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
             <span class="n">level</span> <span class="o">=</span> <span class="s2">"tract"</span><span class="p">,</span>
-            <span class="n">county</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">tract</span> <span class="o">=</span> <span class="m">950501</span><span class="p">,</span>
+            <span class="n">county</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+            <span class="n">tract</span> <span class="o">=</span> <span class="m">950501</span><span class="p">,</span>
             <span class="n">endyear</span> <span class="o">=</span> <span class="m">2013</span><span class="p">,</span>
             <span class="n">one.zero</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span></code></pre></figure>
 
@@ -410,8 +377,8 @@
 ## [1] ". . . . . .  Formatting output"
 ## [1] ". . . . . .  Done!"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel       geoid st_fips cnty_fips tract_fips langspan0913_est langspan0913_moe
-## 1:      140 55001950501      55         1     950501           0.0226           0.0245</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel       geoid st_fips cnty_fips tract_fips mynewvar_est mynewvar_moe
+## 1:      140 55001950501      55         1     950501       0.0226       0.0245</code></pre></figure>
 
 <script type="math/tex; mode=display">SE_{\text{ one.zero}} \sqrt{ \frac{(5.47 ^ 2 + 22.49 ^ 2) - ( 0.02 ^ 2  \times 102.13 ^ 2)}{1546} }  \times 1.645 = 0.0245</script>
 
@@ -424,7 +391,7 @@
 <p>The output can be formatted using a wide or long format:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span>
-            <span class="n">varname</span> <span class="o">=</span> <span class="s2">"langspan0913"</span><span class="p">,</span>
+            <span class="n">varname</span> <span class="o">=</span><span class="s2">"mynewvar"</span><span class="p">,</span>
             <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
             <span class="n">level</span> <span class="o">=</span> <span class="s2">"division"</span><span class="p">,</span>
             <span class="n">format.out</span> <span class="o">=</span> <span class="s2">"long"</span><span class="p">)</span></code></pre></figure>
@@ -439,21 +406,21 @@
 ## [1] ". . . . . .  Formatting output"
 ## [1] ". . . . . .  Done!"</code></pre></figure>
 
-<figure class="highlight"><pre><code class="language-text" data-lang="text">##    geoid sumlevel division     var_name    est      moe
-## 1:    NA      030        1 langspan0913 0.0762 0.000347
-## 2:    NA      030        2 langspan0913 0.1182 0.000278
-## 3:    NA      030        3 langspan0913 0.0599 0.000196
-## 4:    NA      030        4 langspan0913 0.0411 0.000277
-## 5:    NA      030        5 langspan0913 0.1108 0.000246
-## 6:    NA      030        6 langspan0913 0.0320 0.000265
-## 7:    NA      030        7 langspan0913 0.2203 0.000469
-## 8:    NA      030        8 langspan0913 0.1582 0.000602
-## 9:    NA      030        9 langspan0913 0.2335 0.000501</code></pre></figure>
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    geoid sumlevel division var_name    est      moe
+## 1:    NA      030        1 mynewvar 0.0762 0.000347
+## 2:    NA      030        2 mynewvar 0.1182 0.000278
+## 3:    NA      030        3 mynewvar 0.0599 0.000196
+## 4:    NA      030        4 mynewvar 0.0411 0.000277
+## 5:    NA      030        5 mynewvar 0.1108 0.000246
+## 6:    NA      030        6 mynewvar 0.0320 0.000265
+## 7:    NA      030        7 mynewvar 0.2203 0.000469
+## 8:    NA      030        8 mynewvar 0.1582 0.000602
+## 9:    NA      030        9 mynewvar 0.2335 0.000501</code></pre></figure>
 
 <p>And it can also be exported to a csv file:</p>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span>
-            <span class="n">varname</span> <span class="o">=</span> <span class="s2">"langspan0913"</span><span class="p">,</span>
+            <span class="n">varname</span> <span class="o">=</span><span class="s2">"mynewvar"</span><span class="p">,</span>
             <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
             <span class="n">level</span> <span class="o">=</span> <span class="s2">"division"</span><span class="p">,</span>
             <span class="n">file</span> <span class="o">=</span> <span class="s2">"myfile.out"</span><span class="p">)</span></code></pre></figure>
@@ -467,6 +434,90 @@
 ## [1] ". . . . . .  100%"
 ## [1] ". . . . . .  Formatting output"
 ## [1] ". . . . . .  Data exported to a CSV file! Done!"</code></pre></figure>
+
+<h2 class="section-heading">Combining geographic levels</h2>
+
+<p>We can combine geographic levels using two methods: (1) <code class="highlighter-rouge">sumacs</code> and (2) <code class="highlighter-rouge">combine.output</code>. The first one allows only single combinations, the second multiple ones.</p>
+
+<p>If I want to combine two states (e.g., Wisconsin and Minnesota) I can use:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">sumacs</span><span class="p">(</span><span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span>
+    <span class="n">varname</span> <span class="o">=</span> <span class="s2">"mynewvar"</span><span class="p">,</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="s2">"state"</span><span class="p">,</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="s2">"WI"</span><span class="p">,</span> <span class="s2">"MN"</span><span class="p">),</span>
+    <span class="n">combine</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  ACS variables : 4"
+## [1] ". . . . . .  Levels : 1"
+## [1] ". . . . . .  New variables : 1"
+## [1] ". . . . . .  Getting combined data"
+## [1] ". . . . . .  Printing geographic levels"
+## [[1]]
+## "geo" object: [1] "Wisconsin"
+## 
+## [[2]]
+## "geo" object: [1] "Minnesota"
+## 
+## [1] ". . . . . .  .  .  .  .  .  .  .  .  .  ."
+## [1] ". . . . . .  Done!"
+## [1] ". . . . . .  Creating variables"
+## [1] ". . . . . .  100%"
+## [1] ". . . . . .  Formatting output"
+## [1] ". . . . . .  Done!"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    geoid combined_group mynewvar_est mynewvar_moe
+## 1:    NA      aggregate        0.042     0.000331</code></pre></figure>
+
+<p>If I want to put together multiple combinations (e.g., groups of states):</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">combine.output</span><span class="p">(</span><span class="s2">"(b16004_004 + b16004_026 + b16004_048 / b16004_001)"</span><span class="p">,</span>
+    <span class="n">varname</span> <span class="o">=</span> <span class="s2">"mynewvar"</span><span class="p">,</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
+    <span class="n">level</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="s2">"state"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span> <span class="n">list</span><span class="p">(</span><span class="s2">"WI"</span><span class="p">,</span> <span class="s2">"MN"</span><span class="p">),</span> <span class="n">list</span><span class="p">(</span><span class="s2">"CA"</span><span class="p">,</span> <span class="s2">"OR"</span><span class="p">)),</span> <span class="c1"># nested list
+</span>    <span class="n">combine.names</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"WI+MN"</span><span class="p">,</span> <span class="s2">"CA+OR"</span><span class="p">))</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  Defining WI+MN"
+## [1] ". . . . . .  ACS variables : 4"
+## [1] ". . . . . .  Levels : 1"
+## [1] ". . . . . .  New variables : 1"
+## [1] ". . . . . .  Getting combined data"
+## [1] ". . . . . .  Printing geographic levels"
+## [[1]]
+## "geo" object: [1] "Wisconsin"
+## 
+## [[2]]
+## "geo" object: [1] "Minnesota"
+## 
+## [1] ". . . . . .  .  .  .  .  .  .  .  .  .  ."
+## [1] ". . . . . .  Done!"
+## [1] ". . . . . .  Creating variables"
+## [1] ". . . . . .  100%"
+## [1] ". . . . . .  Formatting output"
+## [1] ". . . . . .  Done!"
+## [1] ". . . . . .  Defining CA+OR"
+## [1] ". . . . . .  ACS variables : 4"
+## [1] ". . . . . .  Levels : 1"
+## [1] ". . . . . .  New variables : 1"
+## [1] ". . . . . .  Getting combined data"
+## [1] ". . . . . .  Printing geographic levels"
+## [[1]]
+## "geo" object: [1] "California"
+## 
+## [[2]]
+## "geo" object: [1] "Oregon"
+## 
+## [1] ". . . . . .  .  .  .  .  .  .  .  .  .  ."
+## [1] ". . . . . .  Done!"
+## [1] ". . . . . .  Creating variables"
+## [1] ". . . . . .  100%"
+## [1] ". . . . . .  Formatting output"
+## [1] ". . . . . .  Done!"</code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-text" data-lang="text">##    combined_group mynewvar_est mynewvar_moe
+## 1:          WI+MN        0.042     0.000331
+## 2:          CA+OR        0.269     0.000565</code></pre></figure>
 
 <h2 class="section-heading">A map?</h2>
 
@@ -494,21 +545,21 @@
 <span class="n">setnames</span><span class="p">(</span><span class="n">pov</span><span class="p">,</span> <span class="s2">"pov_est"</span><span class="p">,</span> <span class="s2">"value"</span><span class="p">)</span>
 <span class="n">county_choropleth</span><span class="p">(</span><span class="n">pov</span><span class="p">,</span> <span class="n">num_colors</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span></code></pre></figure>
 
-<p><img src="/img/2016-07-06-acsr/unnamed-chunk-12-1.png" alt="center" /></p>
+<p><img src="/img/2016-07-06-acsr/unnamed-chunk-14-1.png" alt="center" /></p>
 
 <p>In sum, the <code class="highlighter-rouge">acsr</code> package:</p>
 
 <ul>
-  <li>Reads formulas directly and extract any ACS variable</li>
+  <li>Reads formulas directly and extracts any ACS variable</li>
   <li>Provides an automatized and tailored way to obtain indicators and MOEs</li>
   <li>Allows different outputs’ formats (wide and long, csv)</li>
   <li>Provides an easy way to adjust MOEs to different confidence levels</li>
   <li>Includes a variable-by-variable ratio adjustment of standard errors</li>
-  <li>Includes the zero-option when computing standard errors for proportions, ratios and aggregations</li>
+  <li>Includes the zero-option when computing standard errors for proportions, ratios, and aggregations</li>
+  <li>Combines geographic levels flexibly</li>
 </ul>
 
-<p><strong>Last Update: 07/21/2016</strong></p>
-
+<p><strong>Last Update: 08/30/2016</strong></p>
 
 
                 <hr>

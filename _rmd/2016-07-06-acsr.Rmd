@@ -71,7 +71,7 @@ We can use the `sumacs` function to extract variable and statistics. We have to 
 
 ```{r}
 sumacs(formula = c("(b16004_004 + b16004_026 + b16004_048 / b16004_001)", "b16004_026"),
-        varname = c("langspan0913", "myvar"),
+        varname = c"mynewvar", "myvar"),
         method = c("prop", "variable"),
         level = c("division"))
 ```
@@ -85,7 +85,7 @@ mydata <- acsdata(formula = c("(b16004_004 + b16004_026 + b16004_048 /  b16004_0
         level = c("division"))
 
 sumacs(formula = c("(b16004_004 + b16004_026 + b16004_048 / b16004_001)", "b16004_026"),
-        varname = c("langspan0913", "myvar"),
+        varname = c"mynewvar", "myvar"),
         method = c("prop", "variable"),
         level = c("division"),
         data = mydata)
@@ -105,10 +105,11 @@ Below an example when estimating proportions and using `one.zero = FALSE`:
 
 ```{r, warning=FALSE, message=FALSE}
 sumacs(formula = "(b16004_004 + b16004_026 + b16004_048) / b16004_001",
-            varname = "langspan0913",
+            varname ="mynewvar",
             method = "prop",
             level = "tract",
-            county = 1, tract = 950501,
+            county = 1,
+            tract = 950501,
             endyear = 2013,
             one.zero = FALSE)
 ```
@@ -119,10 +120,11 @@ When `one.zero = TRUE`:
 
 ```{r, warning=FALSE, message=FALSE}
 sumacs(formula = "(b16004_004 + b16004_026 + b16004_048) / b16004_001",
-            varname = "langspan0913",
+            varname ="mynewvar",
             method = "prop",
             level = "tract",
-            county = 1, tract = 950501,
+            county = 1,
+            tract = 950501,
             endyear = 2013,
             one.zero = TRUE)
 ```
@@ -139,7 +141,7 @@ The output can be formatted using a wide or long format:
 
 ```{r }
 sumacs(formula = "(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
-            varname = "langspan0913",
+            varname ="mynewvar",
             method = "prop",
             level = "division",
             format.out = "long")
@@ -149,11 +151,38 @@ And it can also be exported to a csv file:
 
 ```{r}
 sumacs(formula = "(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
-            varname = "langspan0913",
+            varname ="mynewvar",
             method = "prop",
             level = "division",
             file = "myfile.out")
 ```
+
+<h2 class="section-heading">Combining geographic levels</h2>
+
+We can combine geographic levels using two methods: (1) `sumacs` and (2) `combine.output`. The first one allows only single combinations, the second multiple ones.
+
+If I want to combine two states (e.g., Wisconsin and Minnesota) I can use:
+
+```{r,  warning=FALSE, message=FALSE}
+sumacs("(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
+    varname = "mynewvar",
+    method = "prop",
+    level = "state",
+    state = list("WI", "MN"),
+    combine = TRUE)
+```
+
+If I want to put together multiple combinations (e.g., groups of states):
+
+```{r,  warning=FALSE, message=FALSE}
+combine.output("(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
+    varname = "mynewvar",
+    method = "prop",
+    level = list("state", "state"),
+    state = list( list("WI", "MN"), list("CA", "OR")), # nested list
+    combine.names = c("WI+MN", "CA+OR"))
+```
+
 
 <h2 class="section-heading">A map?</h2>
 
@@ -183,6 +212,7 @@ In sum, the `acsr` package:
 - Provides an easy way to adjust MOEs to different confidence levels
 - Includes a variable-by-variable ratio adjustment of standard errors
 - Includes the zero-option when computing standard errors for proportions, ratios, and aggregations
+- Combines geographic levels flexibly
 
 
 

@@ -169,7 +169,8 @@ sumacs("(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
     method = "prop",
     level = "state",
     state = list("WI", "MN"),
-    combine = TRUE)
+    combine = TRUE,
+    print.levels = FALSE)
 ```
 
 If I want to put together multiple combinations (e.g., groups of states):
@@ -180,7 +181,8 @@ combine.output("(b16004_004 + b16004_026 + b16004_048 / b16004_001)",
     method = "prop",
     level = list("state", "state"),
     state = list( list("WI", "MN"), list("CA", "OR")), # nested list
-    combine.names = c("WI+MN", "CA+OR"))
+    combine.names = c("WI+MN", "CA+OR"),
+    print.levels = FALSE)
 ```
 
 

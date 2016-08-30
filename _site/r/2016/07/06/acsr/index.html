@@ -345,11 +345,9 @@
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting tract data"
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
+## [1] ". . . . . .  Formatting output"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel       geoid st_fips cnty_fips tract_fips mynewvar_est mynewvar_moe
 ## 1:      140 55001950501      55         1     950501       0.0226       0.0252</code></pre></figure>
@@ -371,11 +369,9 @@
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting tract data"
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
+## [1] ". . . . . .  Formatting output"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##    sumlevel       geoid st_fips cnty_fips tract_fips mynewvar_est mynewvar_moe
 ## 1:      140 55001950501      55         1     950501       0.0226       0.0245</code></pre></figure>
@@ -400,11 +396,9 @@
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting division data"
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
+## [1] ". . . . . .  Formatting output"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##    geoid sumlevel division var_name    est      moe
 ## 1:    NA      030        1 mynewvar 0.0762 0.000347
@@ -429,11 +423,10 @@
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting division data"
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
 ## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Data exported to a CSV file! Done!"</code></pre></figure>
+## [1] ". . . . . .  Data exported to a CSV file! "</code></pre></figure>
 
 <h2 class="section-heading">Combining geographic levels</h2>
 
@@ -446,25 +439,16 @@
     <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
     <span class="n">level</span> <span class="o">=</span> <span class="s2">"state"</span><span class="p">,</span>
     <span class="n">state</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="s2">"WI"</span><span class="p">,</span> <span class="s2">"MN"</span><span class="p">),</span>
-    <span class="n">combine</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span></code></pre></figure>
+    <span class="n">combine</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">,</span>
+    <span class="n">print.levels</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  ACS variables : 4"
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting combined data"
-## [1] ". . . . . .  Printing geographic levels"
-## [[1]]
-## "geo" object: [1] "Wisconsin"
-## 
-## [[2]]
-## "geo" object: [1] "Minnesota"
-## 
-## [1] ". . . . . .  .  .  .  .  .  .  .  .  .  ."
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
+## [1] ". . . . . .  Formatting output"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##    geoid combined_group mynewvar_est mynewvar_moe
 ## 1:    NA      aggregate        0.042     0.000331</code></pre></figure>
@@ -476,44 +460,25 @@
     <span class="n">method</span> <span class="o">=</span> <span class="s2">"prop"</span><span class="p">,</span>
     <span class="n">level</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span><span class="s2">"state"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span>
     <span class="n">state</span> <span class="o">=</span> <span class="n">list</span><span class="p">(</span> <span class="n">list</span><span class="p">(</span><span class="s2">"WI"</span><span class="p">,</span> <span class="s2">"MN"</span><span class="p">),</span> <span class="n">list</span><span class="p">(</span><span class="s2">"CA"</span><span class="p">,</span> <span class="s2">"OR"</span><span class="p">)),</span> <span class="c1"># nested list
-</span>    <span class="n">combine.names</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"WI+MN"</span><span class="p">,</span> <span class="s2">"CA+OR"</span><span class="p">))</span></code></pre></figure>
+</span>    <span class="n">combine.names</span> <span class="o">=</span> <span class="n">c</span><span class="p">(</span><span class="s2">"WI+MN"</span><span class="p">,</span> <span class="s2">"CA+OR"</span><span class="p">),</span>
+    <span class="n">print.levels</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">)</span></code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">## [1] ". . . . . .  Defining WI+MN"
 ## [1] ". . . . . .  ACS variables : 4"
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting combined data"
-## [1] ". . . . . .  Printing geographic levels"
-## [[1]]
-## "geo" object: [1] "Wisconsin"
-## 
-## [[2]]
-## "geo" object: [1] "Minnesota"
-## 
-## [1] ". . . . . .  .  .  .  .  .  .  .  .  .  ."
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
 ## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Defining CA+OR"
 ## [1] ". . . . . .  ACS variables : 4"
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting combined data"
-## [1] ". . . . . .  Printing geographic levels"
-## [[1]]
-## "geo" object: [1] "California"
-## 
-## [[2]]
-## "geo" object: [1] "Oregon"
-## 
-## [1] ". . . . . .  .  .  .  .  .  .  .  .  .  ."
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
+## [1] ". . . . . .  Formatting output"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-text" data-lang="text">##    combined_group mynewvar_est mynewvar_moe
 ## 1:          WI+MN        0.042     0.000331
@@ -533,11 +498,9 @@
 ## [1] ". . . . . .  Levels : 1"
 ## [1] ". . . . . .  New variables : 1"
 ## [1] ". . . . . .  Getting county data"
-## [1] ". . . . . .  Done!"
 ## [1] ". . . . . .  Creating variables"
 ## [1] ". . . . . .  100%"
-## [1] ". . . . . .  Formatting output"
-## [1] ". . . . . .  Done!"</code></pre></figure>
+## [1] ". . . . . .  Formatting output"</code></pre></figure>
 
 <figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="n">library</span><span class="p">(</span><span class="n">choroplethr</span><span class="p">)</span>
 <span class="n">library</span><span class="p">(</span><span class="n">choroplethrMaps</span><span class="p">)</span>

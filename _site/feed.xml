@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.1">Jekyll</generator><link href="http://sdaza.com/feed.xml" rel="self" type="application/atom+xml" /><link href="http://sdaza.com/" rel="alternate" type="text/html" /><updated>2016-08-30T13:06:51-05:00</updated><id>http://sdaza.com/</id><title>Sebastian Daza</title><subtitle>Sebastian Daza Blog</subtitle><entry><title>R package to compute statistics from the American Community Survey</title><link href="http://sdaza.com/r/2016/07/06/acsr/" rel="alternate" type="text/html" title="R package to compute statistics from the American Community Survey" /><published>2016-07-06T00:00:00-05:00</published><updated>2016-07-06T00:00:00-05:00</updated><id>http://sdaza.com/r/2016/07/06/acsr</id><content type="html" xml:base="http://sdaza.com/r/2016/07/06/acsr/">The `acsr` package is to extract variables and compute statistics using the America Community Survey in a *systematic way*. It was created for the [Applied Population Laboratory](http://www.apl.wisc.edu/) (APT) at the University of Wisconsin-Madison.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.1.1">Jekyll</generator><link href="http://sdaza.com/feed.xml" rel="self" type="application/atom+xml" /><link href="http://sdaza.com/" rel="alternate" type="text/html" /><updated>2016-08-30T13:23:25-05:00</updated><id>http://sdaza.com/</id><title>Sebastian Daza</title><subtitle>Sebastian Daza Blog</subtitle><entry><title>R package to compute statistics from the American Community Survey</title><link href="http://sdaza.com/r/2016/07/06/acsr/" rel="alternate" type="text/html" title="R package to compute statistics from the American Community Survey" /><published>2016-07-06T00:00:00-05:00</published><updated>2016-07-06T00:00:00-05:00</updated><id>http://sdaza.com/r/2016/07/06/acsr</id><content type="html" xml:base="http://sdaza.com/r/2016/07/06/acsr/">The `acsr` package is to extract variables and compute statistics using the America Community Survey in a *systematic way*. It was created for the [Applied Population Laboratory](http://www.apl.wisc.edu/) (APT) at the University of Wisconsin-Madison.
 
 &lt;h2 class=&quot;section-heading&quot;&gt;Installation&lt;/h2&gt;
 
@@ -130,11 +130,9 @@ sumacs(formula = &quot;(b16004_004 + b16004_026 + b16004_048) / b16004_001&quot;
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting tract data&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 {% endhighlight %}
 
 
@@ -167,11 +165,9 @@ sumacs(formula = &quot;(b16004_004 + b16004_026 + b16004_048) / b16004_001&quot;
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting tract data&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 {% endhighlight %}
 
 
@@ -207,11 +203,9 @@ sumacs(formula = &quot;(b16004_004 + b16004_026 + b16004_048 / b16004_001)&quot;
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting division data&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 {% endhighlight %}
 
 
@@ -247,11 +241,10 @@ sumacs(formula = &quot;(b16004_004 + b16004_026 + b16004_048 / b16004_001)&quot;
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting division data&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Data exported to a CSV file! Done!&quot;
+## [1] &quot;. . . . . .  Data exported to a CSV file! &quot;
 {% endhighlight %}
 
 &lt;h2 class=&quot;section-heading&quot;&gt;Combining geographic levels&lt;/h2&gt;
@@ -267,7 +260,8 @@ sumacs(&quot;(b16004_004 + b16004_026 + b16004_048 / b16004_001)&quot;,
     method = &quot;prop&quot;,
     level = &quot;state&quot;,
     state = list(&quot;WI&quot;, &quot;MN&quot;),
-    combine = TRUE)
+    combine = TRUE,
+    print.levels = FALSE)
 {% endhighlight %}
 
 
@@ -277,19 +271,9 @@ sumacs(&quot;(b16004_004 + b16004_026 + b16004_048 / b16004_001)&quot;,
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting combined data&quot;
-## [1] &quot;. . . . . .  Printing geographic levels&quot;
-## [[1]]
-## &quot;geo&quot; object: [1] &quot;Wisconsin&quot;
-## 
-## [[2]]
-## &quot;geo&quot; object: [1] &quot;Minnesota&quot;
-## 
-## [1] &quot;. . . . . .  .  .  .  .  .  .  .  .  .  .&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 {% endhighlight %}
 
 
@@ -308,7 +292,8 @@ combine.output(&quot;(b16004_004 + b16004_026 + b16004_048 / b16004_001)&quot;,
     method = &quot;prop&quot;,
     level = list(&quot;state&quot;, &quot;state&quot;),
     state = list( list(&quot;WI&quot;, &quot;MN&quot;), list(&quot;CA&quot;, &quot;OR&quot;)), # nested list
-    combine.names = c(&quot;WI+MN&quot;, &quot;CA+OR&quot;))
+    combine.names = c(&quot;WI+MN&quot;, &quot;CA+OR&quot;),
+    print.levels = FALSE)
 {% endhighlight %}
 
 
@@ -319,37 +304,17 @@ combine.output(&quot;(b16004_004 + b16004_026 + b16004_048 / b16004_001)&quot;,
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting combined data&quot;
-## [1] &quot;. . . . . .  Printing geographic levels&quot;
-## [[1]]
-## &quot;geo&quot; object: [1] &quot;Wisconsin&quot;
-## 
-## [[2]]
-## &quot;geo&quot; object: [1] &quot;Minnesota&quot;
-## 
-## [1] &quot;. . . . . .  .  .  .  .  .  .  .  .  .  .&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Defining CA+OR&quot;
 ## [1] &quot;. . . . . .  ACS variables : 4&quot;
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting combined data&quot;
-## [1] &quot;. . . . . .  Printing geographic levels&quot;
-## [[1]]
-## &quot;geo&quot; object: [1] &quot;California&quot;
-## 
-## [[2]]
-## &quot;geo&quot; object: [1] &quot;Oregon&quot;
-## 
-## [1] &quot;. . . . . .  .  .  .  .  .  .  .  .  .  .&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 {% endhighlight %}
 
 
@@ -381,11 +346,9 @@ pov &lt;- sumacs(formula = &quot;b17001_002 / b17001_001 * 100&quot;,
 ## [1] &quot;. . . . . .  Levels : 1&quot;
 ## [1] &quot;. . . . . .  New variables : 1&quot;
 ## [1] &quot;. . . . . .  Getting county data&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 ## [1] &quot;. . . . . .  Creating variables&quot;
 ## [1] &quot;. . . . . .  100%&quot;
 ## [1] &quot;. . . . . .  Formatting output&quot;
-## [1] &quot;. . . . . .  Done!&quot;
 {% endhighlight %}
 
 

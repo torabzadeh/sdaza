@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "R package to compute statistics from the American Community Survey"
+title: "R package to compute statistics from the American Community Survey (ACS)"
 description: ""
 category: "R"
 tags: [ACS, R]

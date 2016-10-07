@@ -10,7 +10,7 @@ tags: [CDC, Mortality, R]
 
 Reading  fixed-width text files can be challenging, especially when no manageable dictionary is provided. In this post, I show steps can save you time. In this example, I read a compress mortality file (CMF 1979-1988) available [here](http://www.cdc.gov/nchs/data_access/cmf.htm) using a layout (or dictionary) in [PDF format](http://www.cdc.gov/nchs/data/mortab/filelayout68_88.pdf).
 
-So, to read this file (in general with extension `.txt` or `.dat`), I first need to know where each column starts and finishes. What I get from the pdf file is something like this:
+So, to read this file (usually with extension `.txt` or `.dat`), I first need to know where each column starts and finishes. What I get from the pdf file is something like this:
 
 ![](/img/mortalityLayout.png)
 
@@ -20,13 +20,13 @@ I have to select every row with this pattern: `1-2 2 FIPS State code Numeric`. T
 
 ![](/img/filterLinesRaw.png)
 
-This approach might be particularly useful when you have a long PDF/Word file and you want to extract most of the variables of the dataset. You would need to adapt these regular expressions to the particular patterns of your codebook.
+This approach might be particularly useful when you have a long PDF/Word file and you want to extract most of the variables of a dataset. You would need to adapt these regular expressions to the particular patterns of your codebook.
 
-Just to simplify, I format this text as a comma-separates values file (csv) so that to read it in R. Replacing this regular expression `([0-9]+)(-)([0-9]+)(\s)([0-9]+)(\s)(.+)(\s)(Numeric)` by `\1,\3,\5,\7,\9` I get:
+To simplify, I format this text as a comma-separated values file (csv) so that to read it in R. Replacing this regular expression `([0-9]+)(-)([0-9]+)(\s)([0-9]+)(\s)(.+)(\s)(Numeric)` by `\1,\3,\5,\7,\9` I get:
 
 ![](/img/filterLinesCSV.png)
 
-Then, I read this file in R.
+Then, I read that file in R.
 
     
     {% highlight r %}
@@ -46,7 +46,7 @@ Then, I read this file in R.
     ## 6    17  19     3                            Cause-of-Death Recode Numeric
     ## 7    20  23     4                                 Number of deaths Numeric
     {% endhighlight %}
-Now, we can read the fixed-width text file. I use the [readr](https://github.com/hadley/readr) package (in my experience relatively fast for big databases, let's say, 1GB).
+Now, I can read the fixed-width text file. I use the [readr](https://github.com/hadley/readr) package (in my experience relatively fast for big databases, let's say, 1GB).
 
    
    {% highlight r %}

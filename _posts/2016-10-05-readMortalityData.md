@@ -8,25 +8,25 @@ tags: [CDC, Mortality, R]
 
 
 
-Reading fixed-format file can be challenging, especially when no manageable dictionary is provided. In this post, I show some steps can save you time when reading this type of file. In this example, I am going to read a compress mortality file (CMF 1979-1988) available [here](http://www.cdc.gov/nchs/data_access/cmf.htm). The file layout (or dictionary) in PDF format can be obtained [here](http://www.cdc.gov/nchs/data/mortab/filelayout68_88.pdf).
+Reading  fixed-width text files can be challenging, especially when no manageable dictionary is provided. In this post, I show some steps can save you some time. In this example, I read a compress mortality file (CMF 1979-1988) available [here](http://www.cdc.gov/nchs/data_access/cmf.htm) using a layout (or dictionary) in [PDF format](http://www.cdc.gov/nchs/data/mortab/filelayout68_88.pdf).
 
-So, to read this file (in general with extension `.txt`, `.dat`), I first need to know where each column starts and finished. What I get from the pdf file is something like this:
+So, to read this file (in general with extension `.txt` or `.dat`), I first need to know where each column starts and finishes. What I get from the pdf file is something like this:
 
 ![](/img/mortalityLayout.png)
 
-These files are usually codebooks in Word/PDF or just plain text files. Here, I copy the PDF text and put it in a plain text file. I use a text editor (e.g., [Sublime Text](https://www.sublimetext.com/)) and [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) to extract the information I need.
+The layout is usually a codebook in Word/PDF or just plain text file. Here, I copy the PDF text and put it in a plain text file. I use a text editor (e.g., [Sublime Text](https://www.sublimetext.com/)) and [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) to extract the information I need.
 
-I have to select every row with this pattern: `1-2 2 FIPS State code Numeric`. That is, a number follows by a hyphen (not always, particularly when the width of the column is one), spaces, another number, spaces, and then any text. I use the following regular expression to get that pattern: `(^[0-9]+).([0-9]+)\s+([0-9])\s+(.+)`. Using the Sublime package [Filter Lines](https://packagecontrol.io/packages/Filter%20Lines) I get something like this (you can also just copy the selected lines):
+I have to select every row with this pattern: `1-2 2 FIPS State code Numeric`. That is, a number follows by a hyphen (although not always, particularly when the width of the column is one), spaces, another number, spaces, and then any text. I use the following regular expression to get that pattern: `(^[0-9]+).([0-9]+)\s+([0-9])\s+(.+)`. Using the Sublime package [Filter Lines](https://packagecontrol.io/packages/Filter%20Lines) I get something like this (you can also just copy the selected lines):
 
 ![](/img/filterLinesRaw.png)
 
-This approach might be particularly useful when you have a long PDF/Word and you want to extract most of the variables of the dataset. You would need to adapt these regular expressions to the particular patterns of your codebook.
+This approach might be particularly useful when you have a long PDF/Word file and you want to extract most of the variables of the dataset. You would need to adapt these regular expressions to the particular patterns of your codebook.
 
-Just to simplify, I format this text as comma-separates values (csv) file so that to read it in R. Replacing this regular expression `([0-9]+)(-)([0-9]+)(\s)([0-9]+)(\s)(.+)(\s)(Numeric)` by `\1,\3,\5,\7,\9` I get:
+Just to simplify, I format this text as a comma-separates values file (csv) so that to read it in R. Replacing this regular expression `([0-9]+)(-)([0-9]+)(\s)([0-9]+)(\s)(.+)(\s)(Numeric)` by `\1,\3,\5,\7,\9` I get:
 
 ![](/img/filterLinesCSV.png)
 
-I read this file in R.
+Then, I read this file in R.
 
     
     {% highlight r %}
@@ -46,7 +46,7 @@ I read this file in R.
     ## 6    17  19     3                            Cause-of-Death Recode Numeric
     ## 7    20  23     4                                 Number of deaths Numeric
     {% endhighlight %}
-Now, we can read the fixed-format file. I use the [readr](https://github.com/hadley/readr) package (in my experience relatively fast for big databases, let's say, 1GB).
+Now, we can read the fixed-width text file. I use the [readr](https://github.com/hadley/readr) package (in my experience relatively fast for big databases, let's say, 1GB).
 
    
    {% highlight r %}
@@ -106,4 +106,4 @@ Now, we can read the fixed-format file. I use the [readr](https://github.com/had
 
 Hopefully, you will save some time.
 
-**Last Update: 10/05/2016**
+**Last Update: 10/07/2016**

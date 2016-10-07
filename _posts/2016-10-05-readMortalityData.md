@@ -8,7 +8,7 @@ tags: [CDC, Mortality, R]
 
 
 
-Reading  fixed-width text files can be challenging, especially when no manageable dictionary is provided. In this post, I show some steps can save you some time. In this example, I read a compress mortality file (CMF 1979-1988) available [here](http://www.cdc.gov/nchs/data_access/cmf.htm) using a layout (or dictionary) in [PDF format](http://www.cdc.gov/nchs/data/mortab/filelayout68_88.pdf).
+Reading  fixed-width text files can be challenging, especially when no manageable dictionary is provided. In this post, I show steps can save you time. In this example, I read a compress mortality file (CMF 1979-1988) available [here](http://www.cdc.gov/nchs/data_access/cmf.htm) using a layout (or dictionary) in [PDF format](http://www.cdc.gov/nchs/data/mortab/filelayout68_88.pdf).
 
 So, to read this file (in general with extension `.txt` or `.dat`), I first need to know where each column starts and finishes. What I get from the pdf file is something like this:
 

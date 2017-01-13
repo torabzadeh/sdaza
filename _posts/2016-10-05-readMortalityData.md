@@ -106,4 +106,4 @@ Now, I can read the fixed-width text file. I use the [readr](https://github.com/
 
 Hopefully, you will save some time.
 
-**Last Update: 10/07/2016**
+**Last Update: 10/15/2016**

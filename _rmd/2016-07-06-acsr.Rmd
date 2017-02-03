@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "R package to compute statistics from the American Community Survey (ACS)"
+title: "R package to compute statistics from the American Community Survey (ACS) and Decennial US Census"
 description: ""
 category: "R"
 tags: [ACS, R]
@@ -10,7 +10,7 @@ tags: [ACS, R]
 options(replace.assign=TRUE, tidy=TRUE, width=110, scipen = 4, digits = 3)
 ```
 
-The `acsr` package helps extracting variables and computing statistics using the America Community Survey. It was created for the [Applied Population Laboratory](http://www.apl.wisc.edu/) (APT) at the University of Wisconsin-Madison.
+The `acsr` package helps extracting variables and computing statistics using the America Community Survey and Decennial US Census. It was created for the [Applied Population Laboratory](http://www.apl.wisc.edu/) (APL) at the University of Wisconsin-Madison.
 
 <h2 class="section-heading">Installation</h2>
 
@@ -33,7 +33,7 @@ api.key.install(key="*")
 ?acsdata
 ```
 
-The default level is `state`, specifically the state of Wisconsin (`state = "WI"`), the `endyear` is 2014, and the confidence level to compute margins of error (MOEs) is 90%.
+The default dataset is `acs`, the level is `state` (Wisconsin, `state = "WI"`), the `endyear` is 2014, and the confidence level to compute margins of error (MOEs) is 90%.
 
 <h2 class="section-heading">Levels</h2>
 
@@ -76,7 +76,7 @@ sumacs(formula = c("(b16004_004 + b16004_026 + b16004_048 / b16004_001)", "b1600
         level = c("division"))
 ```
 
-To download the data can be slow, especially when many levels are being used (e.g., blockgroup). A better approach in those cases is to download the data first using the function `acsdata`, and then use them as input.
+To download the data can be slow, especially when many levels are being used (e.g., blockgroup). A better approach in those cases is, first, download the data using the function `acsdata` , and then use them as input.
 
 ```{r}
 mydata <- acsdata(formula = c("(b16004_004 + b16004_026 + b16004_048 /  b16004_001)",
@@ -133,6 +133,19 @@ $$ SE_{\text{ one.zero}} \sqrt{ \frac{(5.47 ^ 2 + 22.49 ^ 2) - ( 0.02 ^ 2  \time
 When the square root value in the standard error formula doesn't exist (e.g., the square root of a negative number), the ratio formula is instead used. The ratio adjustment is done **variable by variable** .
 
 It can  also be that the `one.zero` option makes the square root undefinable. In those cases, the function uses again the **ratio** formula to compute standard errors. There is also a possibility that the standard error estimates using the **ratio** formula are higher than the **proportion** estimates without the `one.zero` option.
+
+<h2 class="section-heading">Decennial Data from the US Census</h2>
+
+Let's get the African American and Hispanic population by state. In this case, we don't have any estimation of margin of error.
+
+```{r, warning=FALSE, message=FALSE}
+sumacs(formula = c("p0080004", "p0090002"),
+            method = "variable",
+            dataset = "sf1",
+            level = "state",
+            state = "*",
+            endyear = 2010)
+```
 
 <h2 class="section-heading">Output</h2>
 
@@ -207,7 +220,7 @@ county_choropleth(pov, num_colors = 5)
 
 In sum, the `acsr` package:
 
-- Reads formulas directly and extracts any ACS variable
+- Reads formulas directly and extracts any ACS/Census variable
 - Provides an automatized and tailored way to obtain indicators and MOEs
 - Allows different outputs' formats (wide and long, csv)
 - Provides an easy way to adjust MOEs to different confidence levels

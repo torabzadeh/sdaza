@@ -109,7 +109,7 @@ plot(f, layout = layout.fruchterman.reingold, edge.arrow.size = 0.5,
     vertex.shape = ssex)
 {% endhighlight %}
 
-![center](/img/2012-10-04-facebook-sna/fig1.png) 
+![center](/images/2012-10-04-facebook-sna/fig1.png) 
 
 
 If we use __wall posts count__ to size the nodes: 
@@ -121,7 +121,7 @@ plot(f, layout = layout.fruchterman.reingold, edge.arrow.size = 0.5,
     vertex.shape = ssex)
 {% endhighlight %}
 
-![center](/img/2012-10-04-facebook-sna/fig2.png) 
+![center](/images/2012-10-04-facebook-sna/fig2.png) 
 
 
 We can also obtain some basic descriptive statistics of the network using a `graph.basic.stats` function (see [here](http://www.isk.kth.se/~shahabm/WSAnalysis/networks/NetworkAnalysis.r) to obtain it): 

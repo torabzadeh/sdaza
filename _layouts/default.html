@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<link rel="shortcut icon" href="/img/icon.ico" type="image/x-icon" />
+  {% include head.html %}
 
-{% include head.html %}
-
-{% include analytics.html %}
-
-<body>
-
-    {% include nav.html %}
+  <body>
+  <div class="page">
+    {% include header.html %}
 
     {{ content }}
 
     {% include footer.html %}
 
-</body>
+    {% include analytics.html %}
+    </div>
+  </body>
 
 </html>

@@ -6,9 +6,6 @@ category: imputation
 ---
 
 
-**Last Update: 02/07/2016**
-
-
 Multiple imputation. Ugh. Multiple imputation of scales using several items. Ugh squared! Fortunately, to impute every single item is not the only solution. There are some practical and *theoretically* attractive alternatives! In this post, I show a simple implementation of what Enders (2010) calls **duplicated-scale imputation**. The specific method I show here was proposed by Eekhout et al. (2011). Thanks [Iris Eekhout](http://www.iriseekhout.com) for replying my emails and answering my questions!
 
 ## Procedure
@@ -250,7 +247,7 @@ Some plots to explore how the imputation went.
 plot(imp, c("gpa1", "gpa2", "dep1", "dep2"))
 {% endhighlight %}
 
-![center](/img/2015-10-14-imputation_parcels/unnamed-chunk-12-1.png)![center](/img/2015-10-14-imputation_parcels/unnamed-chunk-12-2.png)
+![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-12-1.png)![center](/img/2015-10-14-imputation_parcels/unnamed-chunk-12-2.png)
 
 I don't see any problematic pattern. It looks as I got a proper solution. The distribution of the variables also looks right.
 
@@ -259,14 +256,16 @@ I don't see any problematic pattern. It looks as I got a proper solution. The di
 densityplot(imp, ~ gpa1 + gpa2 + dep1 + dep2)
 {% endhighlight %}
 
-![center](/img/2015-10-14-imputation_parcels/unnamed-chunk-13-1.png)
+![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-13-1.png)
 
 {% highlight r %}
 bwplot(imp, gpa1 + gpa2 + dep1 + dep2  ~ .imp)
 {% endhighlight %}
 
-![center](/img/2015-10-14-imputation_parcels/unnamed-chunk-13-2.png)
+![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-13-2.png)
 
+<br>
+*Last Update: 02/07/2016*
 
 -----
 

@@ -2,7 +2,7 @@ title: Sebastian Daza
 description: Sebastian Daza 2017
 sourcecode: "https://github.com/sdaza/sdaza.github.com"
 
-permalink: blog/:year/:month/:day/:title
+permalink: :categories/:year/:month/:day/:title
 exclude: ["Makefile", "README.md"]
 
 # url: "http://gchauras.github.io"     # the base hostname & protocol for your site

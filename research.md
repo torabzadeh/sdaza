@@ -7,20 +7,20 @@ pubs:
     - title:   "Income Inequality, Social Mobility and Mortality in the U.S."
       author:  "Alberto Palloni and Sebastian Daza"
       journal: "Working Paper"
-      note:    "To be presented at PAA"
+      note:    "Presented at PAA"
       url: http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf
       year:    "2017"
 
     - title:   "Assessing Stochastic Actor-Oriented Model (Siena) Estimation of Selection and Social Influence Effects"
       author:  "Sebastian Daza and Kurt Kreuger"
       journal: "Working Paper"
-      note:    "To be presented at PAA"
+      note:    "Presented at PAA"
       year:    "2017"
 
     - title:   "The Consequences of Incarceration for Mortality"
       author:  "Sebastian Daza, Jerrett Jones and Alberto Palloni"
       journal: "Working Paper"
-      note:    "To be presented at PAA"
+      note:    "Presented at PAA"
       year:    "2017"
 
     - title:   "Consequences of Childbearing in Delinquency and Substance Use"

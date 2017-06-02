@@ -1,11 +1,14 @@
 ---
 layout: post
 title: "Imputing scales using parcels of items as auxiliary variables"
+description: ""
 category: imputation
+tags: [home]
 ---
 
 
-Multiple imputation. Ugh. Multiple imputation of scales using several items. Ugh squared! Fortunately, to impute every single item is not the only solution. There are some practical and *theoretically* attractive alternatives! In this post, I show a simple implementation of what Enders (2010) calls **duplicated-scale imputation**. The specific method I show here was proposed by Eekhout et al. (2011). Thanks [Iris Eekhout](http://www.iriseekhout.com) for replying my emails and answering my questions!
+
+Multiple imputation when variables are scales generated from several items might be challenging. Fortunately, to impute every single item is not the only way to solve this problem. There are some practical and *theoretically* attractive alternatives! In this post, I show a simple implementation of what Enders (2010) calls **duplicated-scale imputation**. The specific method I show here was proposed by Eekhout et al. (2011). Thanks [Iris Eekhout](http://www.iriseekhout.com) for replying my e-mails!
 
 ## Procedure
 
@@ -26,6 +29,9 @@ Here I show a simple example using the [National Longitudinal Study of Adolescen
 
 
 
+{% highlight text %}
+## Error in unique.default(x, nmax = nmax): unique() applies only to vectors
+{% endhighlight %}
 
 
 
@@ -37,7 +43,7 @@ dim(dats)
 
 
 {% highlight text %}
-## [1] 12976    15
+## [1] 12976    14
 {% endhighlight %}
 
 
@@ -49,11 +55,10 @@ str(dats[, nvars, with = FALSE])
 
 
 {% highlight text %}
-## Classes 'data.table' and 'data.frame':	12976 obs. of  15 variables:
+## Classes 'data.table' and 'data.frame':	12976 obs. of  14 variables:
 ##  $ female   : Factor w/ 2 levels "0","1": 1 1 1 2 1 1 1 1 1 1 ...
 ##  $ age      : int  16 16 14 13 14 17 14 17 17 14 ...
 ##  $ race     : Factor w/ 5 levels "white","black",..: 2 1 1 1 2 1 3 3 3 2 ...
-##  $ class    : Factor w/ 4 levels "1","2","3","4": 1 2 2 4 1 4 3 4 2 3 ...
 ##  $ publicass: Factor w/ 2 levels "0","1": 1 1 1 1 1 1 1 1 1 NA ...
 ##  $ bmi      : num  27.4 16.3 22.2 18.2 21.9 ...
 ##  $ gpa1     : num  2 3.25 3.75 3.25 2.25 1 NA 2.25 NA 2.5 ...
@@ -171,8 +176,8 @@ ini <- mice(dats[, nvars, with = FALSE], m = 1, maxit = 0)
 
 
 {% highlight text %}
-##    female       age      race     class publicass       bmi      gpa1      gpa2    gpa1.p    gpa2.p    dep1.p      dep1    dep2.p      dep2      ppvt 
-##        ""     "pmm"        "" "polyreg"  "logreg"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"
+##    female       age      race publicass       bmi      gpa1      gpa2    gpa1.p    gpa2.p    dep1.p      dep1    dep2.p      dep2      ppvt 
+##        ""     "pmm"        ""  "logreg"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"
 {% endhighlight %}
 
 
@@ -213,30 +218,28 @@ Here the adjusted predictor matrix:
 
 
 {% highlight text %}
-##           female age race class publicass bmi gpa1 gpa2 gpa1.p gpa2.p dep1.p dep1 dep2.p dep2 ppvt
-## female         0   0    0     0         0   0    0    0      0      0      0    0      0    0    0
-## age            1   0    1     1         1   1    1    1      0      0      0    1      0    1    1
-## race           0   0    0     0         0   0    0    0      0      0      0    0      0    0    0
-## class          1   1    1     0         1   1    1    1      0      0      0    1      0    1    1
-## publicass      1   1    1     1         0   1    1    1      0      0      0    1      0    1    1
-## bmi            1   1    1     1         1   0    1    1      0      0      0    1      0    1    1
-## gpa1           1   1    1     1         1   1    0    1      1      0      0    1      0    1    1
-## gpa2           1   1    1     1         1   1    1    0      0      1      0    1      0    1    1
-## gpa1.p         1   0    1     0         0   0    0    0      0      0      0    0      0    0    0
-## gpa2.p         1   0    1     0         0   0    0    0      0      0      0    0      0    0    0
-## dep1.p         1   0    1     0         0   0    0    0      0      0      0    0      0    0    0
-## dep1           1   1    1     1         1   1    1    1      0      0      1    0      0    1    1
-## dep2.p         1   0    1     0         0   0    0    0      0      0      0    0      0    0    0
-## dep2           1   1    1     1         1   1    1    1      0      0      0    1      1    0    1
-## ppvt           1   1    1     1         1   1    1    1      0      0      0    1      0    1    0
+##           female age race publicass bmi gpa1 gpa2 gpa1.p gpa2.p dep1.p dep1 dep2.p dep2 ppvt
+## female         0   0    0         0   0    0    0      0      0      0    0      0    0    0
+## age            1   0    1         1   1    1    1      0      0      0    1      0    1    1
+## race           0   0    0         0   0    0    0      0      0      0    0      0    0    0
+## publicass      1   1    1         0   1    1    1      0      0      0    1      0    1    1
+## bmi            1   1    1         1   0    1    1      0      0      0    1      0    1    1
+## gpa1           1   1    1         1   1    0    1      1      0      0    1      0    1    1
+## gpa2           1   1    1         1   1    1    0      0      1      0    1      0    1    1
+## gpa1.p         1   0    1         0   0    0    0      0      0      0    0      0    0    0
+## gpa2.p         1   0    1         0   0    0    0      0      0      0    0      0    0    0
+## dep1.p         1   0    1         0   0    0    0      0      0      0    0      0    0    0
+## dep1           1   1    1         1   1    1    1      0      0      1    0      0    1    1
+## dep2.p         1   0    1         0   0    0    0      0      0      0    0      0    0    0
+## dep2           1   1    1         1   1    1    1      0      0      0    1      1    0    1
+## ppvt           1   1    1         1   1    1    1      0      0      0    1      0    1    0
 {% endhighlight %}
 
 Let's impute the data!
 
 
 {% highlight r %}
-imp <- mice(dats[, nvars, with = FALSE],
-	pred = pred, m = 5, maxit = 10)
+imp <- mice(dats[, nvars, with = FALSE], pred = pred, m = 5, maxit = 10)
 {% endhighlight %}
 
 Some plots to explore how the imputation went.
@@ -246,7 +249,7 @@ Some plots to explore how the imputation went.
 plot(imp, c("gpa1", "gpa2", "dep1", "dep2"))
 {% endhighlight %}
 
-![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-12-1.png)![center](/img/2015-10-14-imputation_parcels/unnamed-chunk-12-2.png)
+![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-12-1.png)![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-12-2.png)
 
 I don't see any problematic pattern. It looks as I got a proper solution. The distribution of the variables also looks right.
 
@@ -263,8 +266,7 @@ bwplot(imp, gpa1 + gpa2 + dep1 + dep2  ~ .imp)
 
 ![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-13-2.png)
 
-<br>
-*Last Update: 02/07/2016*
+**Last Update: 06/02/2017**
 
 -----
 

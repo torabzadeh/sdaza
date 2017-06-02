@@ -29,9 +29,6 @@ Here I show a simple example using the [National Longitudinal Study of Adolescen
 
 
 
-{% highlight text %}
-## Error in unique.default(x, nmax = nmax): unique() applies only to vectors
-{% endhighlight %}
 
 
 

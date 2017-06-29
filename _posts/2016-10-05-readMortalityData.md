@@ -16,7 +16,7 @@ To read this file, usually with extension `.txt` or `.dat`,  I first need to kno
 
 The layout is usually a codebook in Word/PDF or just plain text file. Here, I copy the PDF text and put it in a plain text file. I use a text editor (e.g., [Sublime Text](https://www.sublimetext.com/)) and [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) to extract the information I need.
 
-I have to select every row with this pattern: `1-2 2 FIPS State code Numeric`. That is, a number follows by a hyphen (although not always, particularly when the width of the column is one), spaces, another number, spaces, and then any text. I use the following regular expression to get that pattern: `(^[0-9]+).([0-9]+)\s+([0-9])\s+(.+)`. Using the Sublime package [Filter Lines](https://packagecontrol.io/packages/Filter%20Lines) I get something like this (you can also just copy the selected lines):
+I have to select every row with this pattern: `1-2 2 FIPS State code Numeric`. That is, a number followed by a hyphen (although not always, particularly when the width of the column is one), spaces, another number, spaces, and then any text. I use the following regular expression to get that pattern: `(^[0-9]+).([0-9]+)\s+([0-9])\s+(.+)`. Using the Sublime package [Filter Lines](https://packagecontrol.io/packages/Filter%20Lines) I get something like this (you can also just copy the selected lines):
 
 ```
 1-2 2 FIPS State code Numeric
@@ -123,4 +123,4 @@ Now, I can read the fixed-width data file. I use the [readr](https://github.com/
 
 Hopefully, this might save you some time!
 
-**Last Update: 06/02/2017**
+**Last Update: 06/29/2017**

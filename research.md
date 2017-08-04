@@ -51,7 +51,7 @@ var trackOutboundLink = function(url) {
      }
    });
 }
-</script> 
+</script>
 
 My research interests are varied, and include social demography, health and mortality, deviance and crime, complexity and social network analysis, computational sociology, and quantitative methods. I am currently involved in the following research projects:
 
@@ -101,14 +101,15 @@ This paper examines the co-evolution of friendship and violence over a period of
 *with Alberto Palloni and Jerrett Jones*
 
 
-In light of the expansion of the criminal justice system, researchers have become increasingly interested in the social consequences of incarceration. A line of this research suggests that incarceration has negative implications for individuals’ health and well-being at older ages. However, prior studies are limited in that they have not adequately followed former prisoners over a sufficient time period to determine whether incarceration significantly increases mortality. 
+In light of the expansion of the criminal justice system, researchers have become increasingly interested in the social consequences of incarceration. A line of this research suggests that incarceration has negative implications for individuals’ health and well-being at older ages. However, prior studies are limited in that they have not adequately followed former prisoners over a sufficient time period to determine whether incarceration significantly increases mortality.
 
-This project contributes to this growing literature by employing the Panel Study of Income Dynamics (PSID), a long longitudinal data resource, to examine the consequences of incarceration for health and mortality. First, we estimate the effect of short and long-term effects of incarceration on mortality and disability over a period of nearly 40 years. Second, we use those estimates and different counterfactual scenarios to assess to what extent mass incarceration contributes to the so called U.S. health disadvantage.
+This project contributes to this growing literature by employing the Panel Study of Income Dynamics (PSID), a long longitudinal data resource, to examine the consequences of incarceration for health and mortality. First, we estimate the effect of short and long-term effects of incarceration on mortality and disability over a period of nearly 40 years. Second, we use those estimates and different counterfactual scenarios to assess to what extent mass incarceration contributes to the so called U.S. health disadvantage. This project is funded by the The Panel Study of Income Dynamics (PSID), with support from the National Institute on Aging.
 
 ## Chile Re-entry Study
 *with Pilar Larroulet and Catalina Droppelmann*
 
-This study, funded by the San Carlos de Maipo Foundation, is an intensive longitudinal data collection of a sample of about 300 women leaving prison in Santiago, Chile. We are using interviews over a period of a year to examine the employment, family life, housing, and health of women just released from prison, but also, qualitative interviews to examine in more detail re-entry experience. We are in the early stages of the project, designing questionnaire and organizing the fieldwork. 
+The re-entry study is an intensive longitudinal project that follows more than 200 women released from prison in Santiago, Chile. It is funded by the [San Carlos de Maipo](http://www.fsancarlos.cl/) and [Colunga](https://www.fundacioncolunga.org/) Foundation, and the [Inter-American Development Bank](http://www.iadb.org/). We used interviews over a period of one year to know their experiences on  family life, housing, employment, social capital and health. Data collection started in September 2016. More details [here](https://github.com/sdaza/reentry-chile).
+
 
 ## RSiena Selection and Influence Estimates Under Misspecification
 *with Kurt Kreuger*

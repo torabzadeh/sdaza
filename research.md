@@ -93,8 +93,6 @@ A substantial body of research has shown a negative relationship between adolesc
 This paper examines the co-evolution of friendship and violence over a period of five years using a school-based sample of adolescents from Northern Ireland (The Belfast Youth Development Study).  We estimate a dynamic network model to decompose selection and influence effects of violence while controlling for endogenous network change. Given the size of our sample, we can also explore heterogeneity in our estimates across schools and assess to what extent the observed differences are explained by characteristics of the schools such as size, SES, religion, and gender composition. Thus, we contribute to this literature providing selection/influence violence estimates from a considerably larger sample than previous studies and going beyond school idiosyncrasies. Most importantly, we examine how heterogeneous these dynamics are across different local contexts and identify factors that are the most important. These results will, potentially, improve violence prevention strategies in the school context.    -->
 
 
-
-
 <b>
 
 ### The Consequences of Incarceration for Health and Mortality

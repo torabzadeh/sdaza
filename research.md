@@ -63,8 +63,6 @@ My dissertation builds on that small literature and examines the robustness of t
 
 To ground this argument, I use two strategies. First, I analyze aggregate and individual data to assess the magnitude, robustness, and variability of the *effects* of income mobility, and empirically examine whether some of the potential pathways and mechanisms proposed in the literature are supported by the data. Secondly, building on this evidence, I use a theoretical model to assess the conditions and plausibility of the potential mechanisms involved in the  association between income mobility and health. By formulating a generative model, where I precisely define (represent) a set of mechanisms (causal relationships) likely to bring about the observed patterns, I am able to assess the internal consistency of the theory and evaluate its generative sufficiency.
 
-<br>
-
 ### The Consequences of Incarceration for Health and Mortality
 *with Alberto Palloni and Jerrett Jones*
 
@@ -76,8 +74,6 @@ This project contributes to this growing literature by employing the Panel Study
 *with Pilar Larroulet and Catalina Droppelmann*
 
 The re-entry study is an intensive longitudinal project that follows more than 200 women released from prison in Santiago, Chile. It is funded by the [San Carlos de Maipo](http://www.fsancarlos.cl/) and [Colunga](https://www.fundacioncolunga.org/) Foundation, and the [Inter-American Development Bank](http://www.iadb.org/). We used interviews over a period of one year to know their experiences on  family life, housing, employment, social capital and health. Data collection started in September 2016. More details [here](https://github.com/sdaza/reentry-chile).
-
-<br>
 
 ## RSiena Selection and Influence Estimates Under Misspecification
 *with Kurt Kreuger*

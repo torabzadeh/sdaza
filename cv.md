@@ -1,8 +1,9 @@
 ---
 layout: page
-title: 'CV / Resume'
+title: Resume
 permalink: /cv/
 ---
+
 
 - CV [PDF version](/images/cv_sdaza.pdf).
 - Resume [PDF version](/images/resume_sdaza.pdf).

@@ -63,6 +63,9 @@ My dissertation builds on that small literature and examines the robustness of t
 
 To ground this argument, I use two strategies. First, I analyze aggregate and individual data to assess the magnitude, robustness, and variability of the *effects* of income mobility, and empirically examine whether some of the potential pathways and mechanisms proposed in the literature are supported by the data. Secondly, building on this evidence, I use a theoretical model to assess the conditions and plausibility of the potential mechanisms involved in the  association between income mobility and health. By formulating a generative model, where I precisely define (represent) a set of mechanisms (causal relationships) likely to bring about the observed patterns, I am able to assess the internal consistency of the theory and evaluate its generative sufficiency.
 
+[More info here.](https://github.com/sdaza/dissertation)
+
+
 ### The Consequences of Incarceration for Health and Mortality
 *with Alberto Palloni and Jerrett Jones*
 

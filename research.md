@@ -13,9 +13,10 @@ pubs:
 
     - title:   "Assessing Selection and Social Influence Estimates of SIENA Using an Agent-Based Model"
       author:  "Sebastian Daza and Kurt Kreuger"
-      journal: "Working Paper (Under Review)"
+      journal: "Under Review"
       note:    "Presented at PAA"
       year:    "2017"
+      url: https://github.com/sdaza/siena-paper
 
     - title:   "The Consequences of Incarceration for Mortality"
       author:  "Sebastian Daza, Jerrett Jones and Alberto Palloni"

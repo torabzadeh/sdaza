@@ -11,9 +11,9 @@ pubs:
       url: http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf
       year:    "2017"
 
-    - title:   "Assessing Stochastic Actor-Oriented Model (Siena) Estimation of Selection and Social Influence Effects"
+    - title:   "Assessing Selection and Social Influence Estimates of SIENA Using an Agent-Based Model"
       author:  "Sebastian Daza and Kurt Kreuger"
-      journal: "Working Paper"
+      journal: "Working Paper (Under Review)"
       note:    "Presented at PAA"
       year:    "2017"
 

@@ -18,11 +18,12 @@ pubs:
       year:    "2017"
       url: https://github.com/sdaza/siena-paper
 
-    - title:   "The Consequences of Incarceration for Mortality"
+    - title:   "The Consequences of Incarceration for Mortality in the US"
       author:  "Sebastian Daza, Jerrett Jones and Alberto Palloni"
-      journal: "Working Paper"
+      journal: "Under Review"
       note:    "Presented at PAA"
       year:    "2017"
+      url: https://github.com/sdaza/mortality-incarceration-paper
 
     - title:   "Consequences of Childbearing in Delinquency and Substance Use"
       author:  "Sebastian Daza and Jason Fletcher"

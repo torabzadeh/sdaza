@@ -75,6 +75,8 @@ In light of the expansion of the criminal justice system, researchers have becom
 
 This project contributes to this growing literature by employing the Panel Study of Income Dynamics (PSID), a long longitudinal data resource, to examine the consequences of incarceration for health and mortality. First, we estimate the effect of short and long-term effects of incarceration on mortality and disability over a period of nearly 40 years. Second, we use those estimates and different counterfactual scenarios to assess to what extent mass incarceration contributes to the so called U.S. health disadvantage. This project is funded by the The Panel Study of Income Dynamics (PSID), with support from the National Institute on Aging.
 
+Thanks to an extension of this grant, we are also examining how contextual characteristics influence health and well-being over the life course. For this, we plan to expand the PSID data by merging them with incarceration information from the National Corrections Reporting Program (NCRP 2000-2014) at the county level, in addition to other crime and arrests data from Uniform Crime Reports (UCR), and socioeconomic information from the American Community Survey (e.g., employment, poverty, health, inequality). 
+
 ## Chile Re-entry Study
 *with Pilar Larroulet and Catalina Droppelmann*
 

@@ -18,6 +18,13 @@ pubs:
       year:    "2017"
       url: https://github.com/sdaza/siena-paper
 
+      - title:   "Addressing the Longevity Gap between the Rich and Poor: The Role of Social Mobility"
+      author:  "Alberto Palloni, Sebastian Daza, Atheendar Venkataramani, Ezekiel J. Emanuel"
+      journal: "Working Paper"
+      <!-- note:    "Presented at PAA" -->
+      <!-- url: http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf -->
+      year:    "2018"
+
     - title:   "The Consequences of Incarceration for Mortality in the US"
       author:  "Sebastian Daza, Jerrett Jones and Alberto Palloni"
       journal: "Under Review"

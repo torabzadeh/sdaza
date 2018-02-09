@@ -9,6 +9,16 @@ I am a Ph.D. candidate in Sociology at the [University of Wisconsin-Madison](htt
 
 My research focuses on how socio-economic mobility affects health and mortality, the consequences of incarceration for health, reentry experiences of women just released from prison, and social networks. I rely on statistical and computational methods in my research, with an emphasis on data science and agent-based modeling.
 
+
+<br>
+# Last Posts
+
+<ul>
+   {% for post in site.posts offset: 0 limit: 4 %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+</ul>
+
 <!-- ## Contact
 
 <a href="mailto:sebastian.daza@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>

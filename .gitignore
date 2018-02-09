@@ -1,6 +1,0 @@
-.gitignore
-_site
-node_modules
-Gemfile.lock
-_rmd/.DS_Store
-.DS_Store

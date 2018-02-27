@@ -16,6 +16,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+
+
+
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="{{resources.reveal.url_prefix}}/css/reveal.css">
 <link rel="stylesheet" href="css/custom.css" id="theme">
@@ -120,8 +123,6 @@ div.output_prompt {
 
 {% block body %}
 
-{{ super() }}
-
 <script>
 require(
     {
@@ -130,45 +131,63 @@ require(
       waitSeconds: 15
     },
     [
-      "{{resources.reveal.url_prefix}}/lib/js/head.min.js",
-      "{{resources.reveal.url_prefix}}/js/reveal.js"
+      "reveal.js-3.6.0/lib/js/head.min.js",
+      "reveal.js-3.6.0/js/reveal.js"
     ],
+
     function(head, Reveal){
+
         // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
             controls: true,
             progress: true,
             history: true,
-            slideNumber: true,
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
+            math: {  // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'},
+            transition: "slide",
             // Optional libraries used to extend on reveal.js
             dependencies: [
-                { src: "{{resources.reveal.url_prefix}}/lib/js/classList.js",
+                { src: "reveal.js-3.6.0/lib/js/classList.js",
                   condition: function() { return !document.body.classList; } },
-                { src: "{{resources.reveal.url_prefix}}/plugin/notes/notes.js",
+                { src: "{{resources.reveal.url_prefix}}/plugin/math/math.js",
+                async: true,
+                condition: function() { return !!document.body.classList; } },
+                { src: "reveal.js-3.6.0/plugin/notes/notes.js",
                   async: true,
-                  condition: function() { return !!document.body.classList; } },
-                { src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(
-                  // Change footer here
-          ' ', 'rgba(255,255,255,0.5)'
-          ); } }
+                  condition: function() { return !!document.body.classList; } }
             ]
         });
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
+
+        // var update = function(event){
+        //   if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+        //     MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        //   }
+        // };
+
         Reveal.addEventListener('slidechanged', update);
-        Reveal.addEventListener('fragmentshown', update);
-        Reveal.addEventListener('fragmenthidden', update);
-        var update_scroll = function(event){
-          $(".reveal").scrollTop(0);
-        };
-        Reveal.addEventListener('slidechanged', update_scroll);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
     }
+
 );
 </script>
+
+{{ super() }}
 
 {% endblock body %}

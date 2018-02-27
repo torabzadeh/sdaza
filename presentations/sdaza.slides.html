@@ -14,6 +14,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
+
+
+
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="reveal.js-3.6.0/css/reveal.css">
 <link rel="stylesheet" href="css/custom.css" id="theme">
@@ -11822,6 +11825,71 @@ div.output_prompt {
 </head>
 
 
+<script>
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "reveal.js-3.6.0/lib/js/head.min.js",
+      "reveal.js-3.6.0/js/reveal.js"
+    ],
+
+    function(head, Reveal){
+
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            math: {  // mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+            config: 'TeX-AMS_HTML-full'},
+            transition: "slide",
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: "reveal.js-3.6.0/lib/js/classList.js",
+                  condition: function() { return !document.body.classList; } },
+                { src: "reveal.js-3.6.0/plugin/math/math.js",
+                async: true,
+                condition: function() { return !!document.body.classList; } },
+                { src: "reveal.js-3.6.0/plugin/notes/notes.js",
+                  async: true,
+                  condition: function() { return !!document.body.classList; } }
+            ]
+        });
+
+        // var update = function(event){
+        //   if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+        //     MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        //   }
+        // };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+
+    }
+
+);
+</script>
+
 
 
 <body>
@@ -11851,7 +11919,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Before-the-PhD">Before the PhD<a class="anchor-link" href="#Before-the-PhD">&#182;</a></h1><p><img src="img/previous_phd.png" alt="bp"></p>
+<h1 id="Consultancy">Consultancy<a class="anchor-link" href="#Consultancy">&#182;</a></h1><p><img src="img/consultancy.png" align="middle" style="margin:10px 0px 0px 0px"></p>
 
 </div>
 </div>
@@ -11860,7 +11928,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="PhD-Journey!">PhD Journey!<a class="anchor-link" href="#PhD-Journey!">&#182;</a></h1><p><img src="img/researchProjects.png" alt="phd"></p>
+<h1 id="PhD-Journey!">PhD Journey!<a class="anchor-link" href="#PhD-Journey!">&#182;</a></h1><p><img src="img/researchProjects.png" align="middle" style="margin:10px 0px 0px 0px"></p>
 
 </div>
 </div>
@@ -11869,12 +11937,23 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Consultancy">Consultancy<a class="anchor-link" href="#Consultancy">&#182;</a></h1><ul>
-<li><a href="http://sociologia.uc.cl/desuc/">Center for Applied Social Studies, Catholic University</a><ul>
-<li>Methodolological advice</li>
-<li><code>sampler</code>: R package to design sample adjusting for DEFF (<a href="https://github.com/sdaza/sampler">https://github.com/sdaza/sampler</a>)</li>
+<h1 id="Consultancy-&amp;-PhD">Consultancy &amp; PhD<a class="anchor-link" href="#Consultancy-&amp;-PhD">&#182;</a></h1><ul>
+<li><a href="https://apl.wisc.edu/">Applied Population Lab, UW-Madison</a></li>
+<li><strong>acsr</strong>: R package to extract and compute statistics from the ACS and US Census (<a href="https://github.com/sdaza/acsr">https://github.com/sdaza/acsr</a>)</li>
 </ul>
-</li>
+<p><img src="img/poverty.png" align="middle" style="margin:10px 0px 0px 100px"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Consultancy-&amp;-PhD">Consultancy &amp; PhD<a class="anchor-link" href="#Consultancy-&amp;-PhD">&#182;</a></h1><ul>
+<li><a href="http://sociologia.uc.cl/desuc/">Center for Applied Social Studies, Catholic University</a></li>
+<li>Sampling design, weighting, non-response, multiple imputation</li>
+<li><strong>sampler</strong>: R package to design samples adjusting for DEFF (<a href="https://github.com/sdaza/sampler">https://github.com/sdaza/sampler</a>)</li>
 </ul>
 
 </div>
@@ -11884,22 +11963,12 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Consultancy">Consultancy<a class="anchor-link" href="#Consultancy">&#182;</a></h1><ul>
-<li><a href="https://apl.wisc.edu/">Applied Population Lab, UW-Madison</a><ul>
-<li><code>acsr</code>: R package to extract and compute statistics from the ACS and US Census (<a href="https://github.com/sdaza/acsr">https://github.com/sdaza/acsr</a>)</li>
+<h1 id="Data-Science">Data Science<a class="anchor-link" href="#Data-Science">&#182;</a></h1><ul>
+<li>Data Incubator Fellow</li>
+<li><a href="https://sdaza-capstone.herokuapp.com/">Tracking congress member tweets</a></li>
 </ul>
-</li>
-</ul>
-<p><img src="img/poverty.png" alt="map"></p>
+<p><img src="img/track.png" align="middle" width="600" height="600" style="margin:10px 0px 0px 50px"></p>
 
-</div>
-</div>
-</div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Data-Science">Data Science<a class="anchor-link" href="#Data-Science">&#182;</a></h1><h2 id="--Data-Incubator-Fellow">- Data Incubator Fellow<a class="anchor-link" href="#--Data-Incubator-Fellow">&#182;</a></h2>
 </div>
 </div>
 </div></section></section>
@@ -11923,7 +11992,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Expansion-CJS">Expansion CJS<a class="anchor-link" href="#Expansion-CJS">&#182;</a></h1><p><img src="img/growth_incarceration.png" alt="rates"></p>
+<h1 id="Expansion-of-Punishment">Expansion of Punishment<a class="anchor-link" href="#Expansion-of-Punishment">&#182;</a></h1><p><img src="img/growth_incarceration.png" align="middle" width="500" height="500" style="margin:10px 0px 0px 50px"></p>
 
 </div>
 </div>
@@ -11932,7 +12001,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="US-Health-Disadvantage">US Health Disadvantage<a class="anchor-link" href="#US-Health-Disadvantage">&#182;</a></h1><p><img src="img/health_disadvantage.png" alt="rates"></p>
+<h1 id="US-Health-Disadvantage">US Health Disadvantage<a class="anchor-link" href="#US-Health-Disadvantage">&#182;</a></h1><p><img src="img/health_disadvantage.png" align="middle" width="700" height="700" style="margin:10px 0px 0px -10px"></p>
 
 </div>
 </div>
@@ -11941,7 +12010,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Why?">Why?<a class="anchor-link" href="#Why?">&#182;</a></h1><p><img src="img/incarceration_mortality.png" alt="why"></p>
+<h1 id="Why?">Why?<a class="anchor-link" href="#Why?">&#182;</a></h1><p><img src="img/incarceration_mortality.png" align="middle" width="800" height="800" style="margin:10px 0px 0px -10px"></p>
 
 </div>
 </div>
@@ -11950,7 +12019,7 @@ div.output_prompt {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Questions">Questions<a class="anchor-link" href="#Questions">&#182;</a></h1>
+<h1 id="Research-Questions">Research Questions<a class="anchor-link" href="#Research-Questions">&#182;</a></h1>
 </div>
 </div>
 </div><div class="fragment">
@@ -11982,7 +12051,333 @@ div.output_prompt {
     <h1>Strategy</h1>
   </div>
 </section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Approach">Approach<a class="anchor-link" href="#Approach">&#182;</a></h1><p><img src="img/strategy.png" align="middle" width="500" height="500" style="margin:10px 0px 0px 50px"></p>
 
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Panel Study of Income Dynamic (PSID)</strong><ul>
+<li>Since 1968, the survey has followed the same families</li>
+<li>The first wave included roughly 5,000 families (18,000 individuals)</li>
+<li>Recent waves have about 9,000 families (22,000 individuals)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>National Longitudinal Survey of Youth 1979 (NLSY)</strong>  <ul>
+<li>12,686 respondents ages 14-22 when first interviewed in 1979</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Measures">Measures<a class="anchor-link" href="#Measures">&#182;</a></h1><ul>
+<li><p><strong>Mortality</strong></p>
+<ul>
+<li>Year of death, National Death Index (NDI) and non-response records</li>
+<li>6,457 deaths</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><p><strong>Incarceration</strong></p>
+<ul>
+<li>Reports of whether a member of a household was incarcerated (n = 630)</li>
+<li>1995, have ever served time in jail or prison (n = 836 )</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Incarceration</strong>
+<img src="img/imprisonment_psid.png" align="middle" width="700" height="700" style="margin:10px 0px 0px 0px"></li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li><strong>Covariates</strong><ul>
+<li>Age, gender, race, education attainment, household income, and health</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Statistical-Model">Statistical Model<a class="anchor-link" href="#Statistical-Model">&#182;</a></h1><ul>
+<li><strong>Survival Parametric Models (Gompertz)</strong><ul>
+<li>Validate setup of the dataset using the underlying U.S.population</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Survival Semi-parametric Models (Cox)</strong><ul>
+<li>Heterogeneity (gamma, family identifier)</li>
+<li>Marginal Structural Models (MSM)<ul>
+<li>Attrition</li>
+<li>Time-varying confounders</li>
+</ul>
+</li>
+<li>Non-proportional hazard adjustments</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Sensitivity-Analysis">Sensitivity Analysis<a class="anchor-link" href="#Sensitivity-Analysis">&#182;</a></h1><ul>
+<li>Specification</li>
+</ul>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Missing data<ul>
+<li>Last observation carried forward (LOCF)</li>
+<li>Multiple imputation (100)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Sampling weights </li>
+</ul>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Decomposition">Decomposition<a class="anchor-link" href="#Decomposition">&#182;</a></h1><p>How much of the gap in mortality between the US and the UK can be attributable to differential imprisonment experiences?</p>
+
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$ D_{(x)} = MU_{(x)} - mu_{(x)} $$</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$ MU_{(x)} = MUo_{(x)} \times (P_{(x)} \times (E-1) + 1) =  MUo_{(x)} \times H_{(x)}$$</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$ mu_{(x)} = muo_{(x)} \times (p_{(x)} \times(E-1) + 1) = muo_{(x)} \times h_{(x)}$$</p>
+
+</div>
+</div>
+</div></div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Decomposition">Decomposition<a class="anchor-link" href="#Decomposition">&#182;</a></h1>
+</div>
+</div>
+</div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$$D_{(x)} = A_{(x)} +B_{(x)}$$</p>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$A_{(x)}$ is the contribution of the population who has not experienced prison </li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$B_(x)$, is the contribution of the population who has been in prison</li>
+</ul>
+
+</div>
+</div>
+</div></div><div class="fragment">
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>$\frac{B_{(x)}}{D_{x}}$ is the fraction of the difference attributable to imprisonment</li>
+</ul>
+
+</div>
+</div>
+</div></div></section></section>
+</section>
+<section data-background="#F27C3A" data-state="no-title-footer">
+  <div class="divider_h1">
+    <h1>Results</h1>
+  </div>
+</section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Models">Models<a class="anchor-link" href="#Models">&#182;</a></h1><p><img src="img/table.png" align="middle" width="630" height="630"  style="margin:-25px 0px 0px 0px"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Incidence-Mortality">Incidence Mortality<a class="anchor-link" href="#Incidence-Mortality">&#182;</a></h1><p><img src="img/curve_mortality.png" align="middle" width="630" height="63"  style="margin:0px 0px 0px 0px"></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Mortality-Gap-US---UK">Mortality Gap US - UK<a class="anchor-link" href="#Mortality-Gap-US---UK">&#182;</a></h1><p><img src="img/decomp.png" align="middle" width="630" height="630"  style="margin:0px 0px 0px 0px"></p>
+
+</div>
+</div>
+</div></section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Conclusions">Conclusions<a class="anchor-link" href="#Conclusions">&#182;</a></h1><ul>
+<li><p>Incarceration is associated with a moderate risk of mortality</p>
+<ul>
+<li>Losses of life expectancy at age 50 of about 4 years or 12% of current U.S. life expectancy</li>
+</ul>
+</li>
+<li><p>The fraction of the mortality gap between the US and the UK that can be attributed to imprisonment experience ranges from <strong>2%</strong> to <strong>10%</strong></p>
+</li>
+</ul>
+
+</div>
+</div>
+</div></section></section>
+</section>
+<section data-background="#F27C3A" data-state="no-title-footer">
+  <div class="divider_h1">
+    <h1>Limitations</h1>
+  </div>
+</section>
+<section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Limitations">Limitations<a class="anchor-link" href="#Limitations">&#182;</a></h1><ul>
+<li>Causality</li>
+<li>Measurement of incarceration</li>
+<li>Better data on the UK to estimate attributable fraction</li>
+<li>Sample size</li>
+</ul>
+
+</div>
+</div>
+</div></section></section>
 </section>
 <section data-background="#0093C9" data-state="no-title-footer">
   <div class="divider_h1">
@@ -12059,55 +12454,6 @@ require(
 </body>
 
 
-
-<script>
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "reveal.js-3.6.0/lib/js/head.min.js",
-      "reveal.js-3.6.0/js/reveal.js"
-    ],
-    function(head, Reveal){
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            slideNumber: true,
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/none
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "reveal.js-3.6.0/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "reveal.js-3.6.0/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } },
-                { src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(
-                  // Change footer here
-          ' ', 'rgba(255,255,255,0.5)'
-          ); } }
-            ]
-        });
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
-        Reveal.addEventListener('slidechanged', update);
-        Reveal.addEventListener('fragmentshown', update);
-        Reveal.addEventListener('fragmenthidden', update);
-        var update_scroll = function(event){
-          $(".reveal").scrollTop(0);
-        };
-        Reveal.addEventListener('slidechanged', update_scroll);
-    }
-);
-</script>
 
 
 </html>

@@ -265,3 +265,9 @@ ol li ul li:before {
   font-weight: bold;
   color: #0093C9;
 }
+
+.scrollable {
+    overflow-y: auto  !important;
+    overflow-x: hidden !important;
+    height: 800px;
+}

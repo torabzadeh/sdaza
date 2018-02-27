@@ -116,7 +116,7 @@ The re-entry study is an intensive longitudinal project that follows more than 2
 
 Although the statistical estimation of selection and influence effects has proven to be extremely difficult, new methods have been proposed recently. Among them, one of the most prominent efforts that have gained popularity during the last ten years is the Stochastic Actor-Oriented Model (Siena) proposed by Tom A. B. Snijders and colleagues. This method has been applied to estimate selection and influence effects in a wide range of behaviors and traits including substance use, delinquency, violence, health, and educational attainment. However, we know little about the conditions for which this method is reliable. In this project, we use an Agent-based model (ABM) to assess under which circumstances Siena is able to provide a good representation of the selection and influence processes of a social system, and how robust its results are to misspecification (e.g., heterogeneity).
 
-<br>
+<br> 
 ![](../images/action_chart.png)
 
 <br>

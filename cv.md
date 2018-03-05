@@ -17,7 +17,9 @@ permalink: /cv/
 
 [Download PDF version](/images/sdaza_resume.pdf)
 
-{% include embedpdf.html source="https://drive.google.com/file/d/0B6u4soyh9OhMSHdnZUpuUnRTaHc/preview" width=100 height=800 %}
+{% include embedpdf.html source="https://drive.google.com/file/d/1-qaD82B08ZwA52sua6BDGmGXLI0Zl8k_/preview" width=100 height=800 %}
+
+
 
 ### CV
 

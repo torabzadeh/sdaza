@@ -63,7 +63,7 @@ var trackOutboundLink = function(url) {
 My research interests are varied, and include social demography, health and mortality, deviance and crime, complexity and social network analysis, computational sociology, and quantitative methods. I am currently involved in the following research projects:
 
 
-- [Income mobility and mortality](#dissertation-income-mobility-health-and-mortality)
+- [Income mobility and mortality](#income-mobility-health-and-mortality)
 - [Incarceration and mortality](#the-consequences-of-incarceration-for-health-and-mortality)
 - [Women re-entry study](#women-reentry-study)
 - [RSiena and agent-based modeling](#rsiena-selection-and-influence-estimates-under-misspecification)

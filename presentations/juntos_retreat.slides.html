@@ -11906,13 +11906,6 @@ require(
 <p>&nbsp;</p>
 </div>
 </section>
-
-</section>
-<section data-background="#F27C3A" data-state="no-title-footer">
-  <div class="divider_h1">
-    <h1>Incarceration and Mortality</h1>
-  </div>
-</section>
 <section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -11945,7 +11938,7 @@ require(
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Why-Health-might-be-affected?">Why Health might be affected?<a class="anchor-link" href="#Why-Health-might-be-affected?">&#182;</a></h1><p><img src="img/incarceration_mortality.png" align="middle" width="800" height="800" style="margin:10px 0px 0px -10px"></p>
+<h1 id="Why-health-might-be-affected?">Why health might be affected?<a class="anchor-link" href="#Why-health-might-be-affected?">&#182;</a></h1><p><img src="img/incarceration_mortality.png" align="middle" width="800" height="800" style="margin:10px 0px 0px -10px"></p>
 
 </div>
 </div>
@@ -12029,13 +12022,6 @@ require(
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li><p><strong><span style="color:gray">National Longitudinal Survey of Youth 1979 (NLSY)</span></strong></p>
-<ul>
-<li><span style="color:gray">12,686 respondents ages 14-22 when first interviewed in 1979</span></li>
-</ul>
-</li>
-</ul>
-<ul>
 <li><p><strong>Covariates</strong></p>
 <ul>
 <li>Age, gender, race, education attainment, household income, and health</li>
@@ -12066,9 +12052,9 @@ require(
 </li>
 <li><p><strong>Survival Semi-parametric Models (Cox)</strong></p>
 </li>
-<li><p><strong>Sensitivity Analysis</strong></p>
+<li><p>Sensitivity Analysis</p>
 </li>
-<li><p><strong>Decomposition</strong></p>
+<li><p>Decomposition</p>
 </li>
 </ul>
 
@@ -12109,146 +12095,7 @@ require(
 </div>
 </div>
 </div>
-</aside></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sensitivity-Analysis">Sensitivity Analysis<a class="anchor-link" href="#Sensitivity-Analysis">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Specifications</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Missing data<ul>
-<li>Last observation carried forward (LOCF) and backwards</li>
-<li>Multiple imputation (100)</li>
-</ul>
-</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Sampling weights</li>
-</ul>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Decomposition">Decomposition<a class="anchor-link" href="#Decomposition">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>How much of the gap in mortality between the US and the UK can be attributable to differential imprisonment experiences?</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>$$ D_{(x)} = MU_{(x)} - mu_{(x)} $$</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>$$ MU_{(x)} = MUo_{(x)} \times (P_{(x)} \times (E-1) + 1) =  MUo_{(x)} \times H_{(x)}$$</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>$$ mu_{(x)} = muo_{(x)} \times (p_{(x)} \times(E-1) + 1) = muo_{(x)} \times h_{(x)}$$</p>
-
-</div>
-</div>
-</div></div></section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Decomposition">Decomposition<a class="anchor-link" href="#Decomposition">&#182;</a></h1>
-</div>
-</div>
-</div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>$$D_{(x)} = A_{(x)} +B_{(x)}$$</p>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>$A_{(x)}$ is the contribution of the population who has not experienced prison </li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>$B_(x)$, is the contribution of the population who has been in prison</li>
-</ul>
-
-</div>
-</div>
-</div></div><div class="fragment">
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>$\frac{B_{(x)}}{D_{x}}$ is the fraction of the difference attributable to imprisonment</li>
-</ul>
-
-</div>
-</div>
-</div></div></section></section>
+</aside></div></section></section>
 </section>
 <section data-background="#F27C3A" data-state="no-title-footer">
   <div class="divider_h1">
@@ -12343,7 +12190,7 @@ require(
     <h1>Limitations</h1>
   </div>
 </section>
-</image>
+</image></section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12351,7 +12198,7 @@ require(
 <h1 id="Broader-Thoughts">Broader Thoughts<a class="anchor-link" href="#Broader-Thoughts">&#182;</a></h1>
 </div>
 </div>
-</div>
+</div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12362,7 +12209,7 @@ require(
 
 </div>
 </div>
-</div><div class="fragment">
+</div></div><div class="fragment">
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">

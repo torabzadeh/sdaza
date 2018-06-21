@@ -5,10 +5,11 @@ permalink: /
 ---
 
 
-I am a Ph.D. candidate in Sociology at the [University of Wisconsin-Madison](http://www.ssc.wisc.edu/soc/). I received my Bachelors and Masters in Sociology from the [Catholic University of Chile](http://sociologia.uc.cl/).
+I'm a Ph.D. candidate in Sociology at the [University of Wisconsin-Madison](http://www.ssc.wisc.edu/soc/). I received my Bachelors and Masters in Sociology from the [Catholic University of Chile](http://sociologia.uc.cl/).
 
 My [research](research.md) focuses on how socio-economic mobility affects health and mortality, the consequences of incarceration for health, reentry experiences of women just released from prison, and social networks. I rely on statistical and computational methods in my research, with an emphasis on data science and agent-based modeling.
 
+Currently, I'm a Senior Data Analyst at [Juntos](http://juntosglobal.com/), a company that helps promote relationships of mutual benefit between Financial Service Providers and their customers.
 
 <br>
 # Last Posts

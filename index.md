@@ -9,7 +9,7 @@ I'm a Ph.D. candidate in Sociology at the [University of Wisconsin-Madison](http
 
 My [research](research.md) focuses on how socio-economic mobility affects health and mortality, the consequences of incarceration for health, reentry experiences of women just released from prison, and social networks. I rely on statistical and computational methods in my research, with an emphasis on data science and agent-based modeling.
 
-Currently, I'm a Senior Data Analyst at [Juntos](http://juntosglobal.com/), a startup that helps promote relationships of mutual benefit between Financial Service Providers and their customers.
+Currently, I'm a Quantitative Social Scientist at [Juntos](http://juntosglobal.com/), a startup that helps promote relationships of mutual benefit between Financial Service Providers and their customers.
 
 <br>
 # Last Posts

@@ -4,19 +4,19 @@ permalink: /research/
 title: Research
 pubs:
 
+    - title:   "Agent-Based Models for Assessing Complex Statistical Models: An Example Evaluating Selection and Social Influence Estimates from the SIENA model"
+      author:  "Sebastian Daza and Kurt Kreuger"
+      journal: "Sociological Methods and Research"
+      note:    "In press
+      year:    "2018"
+      url: https://github.com/sdaza/siena-paper
+
     - title:   "Income Inequality, Social Mobility and Mortality in the U.S."
       author:  "Alberto Palloni and Sebastian Daza"
       journal: "Working Paper"
       note:    "Presented at PAA"
       url: http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf
       year:    "2017"
-
-    - title:   "Assessing Selection and Social Influence Estimates of SIENA Using an Agent-Based Model"
-      author:  "Sebastian Daza and Kurt Kreuger"
-      journal: "Under Review"
-      note:    "Presented at PAA"
-      year:    "2017"
-      url: https://github.com/sdaza/siena-paper
 
     - title:   "Addressing the Longevity Gap between the Rich and Poor: The Role of Social Mobility"
       author:  "Alberto Palloni, Sebastian Daza, Atheendar Venkataramani, Ezekiel J. Emanuel"
@@ -122,10 +122,10 @@ The re-entry study is an intensive longitudinal project that follows more than 2
 <br>
 <!-- ![](../images/reentry.png) -->
 
-## RSiena Selection and Influence Estimates Under Misspecification
+## Agent-Based Models for Assessing Complex Statistical Models: An Example Evaluating Selection and Social Influence Estimates from the SIENA model
 *with Kurt Kreuger*
 
-Although the statistical estimation of selection and influence effects has proven to be extremely difficult, new methods have been proposed recently. Among them, one of the most prominent efforts that have gained popularity during the last ten years is the Stochastic Actor-Oriented Model (Siena) proposed by Tom A. B. Snijders and colleagues. This method has been applied to estimate selection and influence effects in a wide range of behaviors and traits including substance use, delinquency, violence, health, and educational attainment. However, we know little about the conditions for which this method is reliable. In this project, we use an Agent-based model (ABM) to assess under which circumstances Siena is able to provide a good representation of the selection and influence processes of a social system, and how robust its results are to misspecification (e.g., heterogeneity).
+Although Agent-based models (ABM) have been increasingly accepted in social sciences as a valid tool to formalize theory, propose mechanisms able to recreate regularities, and guide empirical research, we are not aware of any research using ABMs to assess the robustness of our statistical methods. We argue that ABMs can be extremely helpful to assess models when the phenomena under study is complex. As an example, we create an agent-based model (ABM) to evaluate Stochastic Actor-Oriented Model (SIENA) estimation of selection and influence effects. The SIENA Model, proposed by Tom A. B. Snijders and colleagues, is a prominent network analysis method that has gained popularity during the last ten years and been applied to estimate selection and influence for a broad range of behaviors and traits such as substance use, delinquency, violence, health, and educational attainment. However, we know little about the conditions for which this method is reliable or the particular biases it might have. The results from our analysis show that selection and influence are estimated by SIENA asymmetrically, and that with very simple assumptions, we can generate data where selection estimates are highly sensitive to mis-specification, suggesting caution when interpreting SIENA analyses.
 
 <br>
 ![](../images/action_chart.png)
@@ -140,7 +140,7 @@ The [Latin American Mortality Database](https://www.ssc.wisc.edu/cdha/latinmorta
 
 <br />
 
-## Working Papers
+## Publications
 
 {% assign thumbnail="left" %}
 

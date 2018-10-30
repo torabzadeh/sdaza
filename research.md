@@ -7,7 +7,7 @@ pubs:
     - title:   "Agent-Based Models for Assessing Complex Statistical Models: An Example Evaluating Selection and Social Influence Estimates from the SIENA model"
       author:  "Sebastian Daza and Kurt Kreuger"
       journal: "Sociological Methods and Research"
-      note:    "In press
+      note:    "In press"
       year:    "2018"
       url: https://github.com/sdaza/siena-paper
 

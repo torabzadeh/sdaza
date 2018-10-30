@@ -70,7 +70,7 @@ My research interests are varied, and include social demography, health and mort
 - [Lambda](#lambda)
 
 
-Here a list of my [working papers](#working-papers).
+Here a list of my [publications](#publications).
 
 <br>
 ## Income Mobility, Health and Mortality

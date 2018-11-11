@@ -14,16 +14,16 @@ pubs:
     - title:   "The Consequences of Incarceration for Mortality in the US"
       author:  "Sebastian Daza, Jerrett Jones and Alberto Palloni"
       journal: "Under Review"
-      note:    "Presented at PAA"
+      note:    "Presented at PAA 2017"
       year:    "2018"
       url: https://github.com/sdaza/mortality-incarceration-paper
 
     - title:   "Income Inequality, Social Mobility and Mortality in the U.S. (Preprint)"
       author:  "Alberto Palloni and Sebastian Daza"
       journal: "Working Paper"
-      note:    "Presented at PAA"
-      url: http://www.ssc.wisc.edu/cde/cdewp/2016-02.pdf
-      year:    "2017"
+      note:    "Presented at PAA 2017"
+      url: https://osf.io/preprints/socarxiv/gdz2a
+      year:    "2018"
 
     - title:   "Addressing the Longevity Gap between the Rich and Poor: The Role of Social Mobility"
       author:  "Alberto Palloni, Sebastian Daza, Atheendar Venkataramani, Ezekiel J. Emanuel"
@@ -33,13 +33,13 @@ pubs:
     - title:   "Consequences of Childbearing in Delinquency and Substance Use"
       author:  "Sebastian Daza and Jason Fletcher"
       journal: "Working Paper"
-      note:    "Presented at PAA"
+      note:    "Presented at PAA 2016"
       year:    "2016"
 
     - title:   "Intergenerational Transfers in the U.S., Economic Inequality, and Social Stratification"
       author:  "Alberto Palloni and Sebastian Daza"
       journal: "Working Paper"
-      note:    "Presented at PAA"
+      note:    "Presented at PAA 2014"
       year:    "2014"
 
     - title:   "The Impact of Age, Egotropic Vote, and Political Divisions in the 2009-2010 Chilean Election"

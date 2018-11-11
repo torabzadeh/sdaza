@@ -1,6 +1,6 @@
 ---
 layout: page
-permalink: /pubs
+permalink: /pubs/
 title: Publications
 pubs:
 

@@ -24,7 +24,7 @@ My research interests are varied, and include social demography, health and mort
 - [Lambda](#lambda)
 
 
-Here a list of my [publications](../pubs.md).
+Here a list of my [publications](/pubs/).
 
 <br>
 ## Income Mobility, Health and Mortality

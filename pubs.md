@@ -18,7 +18,7 @@ pubs:
       year:    "2018"
       url: https://github.com/sdaza/mortality-incarceration-paper
 
-    - title:   "Income Inequality, Social Mobility and Mortality in the U.S."
+    - title:   "Income Inequality, Social Mobility and Mortality in the U.S. (Preprint)"
       author:  "Alberto Palloni and Sebastian Daza"
       journal: "Working Paper"
       note:    "Presented at PAA"
@@ -46,7 +46,7 @@ pubs:
       author:  "Nicolás Somma and Sebastián Daza"
       journal: "Cuadernos ISUC, Vol 1, Num 2"
       year:    "2016"
-      url: http://sociologia.uc.cl/assets/uploads/2016/12/articulo-nicols-somma.pdf
+      url: http://sociologia.uc.cl/wp-content/uploads/2016/12/articulo-nicols-somma.pdf
 ---
 
 

@@ -49,7 +49,6 @@ pubs:
       url: http://sociologia.uc.cl/assets/uploads/2016/12/articulo-nicols-somma.pdf
 ---
 
-<br>
 
 {% assign thumbnail="left" %}
 

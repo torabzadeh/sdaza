@@ -37,6 +37,11 @@ To ground this argument, I use two strategies. First, I analyze aggregate and in
 
 [More info here.](https://github.com/sdaza/dissertation)
 
+Below, an example of agents moving across counties / neighborhoods based on the income of their residents.
+
+<p align='center'>
+  <img class="fixed-ratio-resize" src='../images/abm.gif'>
+</p>
 
 ### The Consequences of Incarceration for Health and Mortality
 *with Alberto Palloni and Jerrett Jones*

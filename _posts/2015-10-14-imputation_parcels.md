@@ -8,7 +8,7 @@ tags: [home]
 
 
 
-Multiple imputation when variables are scales generated from several items might be challenging. Fortunately, to impute every single item is not the only way to solve this problem. There are some practical and *theoretically* attractive alternatives! In this post, I show a simple implementation of what Enders (2010) calls **duplicated-scale imputation**. The specific method I show here was proposed by Eekhout et al. (2011). Thanks [Iris Eekhout](http://www.iriseekhout.com) for replying my e-mails!
+Multiple imputation when variables are scales generated from several items can be challenging. Fortunately, to impute every single item is not the only way to solve this problem. There are some practical and *theoretically* attractive alternatives! In this post, I show a simple implementation of what Enders (2010) calls **duplicated-scale imputation**. The specific method I show here was proposed by Eekhout et al. (2011). Thanks [Iris Eekhout](http://www.iriseekhout.com) for replying my e-mails!
 
 ## Procedure
 
@@ -88,7 +88,7 @@ tabular(
 
 
 {% highlight text %}
-##                                                
+##
 ##         Mean    SD      Min     Max     Missing
 ##  dep2      0.58    0.39    0.00    2.95   68.00
 ##  dep2.p    0.58    0.43    0.00    3.00    6.00
@@ -173,7 +173,7 @@ ini <- mice(dats[, nvars, with = FALSE], m = 1, maxit = 0)
 
 
 {% highlight text %}
-##    female       age      race publicass       bmi      gpa1      gpa2    gpa1.p    gpa2.p    dep1.p      dep1    dep2.p      dep2      ppvt 
+##    female       age      race publicass       bmi      gpa1      gpa2    gpa1.p    gpa2.p    dep1.p      dep1    dep2.p      dep2      ppvt
 ##        ""     "pmm"        ""  "logreg"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"     "pmm"
 {% endhighlight %}
 

@@ -7,8 +7,8 @@ pubs:
     - title:   "Agent-Based Models for Assessing Complex Statistical Models: An Example Evaluating Selection and Social Influence Estimates from the SIENA model"
       author:  "Sebastian Daza and Kurt Kreuger"
       journal: "Sociological Methods and Research"
-      note:    "In press"
-      year:    "2018"
+      note:    "Forthcoming"
+      year:    "2019"
       url: https://github.com/sdaza/siena-paper
 
     - title:   "The Consequences of Incarceration for Mortality in the US"

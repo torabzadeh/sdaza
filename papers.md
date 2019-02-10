@@ -11,12 +11,12 @@ pubs:
       year:    "2019"
       url: https://github.com/sdaza/siena-paper
 
-    - title:   "The Consequences of Incarceration for Mortality in the US"
+    - title:   "The Consequences of Incarceration for Mortality in the US (Preprint)"
       author:  "Sebastian Daza, Jerrett Jones and Alberto Palloni"
       journal: "Under Review"
       note:    "Presented at PAA"
       year:    "2018"
-      url: https://github.com/sdaza/mortality-incarceration-paper
+      url: https://osf.io/preprints/socarxiv/b8xe6/
 
     - title:   "Income Inequality, Social Mobility and Mortality in the U.S. (Preprint)"
       author:  "Alberto Palloni and Sebastian Daza"

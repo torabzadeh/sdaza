@@ -28,7 +28,6 @@ pubs:
     - title:   "Uncertainty and Mortality Estimates in the Latin American and Caribbean (LAC) Region"
       author:  "Alberto Palloni, Hiram Beltran-Sanchez, Sebastian Daza"
       journal: "Working Paper"
-      note:    ""
       year:    "2019"
       url: https://github.com/sdaza/lambda
 

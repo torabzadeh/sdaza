@@ -25,6 +25,13 @@ pubs:
       url: https://osf.io/preprints/socarxiv/gdz2a
       year:    "2018"
 
+    - title:   "Uncertainty and Mortality Estimates in the Latin American and Caribbean (LAC) Region"
+      author:  "Alberto Palloni, Hiram Beltran-Sanchez, Sebastian Daza"
+      journal: "Working Paper"
+      note:    ""
+      year:    "2019"
+      url: https://github.com/sdaza/lambda
+
     - title:   "Addressing the Longevity Gap between the Rich and Poor: The Role of Social Mobility"
       author:  "Alberto Palloni, Sebastian Daza, Atheendar Venkataramani, Ezekiel J. Emanuel"
       journal: "Working Paper"

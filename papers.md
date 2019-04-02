@@ -5,35 +5,38 @@ title: Publications
 pubs:
 
     - title:   "Agent-Based Models for Assessing Complex Statistical Models: An Example Evaluating Selection and Social Influence Estimates from the SIENA model"
-      author:  "Sebastian Daza and Kurt Kreuger"
+      author:  "Sebastian Daza and L. Kurt Kreuger"
       journal: "Sociological Methods and Research"
-      note:    "Forthcoming"
       year:    "2019"
-      url: https://github.com/sdaza/siena-paper
+      code:    https://github.com/sdaza/siena-paper
+      doi:     https://doi.org/10.1177/0049124119826147
 
-    - title:   "The Consequences of Incarceration for Mortality in the U.S. (Preprint)"
+    - title:   "The Consequences of Incarceration for Mortality in the U.S."
       author:  "Sebastian Daza, Alberto Palloni and Jerrett Jones"
       journal: "Under Review"
       note:    "Presented at PAA"
       year:    "2019"
-      url: https://osf.io/preprints/socarxiv/b8xe6/
-
-    - title:   "Income Inequality, Social Mobility and Mortality in the U.S. (Preprint)"
-      author:  "Alberto Palloni and Sebastian Daza"
-      journal: "Working Paper"
-      note:    "Presented at PAA"
-      url: https://osf.io/preprints/socarxiv/gdz2a
-      year:    "2018"
+      code:    https://github.com/sdaza/mortality-incarceration-paper
+      preview: https://osf.io/preprints/socarxiv/b8xe6/
 
     - title:   "Uncertainty and Mortality Estimates in the Latin American and Caribbean (LAC) Region"
       author:  "Alberto Palloni, Hiram Beltran-Sanchez, Sebastian Daza"
       journal: "Working Paper"
       year:    "2019"
-      url: https://github.com/sdaza/lambda
+      code:    https://github.com/sdaza/lambda
 
     - title:   "Addressing the Longevity Gap between the Rich and Poor: The Role of Social Mobility"
       author:  "Alberto Palloni, Sebastian Daza, Atheendar Venkataramani, Ezekiel J. Emanuel"
       journal: "Working Paper"
+      year:    "2019"
+      code:    https://github.com/sdaza/income-mobility-le-gap
+
+    - title:   "Income Inequality, Social Mobility and Mortality in the U.S."
+      author:  "Alberto Palloni and Sebastian Daza"
+      journal: "Working Paper"
+      note:    "Presented at PAA"
+      preview: https://osf.io/preprints/socarxiv/gdz2a
+      code:    https://github.com/sdaza/dissertation/tree/master/ch02
       year:    "2018"
 
     - title:   "Consequences of Childbearing in Delinquency and Substance Use"
@@ -52,7 +55,7 @@ pubs:
       author:  "Nicolás Somma and Sebastián Daza"
       journal: "Cuadernos ISUC, Vol 1, Num 2"
       year:    "2016"
-      url: http://sociologia.uc.cl/wp-content/uploads/2016/12/articulo-nicols-somma.pdf
+      preview: http://sociologia.uc.cl/wp-content/uploads/2016/12/articulo-nicols-somma.pdf
 ---
 
 
@@ -62,11 +65,10 @@ pubs:
 {% if pub.image %}
 {% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
 {% endif %}
-[**{{pub.title}}**]({% if pub.internal %}{{pub.url | prepend: site.baseurl}}{% else %}{{pub.url}}{% endif %})<br />
-{{pub.author}}<br />
+<span style="color:#0868ac">**{{pub.title}}**</span> {% if pub.doi %} [[doi]({{pub.doi}})] {% endif %} {% if pub.preview %} [[preview]({{pub.preview}})] {% endif %} {% if pub.code %} [[code]({{pub.code}})] {% endif %}<br />
+{{pub.author}}<br>
 *{{pub.journal}}*
-{% if pub.note %} *({{pub.note}})*
-{% endif %} *{{pub.year}}* {% if pub.doi %}[[doi]({{pub.doi}})]{% endif %}
-{% if pub.media %}<br />Media: {% for article in pub.media %}[[{{article.name}}]({{article.url}})]{% endfor %}{% endif %}
-
+{% if pub.note %} *({{pub.note}})* {% endif %} *{{pub.year}}*
+{% if pub.media %}<br />Media: {% for article in pub.media %}[[{{article.name}}]({{article.url}})]{% endfor %}{% endif %}<br />
 {% endfor %}
+

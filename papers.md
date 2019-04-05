@@ -10,6 +10,7 @@ pubs:
       year:    "2019"
       code:    https://github.com/sdaza/siena-paper
       doi:     https://doi.org/10.1177/0049124119826147
+      preprint: https://osf.io/preprints/socarxiv/98fp4
 
     - title:   "The Consequences of Incarceration for Mortality in the U.S."
       author:  "Sebastian Daza, Alberto Palloni and Jerrett Jones"
@@ -17,7 +18,7 @@ pubs:
       note:    "Presented at PAA"
       year:    "2019"
       code:    https://github.com/sdaza/mortality-incarceration-paper
-      preview: https://osf.io/preprints/socarxiv/b8xe6/
+      preprint: https://osf.io/preprints/socarxiv/b8xe6/
 
     - title:   "Uncertainty and Mortality Estimates in the Latin American and Caribbean (LAC) Region"
       author:  "Alberto Palloni, Hiram Beltran-Sanchez, Sebastian Daza"
@@ -35,7 +36,7 @@ pubs:
       author:  "Alberto Palloni and Sebastian Daza"
       journal: "Working Paper"
       note:    "Presented at PAA"
-      preview: https://osf.io/preprints/socarxiv/gdz2a
+      preprint: https://osf.io/preprints/socarxiv/gdz2a
       code:    https://github.com/sdaza/dissertation/tree/master/ch02
       year:    "2018"
 
@@ -55,7 +56,7 @@ pubs:
       author:  "Nicolás Somma and Sebastián Daza"
       journal: "Cuadernos ISUC, Vol 1, Num 2"
       year:    "2016"
-      preview: http://sociologia.uc.cl/wp-content/uploads/2016/12/articulo-nicols-somma.pdf
+      preprint: http://sociologia.uc.cl/wp-content/uploads/2016/12/articulo-nicols-somma.pdf
 ---
 
 
@@ -65,7 +66,7 @@ pubs:
 {% if pub.image %}
 {% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
 {% endif %}
-<span style="color:#0868ac">**{{pub.title}}**</span> {% if pub.doi %} [[doi]({{pub.doi}})] {% endif %} {% if pub.preview %} [[preview]({{pub.preview}})] {% endif %} {% if pub.code %} [[code]({{pub.code}})] {% endif %}<br />
+<span style="color:#0868ac">**{{pub.title}}**</span> {% if pub.doi %} [[doi]({{pub.doi}})] {% endif %} {% if pub.preview %} [[preprint]({{pub.preview}})] {% endif %} {% if pub.code %} [[code]({{pub.code}})] {% endif %}<br />
 {{pub.author}}<br>
 *{{pub.journal}}*
 {% if pub.note %} *({{pub.note}})* {% endif %} *{{pub.year}}*

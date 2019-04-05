@@ -66,7 +66,7 @@ pubs:
 {% if pub.image %}
 {% include image.html url=pub.image caption="" height="100px" align=thumbnail %}
 {% endif %}
-<span style="color:#0868ac">**{{pub.title}}**</span> {% if pub.doi %} [[doi]({{pub.doi}})] {% endif %} {% if pub.preview %} [[preprint]({{pub.preview}})] {% endif %} {% if pub.code %} [[code]({{pub.code}})] {% endif %}<br />
+<span style="color:#0868ac">**{{pub.title}}**</span> {% if pub.doi %} [[doi]({{pub.doi}})] {% endif %} {% if pub.preprint %} [[preprint]({{pub.preprint}})] {% endif %} {% if pub.code %} [[code]({{pub.code}})] {% endif %}<br />
 {{pub.author}}<br>
 *{{pub.journal}}*
 {% if pub.note %} *({{pub.note}})* {% endif %} *{{pub.year}}*

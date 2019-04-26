@@ -3,12 +3,13 @@ layout: post
 title: "Cohort component projection"
 description: "A simple example using R and matrices"
 category: demography
+comments: true
 ---
 
 
-I present an example of a cohort component projection using a closed female population (Sweden 1993), taken from Preston et al.'s book (Demography 2001, page 125). I use R and basic matrix algebra to replicate their results. The advantage of this procedure is that allows to compute easily the *intrinsic growth rate* and *age-proportionate distribution* of the stable equivalent population. All we need is the population by age at time 0 (from a census), survivorship ratios (from a life table), and age-specific fertility rates. 
+I present an example of a cohort component projection using a closed female population (Sweden 1993), taken from Preston et al.'s book (Demography 2001, page 125). I use R and basic matrix algebra to replicate their results. The advantage of this procedure is that allows to compute easily the *intrinsic growth rate* and *age-proportionate distribution* of the stable equivalent population. All we need is the population by age at time 0 (from a census), survivorship ratios (from a life table), and age-specific fertility rates.
 
-The data: 
+The data:
 
 
 
@@ -44,21 +45,21 @@ attach(dat)
 {% endhighlight %}
 
 
-As can be seen, the data have five-year-interval age groups, so each projection forward will involve 5 years. The steps are very simple: 
+As can be seen, the data have five-year-interval age groups, so each projection forward will involve 5 years. The steps are very simple:
 
 1. Project forward the population of each age group (estimation of people alive)
 2. Calculate the number of births of each age group based on fertility rates, adjusting by mortality (estimation of children alive)
-3. Create a Leslie matrix, and then multiple it by the population vector (population by age at time 0) 
+3. Create a Leslie matrix, and then multiple it by the population vector (population by age at time 0)
 
 ### Survivorship ratios
 
-We have to estimate life table survival ratios, that is, proportions of birth cohorts surviving from one age interval to the next in a **stationary population**. Basically, we are summarizing the mortality experience of different cohorts assuming stationarity. Because census statistics refer to age "last birthday" (rather than exact age), I estimate ratios using $L_x$ (average number of survivors in an age interval) instead of $l_x$. 
+We have to estimate life table survival ratios, that is, proportions of birth cohorts surviving from one age interval to the next in a **stationary population**. Basically, we are summarizing the mortality experience of different cohorts assuming stationarity. Because census statistics refer to age "last birthday" (rather than exact age), I estimate ratios using $L_x$ (average number of survivors in an age interval) instead of $l_x$.
 
 $$S_x = \frac{_5L_x}{_5L_{x-5}}$$
 
-I compute the survival ratios using a loop in R. The estimation of the open-ended survival ratio is slightly different but still straightforward: 
+I compute the survival ratios using a loop in R. The estimation of the open-ended survival ratio is slightly different but still straightforward:
 
-$$\frac{T_{85}}{T_{80}}$$  
+$$\frac{T_{85}}{T_{80}}$$
 
 
 {% highlight r %}
@@ -79,7 +80,7 @@ Sf[length(Sf)] <- Lf[18]/(Lf[17] + Lf[18])
 
 ### Number of children
 
-This is the tricky part. Because census statistics refer to age "last birthday", and we are projecting every 5 years, the estimation of the number of person-years lived by women in each age group consists of the average number of women alive at the beginning and end of the period (assuming a linear change over the period). To take advantage of the Leslie matrix, I define the births in R using a loop as follows: 
+This is the tricky part. Because census statistics refer to age "last birthday", and we are projecting every 5 years, the estimation of the number of person-years lived by women in each age group consists of the average number of women alive at the beginning and end of the period (assuming a linear change over the period). To take advantage of the Leslie matrix, I define the births in R using a loop as follows:
 
 
 {% highlight r %}
@@ -191,7 +192,7 @@ mp <- function(mat, pow) {
 {% endhighlight %}
 
 
-Let's project the initial population for two periods (10 years): 
+Let's project the initial population for two periods (10 years):
 
 
 {% highlight r %}
@@ -223,7 +224,7 @@ Let's project the initial population for two periods (10 years):
 {% endhighlight %}
 
 
-Again, I get the same result of the book. The nice thing of all this is that estimating eigenvalues and eigenvectors, I can obtain the intrinsic growth rate and age-distribution of the "stable equivalent" population. Using the *eigen* function in R, I can identify the dominant eigenvalue (higher absolute number), and the corresponding eigenvector: 
+Again, I get the same result of the book. The nice thing of all this is that estimating eigenvalues and eigenvectors, I can obtain the intrinsic growth rate and age-distribution of the "stable equivalent" population. Using the *eigen* function in R, I can identify the dominant eigenvalue (higher absolute number), and the corresponding eigenvector:
 
 
 {% highlight r %}
@@ -255,11 +256,11 @@ as.numeric(e$vector[, 1]/sum(e$vector[, 1]))
 {% endhighlight %}
 
 
-The population is growing but little. 
+The population is growing but little.
 
 ### What about the population momentum?
 
-The population momentum corresponds to the growth of a population after imposing replacement fertility conditions, that is, NRR=1. Thus, the first thing we have to do is to estimate NRR. 
+The population momentum corresponds to the growth of a population after imposing replacement fertility conditions, that is, NRR=1. Thus, the first thing we have to do is to estimate NRR.
 
 
 {% highlight r %}
@@ -273,7 +274,7 @@ The population momentum corresponds to the growth of a population after imposing
 ## [1] 1.01
 {% endhighlight %}
 
-We can quickly estimate the intrinsic growth rate using NRR: 
+We can quickly estimate the intrinsic growth rate using NRR:
 
 
 {% highlight r %}
@@ -296,7 +297,7 @@ m[1, ] <- m[1, ]/NRR
 {% endhighlight %}
 
 
-To get the population momentum we have to project the initial population until the growth is zero (here I raised the matrix 100 times), and then to compute the ratio between the initial population and the non-growing population (stationary). 
+To get the population momentum we have to project the initial population until the growth is zero (here I raised the matrix 100 times), and then to compute the ratio between the initial population and the non-growing population (stationary).
 
 
 

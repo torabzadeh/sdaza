@@ -1,8 +1,9 @@
 ---
 layout: post
 title: "Migration: forward survival method"
-description: 
+description:
 category: demography
+comments: true
 ---
 
 
@@ -18,7 +19,7 @@ This is a question about estimating incoming and outgoing movements of populatio
 
 Basically, I have to estimate the "extra"  population observed during 2010 that doesn't come from enrollment (births) or mortality (drop-outs). That is, to project the 2009 population assuming that is closed to migration. Just looking at the table one can see that the population is growing due to transfers (mortality and births are constant).
 
-First, I estimate the survival ratios: 
+First, I estimate the survival ratios:
 
 
 
@@ -50,7 +51,7 @@ sr[length(sr)] <- Lx[5]/(Lx[4] + Lx[5])
 {% endhighlight %}
 
 
-Second, I define the matrix to do the projection: 
+Second, I define the matrix to do the projection:
 
 
 {% highlight r %}
@@ -81,7 +82,7 @@ The result is not exactly a Leslie matrix because I don't have fertility rates i
 {% endhighlight %}
 
 
-Finally, I can project forward: 
+Finally, I can project forward:
 
 
 {% highlight r %}
@@ -100,7 +101,7 @@ proj2010 <- m %*% p2009
 {% endhighlight %}
 
 
-The number of net transfers would be the differences between the observed population in 2010, and the 2010 projected population assuming that it is closed to migration (no transfers). 
+The number of net transfers would be the differences between the observed population in 2010, and the 2010 projected population assuming that it is closed to migration (no transfers).
 
 
 {% highlight r %}
@@ -114,4 +115,4 @@ sum(p2010 - proj2010)
 {% endhighlight %}
 
 
-This was an example of the forward survival method to estimate migration. 
+This was an example of the forward survival method to estimate migration.

@@ -246,7 +246,7 @@ Some plots to explore how the imputation went.
 plot(imp, c("gpa1", "gpa2", "dep1", "dep2"))
 {% endhighlight %}
 
-![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-12-1.png)![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-12-2.png)
+![center](/assets/img/2015-10-14-imputation_parcels/unnamed-chunk-12-1.png)![center](/assets/img/2015-10-14-imputation_parcels/unnamed-chunk-12-2.png)
 
 I don't see any problematic pattern. It looks as I got a proper solution. The distribution of the variables also looks right.
 
@@ -255,13 +255,13 @@ I don't see any problematic pattern. It looks as I got a proper solution. The di
 densityplot(imp, ~ gpa1 + gpa2 + dep1 + dep2)
 {% endhighlight %}
 
-![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-13-1.png)
+![center](/assets/img/2015-10-14-imputation_parcels/unnamed-chunk-13-1.png)
 
 {% highlight r %}
 bwplot(imp, gpa1 + gpa2 + dep1 + dep2  ~ .imp)
 {% endhighlight %}
 
-![center](/images/2015-10-14-imputation_parcels/unnamed-chunk-13-2.png)
+![center](/assets/img/2015-10-14-imputation_parcels/unnamed-chunk-13-2.png)
 
 **Last Update: 06/02/2017**
 

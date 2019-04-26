@@ -1,15 +1,11 @@
-<footer class="site-footer">
-  <a href="feed.xml"><i class="fa fa-rss" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://github.com/sdaza"><i class="fa fa-github" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://twitter.com/sebadaza"><i class="fa fa-twitter" aria-hidden="true" target="_blank"></i></a>
-  <a href="https://linkedin.com/in/sebastian-daza-85a36884"><i class="fa fa-linkedin" aria-hidden="true" target="_blank"></i></a>
-  <a href="mailto:sebastian.daza@gmail.com"><i class="fa fa-envelope" aria-hidden="true" target="_blank"></i></a>
+<footer>
 
-<br>
-<!-- <font size="2">Copyright &copy; Sebastian Daza {{ site.time | date: '%Y' }}</font> -->
-<font size="2">Sebastian Daza {{ site.time | date: '%Y' }}</font>
-<!--     {% if site.analytics.provider and page.analytics != false %}
-     :: Analytics by {{ site.analytics.provider }}
-    {% endif %} -->
+  <div class="wrapper">
+    &copy; Copyright {{ site.time | date: '%Y' }} {{ site.name }}.
+    {{ site.footer_text }}
+    {% if site.last_updated %}
+        Last updated: {{ site.last_updated }}.
+    {% endif %}
+  </div>
+
 </footer>
-

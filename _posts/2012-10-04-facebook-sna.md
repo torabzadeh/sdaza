@@ -3,6 +3,7 @@ layout: post
 title: "My Facebook Network"
 description: ""
 category: SNA
+comments: true
 ---
 
 
@@ -23,7 +24,7 @@ f <- read.graph("sdaza.gml", format = "gml")
 
 
 
-In order to plot my Facebook network, I extract the following attributes: gender, wall posts count, and interface language. I also assign some colors and shapes to those attributes. 
+In order to plot my Facebook network, I extract the following attributes: gender, wall posts count, and interface language. I also assign some colors and shapes to those attributes.
 
 
 {% highlight r %}
@@ -36,7 +37,7 @@ table(ssex)
 
 {% highlight text %}
 ## ssex
-## female   male 
+## female   male
 ##    218    188
 {% endhighlight %}
 
@@ -52,7 +53,7 @@ table(ssex)
 
 {% highlight text %}
 ## ssex
-## circle square 
+## circle square
 ##    218    188
 {% endhighlight %}
 
@@ -69,7 +70,7 @@ table(cloc)
 
 {% highlight text %}
 ## cloc
-## en_GB en_US es_CL es_ES es_LA it_IT nl_NL pt_BR 
+## en_GB en_US es_CL es_ES es_LA it_IT nl_NL pt_BR
 ##    13   132     2     9   245     1     1     3
 {% endhighlight %}
 
@@ -87,7 +88,7 @@ table(cloc)
 
 {% highlight text %}
 ## cloc
-##   Blue  Green Yellow 
+##   Blue  Green Yellow
 ##    132    250     24
 {% endhighlight %}
 
@@ -104,27 +105,27 @@ Now, I can plot the network:
 
 
 {% highlight r %}
-plot(f, layout = layout.fruchterman.reingold, edge.arrow.size = 0.5, 
-    vertex.label = NA, vertex.size = 3, vertex.color = cloc, 
+plot(f, layout = layout.fruchterman.reingold, edge.arrow.size = 0.5,
+    vertex.label = NA, vertex.size = 3, vertex.color = cloc,
     vertex.shape = ssex)
 {% endhighlight %}
 
-![center](/images/2012-10-04-facebook-sna/fig1.png) 
+![center](/assets/img/2012-10-04-facebook-sna/fig1.png)
 
 
-If we use __wall posts count__ to size the nodes: 
+If we use __wall posts count__ to size the nodes:
 
 
 {% highlight r %}
-plot(f, layout = layout.fruchterman.reingold, edge.arrow.size = 0.5, 
-    vertex.label = NA, vertex.size = nsize, vertex.color = cloc, 
+plot(f, layout = layout.fruchterman.reingold, edge.arrow.size = 0.5,
+    vertex.label = NA, vertex.size = nsize, vertex.color = cloc,
     vertex.shape = ssex)
 {% endhighlight %}
 
-![center](/images/2012-10-04-facebook-sna/fig2.png) 
+![center](/assets/img/2012-10-04-facebook-sna/fig2.png)
 
 
-We can also obtain some basic descriptive statistics of the network using a `graph.basic.stats` function (see [here](http://www.isk.kth.se/~shahabm/WSAnalysis/networks/NetworkAnalysis.r) to obtain it): 
+We can also obtain some basic descriptive statistics of the network using a `graph.basic.stats` function (see [here](http://www.isk.kth.se/~shahabm/WSAnalysis/networks/NetworkAnalysis.r) to obtain it):
 
 
 {% highlight r %}
@@ -134,20 +135,20 @@ graph.basic.stats(f)
 
 
 {% highlight text %}
-## Number of nodes: 406 
-## Number of edges: 4415 
-## 
+## Number of nodes: 406
+## Number of edges: 4415
+##
 ## Degree
-##   Average: 21.7 
-## 
-## 
-## Giant component  Size: 397 
-## Giant component  As perc.: 0.978 
-## Second Giant component: 1 
-## Second Giant component As perc.: 0.00246 
-## 
+##   Average: 21.7
+##
+##
+## Giant component  Size: 397
+## Giant component  As perc.: 0.978
+## Second Giant component: 1
+## Second Giant component As perc.: 0.00246
+##
 ## Isolated nodes
-##   Number: 9 
+##   Number: 9
 ##   As perc.: 0.0222
 {% endhighlight %}
 

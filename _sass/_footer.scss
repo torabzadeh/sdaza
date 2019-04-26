@@ -1,95 +1,35 @@
-.site-footer {
-    /*font-size: $vsmall_font_size;*/
-    font-size: 20px;
-    color: $text-light-color;
-    border-top: 1px solid $line-color;
-    padding-top: $spacing-unit;
-    float: none;
-    margin-left: auto;
-    margin-right:auto;
-    margin-top:  0;
-    margin-bottom:$spacing-unit;
-    text-align: center;
-    @extend %clearfix;
+.site {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
 }
 
-.site-footer a {
-    color: inherit;
-    text-decoration: underline;
+.site-wrap {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
 }
 
-.site-footer a:hover {
-    color: $url-hover-color;
-    text-decoration: underline;
+footer {
+  background-color: $grey-color-dark;
+  border-top: $footer-border-top;
+  color: $footer-color;
+  font-size: $footer-font-size;
+  font-weight: $footer-font-weight;
+  padding: $footer-padding;
+  position: fixed;
+    left: 0px;
+    bottom: 0px;
+  width: 100%;
+
+  a { color: #fff; }
+  a:hover { color: $theme-color; }
 }
-
-/* Social media icons */
-
-.fa-envelope {
-  padding: 5px;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition: .5s;
-}
-
-.fa-envelope:hover {
-    color: #f39c12;
-
-}
-
-.fa-twitter {
-  padding: 5px;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition: .5s;
-}
-
-.fa-twitter:hover {
-    color: #00aced;
-}
-
-
-.fa-github {
-  padding: 5px;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition: .5s;
-}
-
-.fa-github:hover {
-    color: #343434;
-}
-
-.fa-linkedin {
-  padding: 5px;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition: .5s;
-}
-
-.fa-linkedin:hover {
-    color: #0073a4;
-}
-
-
-.fa-rss {
-  padding: 5px;
-    -o-transition:.5s;
-    -ms-transition:.5s;
-    -moz-transition:.5s;
-    -webkit-transition:.5s;
-    transition: .5s;
-}
-
-.fa-rss:hover {
-    color: #00AB6C;
-}
-

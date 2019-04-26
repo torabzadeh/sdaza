@@ -3,6 +3,7 @@ layout: post
 title: "Functions for sample size and error"
 description: ""
 category: survey
+comments: true
 ---
 
 
@@ -10,14 +11,14 @@ Here I show two functions in R to define sample sizes and errors of a proportion
 
 **Note: I created a package with similar functions. [See here](/survey/2015/09/30/sampler/).**
 
-The inputs are: 
+The inputs are:
 
 - **n** = sample size
 - **e** = sampling error
 - **deff** = design effect, by default 1 (SRS)
 - **rr** = response rate, by default 1
 - **N** = population size, by default NULL (infinite population)
-- **cl** = confidence level , by default .95  
+- **cl** = confidence level , by default .95
 - **p** = proportion, by default 0.5 (maximum variance of a proportion)
 - **relative** = to estimate relative error, by default FALSE
 
@@ -29,10 +30,10 @@ The inputs are:
 {% highlight r %}
 library(devtools); source_gist("7896840")
 {% endhighlight %}
- 
+
 ## serr: sampling error
 
-An example for n = 400 and all inputs at their default values: 
+An example for n = 400 and all inputs at their default values:
 
 
 {% highlight r %}
@@ -45,12 +46,12 @@ serr(400)
 ## [1] 0.049
 {% endhighlight %}
 
-The output is rounded to 4 decimals. A more complete example: 
+The output is rounded to 4 decimals. A more complete example:
 
 - **n** = 400
 - **deff** = 1.5
 - **response rate** = 80%
-- **population size** = 1000 
+- **population size** = 1000
 
 
 {% highlight r %}
@@ -63,7 +64,7 @@ serr(n=400, deff=1.5, rr=.8, N=1000)
 ## [1] 0.0595
 {% endhighlight %}
 
-The sample size (n) has always to be lower than the population (N).  It is important to note that the final sample size used to compute the sampling error is: 
+The sample size (n) has always to be lower than the population (N).  It is important to note that the final sample size used to compute the sampling error is:
 
 $$ n = \frac{N}{deff} * rr$$
 
@@ -79,8 +80,8 @@ serr(n=400, N=350)
 {% endhighlight %}
 
 ## ssize: sample size
-	
-Let's get a sample size with an error of .03, a population of 1000 elements, a response rate of 0.80, and an effect design of 1.2: 
+
+Let's get a sample size with an error of .03, a population of 1000 elements, a response rate of 0.80, and an effect design of 1.2:
 
 
 {% highlight r %}
@@ -93,7 +94,7 @@ ssize(e=.03, deff=1.2, rr=.8, N=1000)
 ## [1] 775
 {% endhighlight %}
 
-If the the sample size is bigger than the population because of low response rates or big design effects, the sample size will be fixed to N: 
+If the the sample size is bigger than the population because of low response rates or big design effects, the sample size will be fixed to N:
 
 
 {% highlight r %}
@@ -114,15 +115,15 @@ ssize(e=.03, deff=5, rr=.6, N=1000)
 
 ## Working with strata
 
-Finally, we can estimate different sample sizes by strata using vectors or a data frame: 
+Finally, we can estimate different sample sizes by strata using vectors or a data frame:
 
 
 {% highlight r %}
 # example sampling frame (4 strata)
 frame <- data.frame(
-	strata = 1:4, 
-	N =c(10000, 5000, 2000, 1000), 
-	deff =c(1.1, 1, 1.3, .8), 
+	strata = 1:4,
+	N =c(10000, 5000, 2000, 1000),
+	deff =c(1.1, 1, 1.3, .8),
 	rr = c(.8, .9, .85,.8),
 	p = c(.3, .6, .1, .2))
 {% endhighlight %}

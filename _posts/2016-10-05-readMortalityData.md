@@ -2,8 +2,7 @@
 layout: post
 title: "Reading CDC mortality files using R"
 description: ""
-category: "R"
-tags: [CDC, Mortality, R]
+date: 2016-10-05
 ---
 
 
@@ -11,7 +10,8 @@ Reading  fixed-width text files might be challenging, specially when we don't ha
 
 To read this file, usually with extension `.txt` or `.dat`,  I first need to know where each column starts and finishes. What I get from the pdf file is something like this:
 
-![](/images/mortalityLayout.png)
+
+![](/assets/img/mortalityLayout.png)
 
 The layout is usually a codebook in Word/PDF or just plain text file. Here, I copy the PDF text and put it in a plain text file. I use a text editor (e.g., [Sublime Text](https://www.sublimetext.com/)) and [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) to extract the information I need.
 

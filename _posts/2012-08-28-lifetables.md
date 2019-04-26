@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Life tables: A super brief introduction"
-description: ""
-category: demography
+date: 2012-08-28
+author: Sebastian Daza
 comments: true
 ---
 

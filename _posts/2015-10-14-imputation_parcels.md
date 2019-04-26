@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Imputing scales using parcels of items as auxiliary variables"
-description: ""
-category: imputation
-tags: [home]
+author: Sebastian Daza
+date: 2015-10-14
+comments: true
 ---
 
 

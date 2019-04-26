@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Reading CDC mortality files using R"
-description: ""
+author: Sebastian Daza
 date: 2016-10-05
 comments: true
 ---

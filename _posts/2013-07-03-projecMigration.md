@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Migration: forward survival method"
-description:
-category: demography
+author: Sebastian Daza
+date: 2013-07-03
 comments: true
 ---
 

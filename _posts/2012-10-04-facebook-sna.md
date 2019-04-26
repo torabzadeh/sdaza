@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "My Facebook Network"
-description: ""
-category: SNA
+date: 2012-10-04
+author: Sebastian Daza
 comments: true
 ---
 

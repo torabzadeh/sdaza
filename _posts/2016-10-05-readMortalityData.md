@@ -3,6 +3,7 @@ layout: post
 title: "Reading CDC mortality files using R"
 description: ""
 date: 2016-10-05
+comments: true
 ---
 
 

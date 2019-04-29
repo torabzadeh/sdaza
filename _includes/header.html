@@ -28,12 +28,21 @@
         <!-- Blog -->
         <a class="page-link" href="{{ '/blog/' | prepend: site.baseurl | prepend: site.url }}">blog</a>
 
+        <!-- cv -->
+        <a class="page-link" href="{{ '/cv/' | prepend: site.baseurl | prepend: site.url }}">cv</a>
+
+        <!-- projects -->
+        <a class="page-link" href="{{ '/projects/' | prepend: site.baseurl | prepend: site.url }}">projects</a>
+
+        <!-- publications -->
+        <a class="page-link" href="{{ '/projects/' | prepend: site.baseurl | prepend: site.url }}">publications</a>
+
         <!-- Pages -->
-        {% for page in site.pages %}
+<!--         {% for page in site.pages %}
           {% if page.title and page.url != "/" %}
             <a class="page-link" href="{{ page.url | prepend: site.baseurl | prepend: site.url }}">{{ page.title }}</a>
           {% endif %}
-        {% endfor %}
+        {% endfor %} -->
 
         <!-- CV link -->
         <!-- <a class="page-link" href="{{ '/assets/pdf/CV.pdf' | prepend: site.baseurl | prepend: site.url }}">vitae</a> -->

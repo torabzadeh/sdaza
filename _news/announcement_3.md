@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2017-08-28
+date: 2019-09-09
 inline: true
 ---
 
-Our PSID grant for studying incarceration and health was extended :nerd_face:
+My family and I moved to Madrid :es: to start a new and exciting project. More details soon!

@@ -8,9 +8,7 @@ profile:
   align: right
   image: me.jpg
   address: >
-<!--     <p>555 your office number</p>
-    <p>123 your address street</p> -->
-    <p>Santiago, Chile</p>
+      <p>Santiago, Chile</p>
 
 news: true
 social: true

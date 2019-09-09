@@ -4,13 +4,13 @@ permalink: /
 title: <strong>Sebastian</strong> Daza
 description: Demography, Sociology, Simulation, Data Science
 
-profile:
+<!-- profile:
   align: right
-  image: me3.jpg
-<!--   address: >
+  image: prof_pic.jpg
+  address: >
     <p>555 your office number</p>
     <p>123 your address street</p>
-    <p>Madrid, Spain</p> -->
+    <p>Your City, State 12345</p> -->
 
 news: true
 social: true

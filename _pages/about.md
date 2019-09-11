@@ -8,7 +8,7 @@ profile:
   align: right
   image: me.jpg
   address: >
-      <p>Santiago, Chile</p>
+      <p>Somewhere in Santiago, Chile</p>
 
 news: true
 social: true

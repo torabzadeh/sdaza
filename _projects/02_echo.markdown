@@ -22,3 +22,5 @@ The overarching goal of this project is to contribute to this nascent area of st
 
 The project will use a variety of global databases such as the Human Mortality Database, the Latin American Mortality Database or the Longitudinal Population Database of Andalusia, and has received formal support from the Spanish National Statistics Institute and the Andalusian Institute of Statistics and Cartography.
 
+More info [here](https://echo-erc.csic.es/).
+

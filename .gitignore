@@ -11,3 +11,5 @@ assets/pdf/cv_sdaza.out
 assets/pdf/cv_sdaza.pdf
 assets/pdf/cv_sdaza.synctex.gz
 assets/pdf/cv_sdaza.pdf
+*.fls
+*.fdb_latexmk

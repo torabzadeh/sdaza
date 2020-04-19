@@ -18,7 +18,7 @@ I'm a Ph.D. candidate in Sociology at the [University of Wisconsin-Madison](http
 
 My [research](/projects/) focuses on how socio-economic mobility affects health and mortality, the consequences of incarceration for health, reentry experiences of women just released from prison, and social networks. I rely on statistical and computational methods in my research, with an emphasis on data science and agent-based modeling.
 
-Currently, I'm a Senior Researcher at the [IEGD](http://iegd.csic.es/en) in Madrid, and working on the project [ECHO](projects/06_echo/) with Alberto Palloni.
+Currently, I'm a Senior Researcher at the [IEGD](http://iegd.csic.es/en) in Madrid, and working on the project [ECHO](https://echo-erc.csic.es/) with Alberto Palloni.
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com){:target="\_blank"}. You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
 

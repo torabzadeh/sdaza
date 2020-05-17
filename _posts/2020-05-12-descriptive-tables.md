@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Oh, descriptive tables!"
+title: "Oh, descriptive tables (R + Latex)!"
 author: Sebastian Daza
 comments: true
 date: 2020-05-12

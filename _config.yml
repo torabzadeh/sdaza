@@ -4,12 +4,12 @@
 name: Sebastian Daza
 email: sebastian.daza@gmail.com
 description: > # this means to ignore newlines until "url:"
-  Sebastian Daza Website. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Sebastian Daza
 footer_text: >
   Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 
-url:  # the base hostname & protocol for your site
+url: https://sdaza.com/
 baseurl:  # the subpath of your site, e.g. /blog/
 last_updated: # leave blank if you don't want to display last updated
 
@@ -86,6 +86,7 @@ plugins:
     - jekyll-paginate
     - jekyll/scholar
     - jemoji
+    - jekyll-sitemap
 
 # Jekyll-Scholar
 scholar:

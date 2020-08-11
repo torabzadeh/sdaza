@@ -4,12 +4,14 @@ _site
 .DS_store
 .ruby-version
 Gemfile.lock
+.ipynb_checkpoints
+.virtual_documents
+.gitignore
 
-assets/pdf/cv_sdaza.aux
-assets/pdf/cv_sdaza.log
-assets/pdf/cv_sdaza.out
-assets/pdf/cv_sdaza.pdf
-assets/pdf/cv_sdaza.synctex.gz
-assets/pdf/cv_sdaza.pdf
+# cv garbage
+*assets/pdf/cv_sdaza
+!assets/pdf/cv_sdaza.tex
+
+# latex garbage
 *.fls
 *.fdb_latexmk

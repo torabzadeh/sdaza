@@ -4,7 +4,10 @@
 #
 # Arguments:
 # $1 filename (excluding extension)
-#
+# Install:
+# brew install gnu-sed
+# Example:
+# _scripts/convert.sh segregation
 
 # Generate a filename with today's date.
 filename=$(date +%Y-%m-%d)-$1
@@ -13,11 +16,11 @@ filename=$(date +%Y-%m-%d)-$1
 foldername=$filename"_files"
 
 # Do the conversion.
-jupyter nbconvert ./_jupyter/$1.ipynb --to markdown --output-dir=./_posts --output=$filename --template=./scripts/jekyll.tpl
+jupyter nbconvert ./_jupyter/$1.ipynb --to markdown --output-dir=./_posts --output=$filename --template=./_scripts/jekyll.tpl
 
 # Move the images.
 echo "Moving images..."
-mv ./_posts/$foldername ./images/
+mv ./_posts/$foldername ./assets/img/
 
 # Remove the now empty folder.
 # rmdir ./_posts/$foldername
@@ -26,12 +29,14 @@ mv ./_posts/$foldername ./images/
 echo "What's the title of this post going to be?"
 read ttl
 gsed -ie "3 i title: \"$ttl\"" ./_posts/$filename.md
+gsed -ie "7 i date: $(date +%Y-%m-%d)" ./_posts/$filename.md
+
 echo "added title $ttl in line 3"
 rm ./_posts/$filename.mde
 
 # Go through the markdown file and rewrite image paths.
 echo "Rewriting image paths..."
-gsed -i.tmp -e "s/$foldername/\/images\/$foldername/" ./_posts/$filename.md
+gsed -i.tmp -e "/assets/img/$foldername/" ./_posts/$filename.md
 # 2018-02-08-segregation_files/2018-02-08-segregation_7_0.png
 # sed -i.tmp -e "s/$foldername/\/images/g" ./_posts/$filename.md
 # Remove backup file created by sed command.

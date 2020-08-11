@@ -3,6 +3,8 @@
 {%- block header -%}
 ---
 layout: post
+author: Sebastian Daza
+comments: true
 ---
 {%- endblock header -%}
 

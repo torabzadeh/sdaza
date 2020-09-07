@@ -52,10 +52,10 @@
     {% if entry.type == "article" %}
       <em>{{entry.journaltitle}}</em>
     {% elsif entry.type == "inproceedings" %}
-      <em>In {{entry.eventtitle}}</em>
+      <em>Presented in {{entry.eventtitle}}</em>
     {% endif %}
-    {% if entry.year %}
-      {{entry.year}}
+    {% if entry.date %}
+      <b>{{entry.date}}</b>
     {% endif %}
     {% if entry.status %}
       {{entry.status}}

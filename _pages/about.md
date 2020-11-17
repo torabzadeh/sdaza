@@ -16,7 +16,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 
-I'm sociologist, demographer, and data scientist studying health disparities, the consequences of the criminal justice system for health and social integration, and the link between health inequalities and epigenetics.
+I'm a sociologist, demographer, and data scientist studying health disparities, the consequences of the criminal justice system for health and social integration, and the link between health inequalities and epigenetics.
 
 I rely on statistical and computational methods in my research, with an emphasis on data science and agent-based modeling.
 

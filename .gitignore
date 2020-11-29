@@ -5,3 +5,6 @@ _site
 .ruby-version
 Gemfile.lock
 .tweet-cache/
+cv_sdaza.*
+!cv_sdaza.tex
+!cv_sdaza.pdf

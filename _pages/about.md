@@ -8,7 +8,7 @@ profile:
   align: right
   image: me.jpg
   address: >
-    <p>Somewhere, lost, in Santiago, Chile</p>
+    <p>Lost somewhere in Santiago, Chile</p>
 
 news: true  # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"

@@ -8,5 +8,7 @@ group :jekyll_plugins do
     gem 'jekyll-scholar'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
+    gem 'jekyll-sitemap'
     gem 'unicode_utils'
+    gem 'kramdown-parser-gfm'
 end

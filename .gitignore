@@ -8,3 +8,5 @@ Gemfile.lock
 cv_sdaza.*
 !cv_sdaza.tex
 !cv_sdaza.pdf
+vendor
+.bundle

@@ -8,11 +8,11 @@ date: 2020-11-03
 published: true
 ---
 
-When running a parameter variation experiment, that is, simulating over several iterations and replicates using parallelization, we usually need to collect a huge amount of data and have them in a format that we process using Python or R.
+When running a parameter variation experiment, that is, simulating over several iterations and replicates using parallelization, we usually need to collect a huge amount of data and have them in a format that then we can process using Python or R.
 
-The best way to do this in Anylogic is by using a database and then export, read, or connect to the database to process simulation results. We can do that using Anylogic.
+The best way to do this in Anylogic would be using a database and then export, read, or connect to the database to process simulation results (although, see the section **update** below). We can do that easily in Anylogic. Every time an experiment finishes, we can export the data (from a database) to an Excel file manually.
 
-Every time an experiment finishes, we can export the data (from a database) to an Excel file manually. The issue with Excel files is, on the one hand, they are Excel files, and on the other, they are not suitable for big data (more than 1 million rows). We can create a function to save all the simulation tables into an Excel file as our experiment finishes. However, we will still have the limit-of-rows limitation (check the Anylogic file linked below for a function to export Excel files).
+The issue with Excel files is, on the one hand, they are Excel files, and on the other, they are not suitable for big data (more than 1 million rows). We can create a function to save all the simulation tables into an Excel file as our experiment finishes. However, we will still have the limit-of-rows limitation (check the Anylogic file linked below for a function to create Excel files from a database).
 
 Here I follow a different approach by exporting an Anylogic database table to a CSV file within Java. The general setup using Anylogic PLE 8.6 would be:
 
@@ -134,9 +134,11 @@ import java.text.*;
 {% endhighlight %}
 
 
-From there, we can create additional functions to select the tables to be exported.
-For more details, download the [Anylogic File here](/assets/files/DBToCSV.zip).
+From there, we can create additional functions to select the tables to be exported. For more details, download the [Anylogic File here](/assets/files/DBToCSV.zip).
 
+## Update
+
+When running several replicates of my simulation, saving the information in a database didn't work as expected. My simulation just crashed, and I was not able to keep the data. I finally decided to follow my previous approach: create many CSV files -- one per iteration and replicate -- and read them using an R or Python function. I know you end up with a lot of CSV files, but at least the simulation doesn't crash, and you can recover the output of your simulation as it goes.
 
 
 

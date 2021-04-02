@@ -10,3 +10,4 @@ cv_sdaza.*
 !cv_sdaza.pdf
 vendor
 .bundle
+.vscode

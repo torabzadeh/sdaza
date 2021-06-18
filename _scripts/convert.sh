@@ -29,7 +29,7 @@ mv ./_posts/$foldername ./assets/img/
 echo "What's the title of this post going to be?"
 read ttl
 gsed -ie "3 i title: \"$ttl\"" ./_posts/$filename.md
-gsed -ie "7 i date: $(date +%Y-%m-%d)" ./_posts/$filename.md
+gsed -ie "6 i date: $(date +%Y-%m-%d)" ./_posts/$filename.md
 
 echo "added title $ttl in line 3"
 rm ./_posts/$filename.mde

@@ -11,3 +11,4 @@ cv_sdaza.*
 vendor
 .bundle
 .vscode
+config.py

@@ -10,5 +10,8 @@ group :jekyll_plugins do
     gem 'jemoji'
     gem 'jekyll-sitemap'
     gem 'unicode_utils'
+    gem "kramdown", ">= 2.3.1"
+    gem "rexml", ">= 3.2.5"
     gem 'kramdown-parser-gfm'
+    gem "nokogiri", ">= 1.11.4"
 end

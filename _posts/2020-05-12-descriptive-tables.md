@@ -9,7 +9,7 @@ date: 2020-05-12
 
 It's been a while since my last post. It's time to catch up!
 
-This one is short. Every time I write a paper or report, I need to create descriptive tables using Latex. Over and over I create these Adhoc tables, I say to myself:
+Every time I write a paper or report, I need to create descriptive tables using Latex. Over and over I create Adhoc tables, and I say to myself:
 *Write a general function so you can save time in the next paper!*
 I know there are some solutions out there, but in general, I feel they are not flexible enough.
 
@@ -18,13 +18,13 @@ I introduce a far from perfect function to create descriptive tables in Latex. T
 1. Write a function to summarize your data with any stats you want
 2. Define a list with the data plus column names (labels)
 
-That's it. Some useful features of the function:
+That's it. You can see the function [here](https://gist.github.com/sdaza/c4d1089a501d3567be9fb784b1c5a6ab). It has some features might be useful:
 
 - It deals automatically with factors (categorical variables)
 - You can use different datasets at the same time
 - You can group columns using a variable (e.g., year)
 - You can add long notes at the bottom of the table
-- You can specify your descriptive function
+- You can specify your own descriptive function
 
 Let's start creating some fake data:
 
@@ -151,4 +151,4 @@ createDescriptiveTable(datasets,
     style="display: block;margin-left: auto;margin-right: auto;width: 90%; height: 90%;" />
 </div>
 
-It's just a first version. I am adding more features in the future.
+It's just a first version. I will add more features soon.

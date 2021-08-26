@@ -3,7 +3,8 @@ layout: page
 title: Health and Income Mobility
 description: How income mobility contributes to health disparities
 img: /assets/img/cells.jpeg
-importance: 1
+importance: 3
+category: current
 ---
 
 *with Alberto Palloni*

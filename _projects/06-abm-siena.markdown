@@ -3,7 +3,8 @@ layout: page
 title: ABM and Siena
 description: Assesing complex statistical models using agent-based modeling
 img: /assets/img/network.png
-importance: 5
+importance: 1
+category: old
 ---
 
 *with Kurt Kreuger*

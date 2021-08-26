@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "From database to CSV using Anylogic"
-# description: "How to transform a database into CSV using Anylogic"
+description: "How to transform a database into CSV using Anylogic"
 author: Sebastian Daza
 comments: true
 date: 2020-11-03

@@ -3,7 +3,8 @@ layout: page
 title: Lambda
 description: Latin American Mortality Database
 img: /assets/img/population.jpeg
-importance: 6
+importance: 4
+category: current
 ---
 
 *with Alberto Palloni and Hiram Beltran-Sanchez*

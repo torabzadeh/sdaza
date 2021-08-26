@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Extracting Zotero's  notes"
+description: "How to extract zotero notes to CSV / Excel file"
 author: Sebastian Daza
 comments: true
 date: 2021-07-06

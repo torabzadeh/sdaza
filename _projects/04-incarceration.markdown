@@ -4,7 +4,7 @@ title: Health and incarceration
 description: Assessing the connection between mass incarceration and health
 img: /assets/img/incarceration.jpeg
 importance: 2
-category: old
+category: previous
 ---
 
 *with Alberto Palloni and Jerrett Jones*

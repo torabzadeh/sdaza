@@ -48,7 +48,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 # -----------------------------------------------------------------------------
 
 github_username: sdaza
-gitlab_username: 
+gitlab_username: sebastian.daza
 twitter_username: sebadaza
 linkedin_username: sebastian-daza-85a36884
 scholar_userid: VaCkLrYAAAAJ
@@ -155,6 +155,11 @@ scholar:
 
   style: apa
   locale: en
+  sort_by: date
+  order: descending
+  type_order: [article, inbook, unpublished, book, misc, report, conference, incollections, inproceedings, proceedings]
+  type_names: {unpublished: working papers, report: reports, article: journal articles, 
+      inproceedings: conference articles & others}
 
   source: /_bibliography/
   bibliography: sdaza.bib

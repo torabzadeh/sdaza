@@ -70,8 +70,14 @@
       <div class="periodical">
       {% if entry.type == "article" %}
         <em>{{entry.journaltitle}}</em>
-      {% elsif entry.type == "inproceedings" %}
+      {% elsif entry.type == "inproceedings" and entry.conference %}
         <em>Presented in {{entry.eventtitle}}</em>
+      {% elsif entry.type == "inproceedings" %}
+        <em>{{entry.pub}}</em>
+      {% elsif entry.type == "unpublished" %}
+        <em>Working paper</em>
+      {% elsif entry.type == "report" %}
+        <em>{{entry.series}}</em>
       {% endif %}
       {% if entry.date %}
         {{ entry.date }}

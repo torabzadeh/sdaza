@@ -23,13 +23,8 @@ The re-entry study is an intensive longitudinal project that follows more than 2
 
 <br/><br/>
 
-### Publications and Reports
+## Publications
 
 <div class="publications">
-
-{% for y in page.years %}
-  <h2 class="year">{{y}}</h2>
-  {% bibliography -f reentry -q @*[year={{y}}]* %}
-{% endfor %}
-
+ {% bibliography -f reentry --group_by type %}
 </div>

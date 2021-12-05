@@ -6,6 +6,7 @@
 
 p, h1, h2, h3, h4, h5, h6, em, div, span, strong {
   color: var(--global-text-color);
+  // font-family: 'Noto Serif', serif;
 }
 
 a, table.table a {
@@ -53,7 +54,6 @@ blockquote {
 .profile {
   margin-left: 1rem;
   width: 100%;
-
   .address {
     margin-bottom: 5px;
     margin-top: 5px;
@@ -259,6 +259,7 @@ footer.sticky-bottom {
   h1 {
     color: var(--global-theme-color);
     font-size: 5rem;
+    font-family: 'Roboto Slab', serif;
   }
 }
 

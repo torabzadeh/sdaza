@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Extracting Zotero's  notes"
+title: "Extracting Zotero's notes"
 description: "How to extract zotero notes to CSV / Excel file"
 author: Sebastian Daza
 comments: true

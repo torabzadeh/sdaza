@@ -4,7 +4,7 @@ title: ECHO
 description: Early conditions, delayed adult effects and morbidity, disability and mortality in modern human populations
 img: /assets/img/echo.jpeg
 importance: 1
-category: current
+category: previous
 ---
 
 

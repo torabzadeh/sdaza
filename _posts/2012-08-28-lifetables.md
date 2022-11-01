@@ -4,6 +4,7 @@ title: "Life tables: A super brief introduction"
 date: 2012-08-28
 author: Sebastian Daza
 comments: true
+tags: demography
 ---
 
 A _life table_ is just one way of summarizing a cohort's mortality experience. Below a simple way to build a life table using R.

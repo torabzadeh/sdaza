@@ -4,6 +4,9 @@ title: "Imputing scales using parcels of items as auxiliary variables"
 author: Sebastian Daza
 date: 2015-10-14
 comments: true
+tags: 
+   - data science
+   - R
 ---
 
 

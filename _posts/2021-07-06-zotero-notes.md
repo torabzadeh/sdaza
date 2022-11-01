@@ -5,6 +5,7 @@ description: "How to extract zotero notes to CSV / Excel file"
 author: Sebastian Daza
 comments: true
 date: 2021-07-06
+tags: zotero
 ---
 When reviewing the literature, it's nice to have the notes linked to Zotero
 references. It would also be great to compare them systematically. The idea

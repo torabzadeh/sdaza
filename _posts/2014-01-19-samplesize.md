@@ -4,6 +4,9 @@ title: "Functions for sample size and error"
 author: Sebastian Daza
 date: 2014-01-19
 comments: true
+tags: 
+  - R 
+  - survey
 ---
 
 

@@ -5,6 +5,9 @@ description: "How to create latex descriptive tables in R"
 author: Sebastian Daza
 comments: true
 date: 2020-05-12
+tags: 
+  - R
+  - latexs
 ---
 
 It's been a while since my last post. It's time to catch up!

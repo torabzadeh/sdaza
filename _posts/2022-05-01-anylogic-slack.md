@@ -5,6 +5,9 @@ description: "Sending messages to Slack when simulation is done"
 author: Sebastian Daza
 comments: true
 date: 2023-05-01
+tags: 
+  - anylogic
+  - ABM
 ---
 
 When running a parameter variation experiment, that is, simulating over several iterations and replicates using parallelization, we usually need to collect a huge amount of data and have them in a format that then we can process using Python or R.

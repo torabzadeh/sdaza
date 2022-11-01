@@ -3,7 +3,7 @@ layout: page
 title: ABM and Siena
 description: Assesing complex statistical models using agent-based modeling
 img: /assets/img/network.png
-importance: 1
+importance: 4
 category: previous
 ---
 

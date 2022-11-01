@@ -3,7 +3,7 @@ layout: page
 title: Lambda
 description: Latin American Mortality Database
 img: /assets/img/population.jpeg
-importance: 4
+importance: 3
 category: previous
 ---
 

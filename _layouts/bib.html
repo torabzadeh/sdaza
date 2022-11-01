@@ -69,18 +69,18 @@
 
       <div class="periodical">
       {% if entry.type == "article" %}
-        <em>{{entry.journaltitle}}</em>
+        <em>{{entry.journal}}</em>
       {% elsif entry.type == "inproceedings" and entry.conference %}
-        <em>Presented in {{entry.eventtitle}}</em>
+        <em>Presented in {{entry.booktitle}}</em>
       {% elsif entry.type == "inproceedings" %}
         <em>{{entry.pub}}</em>
       {% elsif entry.type == "unpublished" %}
         <em>Working paper</em>
-      {% elsif entry.type == "report" %}
+      {% elsif entry.type == "report" or entry.type == "techreport "%}
         <em>{{entry.series}}</em>
       {% endif %}
-      {% if entry.date %}
-        {{ entry.date }}
+      {% if entry.year %}
+        {{ entry.year }}
       {% endif %}
       {% if entry.status %}
       <em>({{ entry.status) }})</em>
@@ -138,6 +138,9 @@
     {% if entry.website %}
       <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button" target="_blank">Website</a>
     {% endif %}
+    {%- if entry.altmetric %}
+    <script type="text/javascript" src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script><div doi="{{ entry.altmetric }}" class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-popover="right" data-badge-type="2" style="display:inline"></div>
+    {%- endif %}
     </div>
 
     <!-- Hidden abstract block -->

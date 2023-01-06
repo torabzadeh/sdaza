@@ -236,7 +236,7 @@ scholar:
   style: apa
   locale: en
 
-  sort_by: year
+  sort_by: date
   order: descending
   type_order: [article, inbook, unpublished, book, misc, report, conference, incollections, inproceedings, proceedings]
   type_names: {unpublished: working papers, report: technical reports, techreport: technical reports, article: journal articles, 

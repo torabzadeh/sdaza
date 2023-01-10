@@ -11,7 +11,7 @@ nav_order: 6
 ##  Courses
 
 
-- [Survey Methods I (Fall 2022)](https://github.com/sdaza/survey-methods)
+- [Survey Methods I (Fall 2022-23)](https://github.com/sdaza/survey-methods)
 
 ## Mentorship
 

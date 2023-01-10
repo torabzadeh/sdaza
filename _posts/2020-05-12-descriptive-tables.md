@@ -3,7 +3,7 @@ layout: post
 title: "Oh, descriptive tables (R + Latex)!"
 description: "How to create latex descriptive tables in R"
 author: Sebastian Daza
-comments: true
+giscus_comments: true
 date: 2020-05-12
 tags: 
   - R

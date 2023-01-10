@@ -3,7 +3,7 @@ layout: post
 title: "Reading CDC mortality files using R"
 author: Sebastian Daza
 date: 2016-10-05
-comments: true
+giscus_comments: true
 tags: 
   - R
   - demography

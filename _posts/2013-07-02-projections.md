@@ -3,7 +3,7 @@ layout: post
 title: "Cohort component projection"
 description: "A simple example using R and matrices"
 author: Sebastian Daza
-comments: true
+giscus_comments: true
 tags: demography
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: "My Facebook Network"
 date: 2012-10-04
 author: Sebastian Daza
-comments: true
+giscus_comments: true
 tags: R
 ---
 

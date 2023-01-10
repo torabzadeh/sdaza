@@ -3,7 +3,7 @@ layout: post
 title: "Functions for sample size and error"
 author: Sebastian Daza
 date: 2014-01-19
-comments: true
+giscus_comments: true
 tags: 
   - R 
   - survey

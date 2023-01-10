@@ -3,7 +3,7 @@ layout: post
 title: "Life tables: A super brief introduction"
 date: 2012-08-28
 author: Sebastian Daza
-comments: true
+giscus_comments: true
 tags: demography
 ---
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Has to be in the head tag, otherwise a flicker effect will occur.
 
 let toggleTheme = (theme) => {
@@ -81,3 +82,6 @@ let initTheme = (theme) => {
 
 
 initTheme(localStorage.getItem("theme"));
+=======
+let toggleTheme=e=>{setTheme("dark"==e?"light":"dark")},setTheme=e=>{transTheme(),setHighlight(e),e?document.documentElement.setAttribute("data-theme",e):document.documentElement.removeAttribute("data-theme"),localStorage.setItem("theme",e),"undefined"!=typeof medium_zoom&&medium_zoom.update({background:getComputedStyle(document.documentElement).getPropertyValue("--global-bg-color")+"ee"})},setHighlight=e=>{"dark"==e?(document.getElementById("highlight_theme_light").media="none",document.getElementById("highlight_theme_dark").media=""):(document.getElementById("highlight_theme_dark").media="none",document.getElementById("highlight_theme_light").media="")},transTheme=()=>{document.documentElement.classList.add("transition"),window.setTimeout(()=>{document.documentElement.classList.remove("transition")},500)},initTheme=e=>{if(null==e||"null"==e){const t=window.matchMedia;t&&t("(prefers-color-scheme: dark)").matches&&(e="dark")}setTheme(e)};initTheme(localStorage.getItem("theme"));
+>>>>>>> bbd6c03 (update [ci skip])

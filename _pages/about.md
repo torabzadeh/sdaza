@@ -21,4 +21,4 @@ I received my Ph.D. in sociology from the [University of Wisconsin-Madison](http
 
 My **academic work** focuses on health disparities, criminal justice system's consequences for health and social integration, and the link between health inequalities and genetics. My research relies on statistical and computational methods, emphasizing data science and agent-based modeling (ABM).
 
-Currently, I am working as a **Senior Data Scientist** at [Lookiero](https://lookiero.es/). I am also an **external faculty** in the Master in [Computational Social Science UC3M](https://www.uc3m.es/master/computational-social-science), collaborate with the [Center for the Study of Justice and Society](http://justiciaysociedad.uc.cl/) of the Catholic University of Chile.
+Currently, I am working as a **Senior Data Scientist** at [Lookiero](https://lookiero.es/). I am also an **external faculty** (Fall 2022-2023) in the Master in [Computational Social Science UC3M](https://www.uc3m.es/master/computational-social-science), and collaborate with the [Center for the Study of Justice and Society](http://justiciaysociedad.uc.cl/) of the Catholic University of Chile.

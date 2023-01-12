@@ -15,7 +15,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I'm a sociologist, data scientist, and social demographer working in the industry and academic projects.
+I'm a data scientist, demographer, and sociologist working on industry and academic projects.
 
 I received my Ph.D. in sociology from the [University of Wisconsin-Madison](http://www.ssc.wisc.edu/soc/) and my Bachelor's and Master's in Sociology from the [Catholic University of Chile](http://sociologia.uc.cl/). 
 

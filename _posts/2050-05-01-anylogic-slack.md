@@ -4,7 +4,7 @@ title: "Anylogic and Slack"
 description: "Sending messages to Slack when simulation is done"
 author: Sebastian Daza
 comments: true
-date: 2023-05-01
+date: 2050-05-01
 tags: 
   - anylogic
   - ABM

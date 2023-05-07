@@ -264,9 +264,9 @@ scholar:
 
   sort_by: date
   order: descending
-  type_order: [article, inbook, unpublished, book, misc, report, conference, incollections, inproceedings, proceedings]
+  type_order: [article, inbook, unpublished, book, misc, conference, incollection, inproceedings, proceedings, report]
   type_names: {unpublished: working papers, report: technical reports, techreport: technical reports, article: journal articles, 
-    inproceedings: conference articles & others}
+    inproceedings: books & conferences, incollection : books & conferences}
     
   bibtex_filters: [latex, smallcaps, superscript]
 

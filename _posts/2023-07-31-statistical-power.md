@@ -32,16 +32,16 @@ of these outcomes:
 These errors and probabilities of success are related to some standard
 statistical terms we use when making inferences:
 
-- **Type I Error ($\alpha$)**: the probability of rejecting the null hypothesis
+- **Type I Error ($$\alpha$$)**: the probability of rejecting the null hypothesis
 when it's true.
-- **Type II Error ($\beta$)**: the probability of failing to reject the null
+- **Type II Error ($$\beta$$)**: the probability of failing to reject the null
 hypothesis when it's false.
-- **Power ($1-\beta$)**: the probability of rejecting the null hypothesis when
+- **Power ($$1-\beta$$)**: the probability of rejecting the null hypothesis when
 it's false.
-- **Confidence ($1-\alpha$)**: the probability of failing to reject the null
+- **Confidence ($$1-\alpha$$)**: the probability of failing to reject the null
 hypothesis when it's true.
 
-As a standard, $\alpha$ is set to 0.05 and power to .80. Also, we will generally
+As a standard, $$\alpha$$ is set to 0.05 and power to .80. Also, we will generally
 have a control group (no intervention) and different treatments (variants). 
 
 
@@ -68,7 +68,7 @@ variants (treatments). For the sake of the example, we simulate data with no
 effect or differences between control and treatment groups. That is, the null
 hypothesis (i.e., no effect) is always true. For each iteration, we test the
 control group with each treatment and count if we get one or more significant
-results using $\alpha=0.05$. We know there is no differences between groups.
+results using $$\alpha=0.05$$. We know there is no differences between groups.
 
 
 {% highlight python %}
@@ -430,9 +430,9 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 We can also use other metrics (e.g., average or counts).  For instance, we can
 define an experiment for the number of visits (counts). The simulator will use a
-Poisson distribution where the only parameter, $\lambda$ (lambda), is the mean
+Poisson distribution where the only parameter, $$\lambda$$ (lambda), is the mean
 number of events. In this example, we set a baseline rate (lambda) of 1.2 visits
-and a relative increase of $0.05 (1.2*1.05) = 1.26$, with a control group of
+and a relative increase of $$0.05 (1.2*1.05) = 1.26$$, with a control group of
 3000 users and a treatment with 5000 users:
 
 

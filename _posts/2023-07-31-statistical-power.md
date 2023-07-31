@@ -215,6 +215,7 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
 
+<br>
 
 `nsim` represents the number of simulations. Variants are set to 1, so we are
 only comparing control and treatment: `comparisons = (0,1)`. This example is too

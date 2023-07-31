@@ -6,8 +6,8 @@ date: 2023-07-31
 giscus_comments: true
 tags:
   - python
-  - statistics
   - simulation
+  - statistics
 ---
 
 In this post I share some tools for designing and evaluating
@@ -21,20 +21,21 @@ Calculating power for complex and uplift models using ML is a more
 difficult task. I share some general guidelines and references at the
 conclusion of this post.
 
-
 ## Let's start with some terms
 
 Each time we conduct a statistical test to estimate an effect, we can have any
 of these outcomes:
 
 <p align="center">
-  <img src="/assets/img/pregnant-power.jpg" alt="Image" width="70%" height="70%" />
+  <img src="/assets/img/pregnant-power.jpg" alt="Image" width="70%" height="70%"
+/>
 </p>
 
 These errors and probabilities of success are related to some standard
 statistical terms we use when making inferences:
 
-- **Type I Error ($$\alpha$$)**: the probability of rejecting the null hypothesis
+- **Type I Error ($$\alpha$$)**: the probability of rejecting the null
+hypothesis
 when it's true.
 - **Type II Error ($$\beta$$)**: the probability of failing to reject the null
 hypothesis when it's false.
@@ -43,9 +44,9 @@ it's false.
 - **Confidence ($$1-\alpha$$)**: the probability of failing to reject the null
 hypothesis when it's true.
 
-As a standard, $$\alpha$$ is set to 0.05 and power to .80. Also, we will generally
+As a standard, $$\alpha$$ is set to 0.05 and power to .80. Also, we will
+generally
 have a control group (no intervention) and different treatments (variants). 
-
 
 ## There are some challenges
 
@@ -75,6 +76,8 @@ results using $$\alpha=0.05$$. We know there is no differences between groups.
 
 {% highlight python %}
 from scipy.stats import ttest_ind
+import pandas as pd
+pd.set_option("display.notebook_repr_html", False)
 import numpy as np
 np.random.seed(0)
 
@@ -123,12 +126,14 @@ After 1000 iterations, **the probability of at least one Type I error in a batch
 of 3 tests is 12.6%**. This probability is also known as **Family-wise Error
 Rate (FWER)** and represents the probability of making at least one **Type I
 error** among the entire family (or batch) of comparisons. We can see that 12.6%
-is far from the $$\alpha$$ of 5% we assume for a single test. 
+is far from the $$\alpha$$ of 5% we assume for a single test.
 
-This is the **crux of the multiple comparison problem**. When you have a batch of tests, even
+This is the **crux of the multiple comparison problem**. When you have a batch
+of tests, even
 maintaining an alpha around 0.05 in a single test, the chance of having at least
 one false discovery across the collection of tests is much higher and increases
-as the number of tests in a batch increases. **That means some of our significant results 
+as the number of tests in a batch increases. **That means some of our
+significant results
 can be false positives and hard to replicate!**
 
 The key to any adjustment of multiple comparison testing is to find a balance
@@ -183,46 +188,16 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 {% endhighlight %}
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>comparisons</th>
-      <th>power</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>(0, 1)</td>
-      <td>0.706</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 
 
+      comparisons  power
+    0      (0, 1)  0.706
 
-<br>
+
 
 `nsim` represents the number of simulations. Variants are set to 1, so we are
 only comparing control and treatment: `comparisons = (0,1)`. This example is too
 simple. Let's now assume two variants (treatments): 
-
 
 
 {% highlight python %}
@@ -234,57 +209,21 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>comparisons</th>
-      <th>power</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>(0, 1)</td>
-      <td>0.531</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>(0, 2)</td>
-      <td>0.530</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>(1, 2)</td>
-      <td>0.015</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+      comparisons  power
+    0      (0, 1)  0.531
+    1      (0, 2)  0.530
+    2      (1, 2)  0.015
 
 
-<br>
 
 The function provides the power of all comparisons between groups with a sample
 size 3000 for each group. We can see a reduction in power due to multiple
 comparisons. As the effect of each variant is the same `(0.03)`, the comparison
-between *variants 1 and 2* doesn't make sense here (in practice it will always be
+between *variants 1 and 2* doesn't make sense here (in practice it will always
+be
 0). We can define custom comparisons using a list of tuples. For instance,
 `comparisons=[(0,1), (0,2)]`:
+
 
 
 {% highlight python %}
@@ -297,51 +236,23 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+      comparisons  power
+    0      (0, 1)  0.558
+    1      (0, 2)  0.563
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>comparisons</th>
-      <th>power</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>(0, 1)</td>
-      <td>0.558</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>(0, 2)</td>
-      <td>0.563</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<br>
 
 Only using two comparisons (each variant with a control), the power decreases
-considerably if we compare with the one-variant example.  For now, method function
+considerably if we compare with the one-variant example.  For now, method
+function
 includes only three types of p-value corrections: `bonferroni` , `holm` and
-`fdr`. You can read more about them [here](https://en.wikipedia.org/wiki/Bonferroni_correction), [here](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method), and [here](https://en.wikipedia.org/wiki/False_discovery_rate). In general,
+`fdr`. You can read more about them [here](https://en.wikipedia.org/wiki/Bonferr
+oni_correction), [here](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_me
+thod), and [here](https://en.wikipedia.org/wiki/False_discovery_rate). In
+general,
 **Bonferroni** is more conservative, while **Holm** provides higher power. The
-`fdr` method minimizes the false discovery rate. The methods presented here cover **Benjamini-
+`fdr` method minimizes the false discovery rate. The methods presented here
+cover **Benjamini-
 Hochberg** for independent or positively correlated, and **Benjamini-Yekutieli**
 for general or negatively correlated tests. When defining the power class, you
 can specify the parameter `fdr_method`: if `indep` **Benjamini-
@@ -353,7 +264,8 @@ group A versus group B, or differences by demographic groups), you must make
 additional multiple comparison corrections in your analysis.
 
 Back to the functions, we can add more variability into the experimental design
-and plot the expected power under different scenarios. To specify parameters, we will 
+and plot the expected power under different scenarios. To specify parameters, we
+will
 need nested lists and use the method `grid_sim_power`. Things become
 convoluted pretty fast.
 
@@ -374,19 +286,19 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_11_0.png)
+![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_10_0.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_11_1.png)
+![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_10_1.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_11_2.png)
+![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_10_2.png)
     
 
 
@@ -394,7 +306,6 @@ As expected, the best scenario is when effect sizes are big enough to be
 detected.  We can also use different sample allocations and explore their
 consequences. You see that in the case of the effects `[0.03, 0.05]` , the
 allocation `[3000, 7000, 7000]` provides relatively good results.  
-
 
 
 {% highlight python %}
@@ -413,24 +324,25 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_13_0.png)
+![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_12_0.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_13_1.png)
+![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_12_1.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_13_2.png)
+![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_12_2.png)
     
 
 
 We can also use other metrics (e.g., average or counts).  For instance, we can
-design an experiment where the outcome is the number of visits (counts). The simulator will use a
+design an experiment where the outcome is the number of visits (counts). The
+simulator will use a
 Poisson distribution with the parameter, $$\lambda$$ (lambda) or the mean
 number of events. In this example, I set a baseline rate (lambda) of 1.2 visits
 and a relative increase of $$0.05 (1.2*1.05) = 1.26$$, with a control group of
@@ -446,40 +358,10 @@ p.get_power(baseline=[1.2], effect=[0.05], sample_size=[3000, 5000])
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>comparisons</th>
-      <th>power</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>(0, 1)</td>
-      <td>0.69</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+      comparisons  power
+    0      (0, 1)   0.69
 
 
-<br>
 
 The effect is small, so our test is underpowered (<0.80). We can also use
 averages (e.g., revenue), but in that case, we need to specify the standard
@@ -496,57 +378,28 @@ p.get_power(baseline=[1500], effect=[100], standard_deviation=[600], sample_size
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+      comparisons  power
+    0      (0, 1)   0.81
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>comparisons</th>
-      <th>power</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>(0, 1)</td>
-      <td>0.81</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-<br>
 
 
 ## Complex models 
 
 When using uplift or mixed models, things become more complicated. As Aleksander
-Molak put it: 
+Molak put it:
 
 > The question of defining a "safe" dataset size for S-Learner and
 other causal models is difficult to answer. Power calculations for machine
 learning models are often difficult, if possible at all. 
 
-There are some tricks we can apply, though, as Harrell suggests: 
+There are some tricks we can apply, though, as Harrell suggests:
 
-> If you can afford a pilot study or you have some historical data that represents a problem similar to the one that
+> If you can afford a pilot study or you have some historical data that
+represents a problem similar to the one that
 you’re interested in, you can find a subgroup in your data that is as homogenous
 as possible. You can estimate the sample size for this group using some of the
 traditional statistical power tools. Finally, scale your overall sample size so
-that this subgroup is properly powered relative to the entire sample 
+that this subgroup is properly powered relative to the entire sample
 
 There are also some traditional ways to optimize the power of our tests:
 
@@ -559,7 +412,7 @@ design our experiments (blocking). We can also evaluate the results of our
 uplift models in a new sample, and see if we can replicate the expected
 `uplift`.
 
-*** 
+***
 
 ## References
 
@@ -568,15 +421,3 @@ secrets of modern causal machine learning with DoWhy, EconML, PyTorch and more*
 . 
 - https://www.fharrell.com/
 - Ron Kohavi. *Trustworthy Online Controlled Experiments*.
-
-
-
-
-
-
-
-
-
-
-
-

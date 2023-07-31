@@ -23,25 +23,32 @@ echo "Moving images..."
 mv ./_posts/$foldername ./assets/img/
 
 # Remove the now empty folder.
-# rmdir ./_posts/$foldername
+rmdir ./_posts/$foldername
 
 # Gets the title of the post
 echo "What's the title of this post going to be?"
 read ttl
-gsed -ie "3 i title: \"$ttl\"" ./_posts/$filename.md
-gsed -ie "6 i date: $(date +%Y-%m-%d)" ./_posts/$filename.md
+gsed -ie "4 i title: \"$ttl\"" ./_posts/$filename.md
+gsed -ie "5 i date: $(date +%Y-%m-%d)" ./_posts/$filename.md
 
-echo "added title $ttl in line 3"
+echo "added title $ttl in line 4"
 rm ./_posts/$filename.mde
 
+echo "folder name $foldername"
+
 # Go through the markdown file and rewrite image paths.
-echo "Rewriting image paths..."
-gsed -i.tmp -e "/assets/img/$foldername/" ./_posts/$filename.md
+# echo "Rewriting image paths..."
+
+# gsed -i.tmp -e "/assets/img/$foldername/" ./_posts/$filename.md
 # 2018-02-08-segregation_files/2018-02-08-segregation_7_0.png
-# sed -i.tmp -e "s/$foldername/\/images/g" ./_posts/$filename.md
+# gsed -i.tmp -e "s/_post/$foldername/\/assets/img/$foldername/" ./_posts/$filename.md
+# gsed  -i.tmp 's|$foldername|new_path|g' ./_posts/$filename.md
+# gsed -i 's|2023-07-31-statistical-power_files/|assets/img/2023-07-31-statistical-power_files/|' your_markdown_file.md
+gsed -i.tmp -e 's/'"$foldername"'/'"\/assets\/img\/$foldername"'/g' ./_posts/$filename.md
+
 # Remove backup file created by sed command.
 rm ./_posts/$filename.md.tmp
-
+rm -r ./_posts/$foldername
 # Check if the conversion has left a blank line at the top of the file.
 # firstline=$(head -n 1 ./_posts/$filename.md)
 # if [ "$firstline" = "" ]; then

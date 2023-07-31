@@ -1,10 +1,10 @@
-{% extends 'markdown.tpl' %}
+{% extends 'markdown/index.md.j2' %}
 
 {%- block header -%}
 ---
 layout: post
 author: Sebastian Daza
-comments: true
+giscus_comments: true
 ---
 {%- endblock header -%}
 

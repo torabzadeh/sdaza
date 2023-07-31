@@ -167,7 +167,8 @@ I created some simple simulation methods in Python to design and assess the
 experimental data. I use simulation because it's simpler to accommodate
 different scenarios and metrics. The downside is that it requires more computer
 power, but we can live with that :smile:. [You can find the power class
-here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter).
+here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/power_tools.py
+).
 
 These methods are helpful, especially with multiple variants, different
 allocations or MDE by group. As we will see, these methods only provide an
@@ -246,10 +247,8 @@ Only using two comparisons (each variant with a control), the power decreases
 considerably if we compare with the one-variant example.  For now, method
 function
 includes only three types of p-value corrections: `bonferroni` , `holm` and
-`fdr`. You can read more about them [here](https://en.wikipedia.org/wiki/Bonferr
-oni_correction), [here](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_me
-thod), and [here](https://en.wikipedia.org/wiki/False_discovery_rate). In
-general,
+`fdr`. You can read more about them [here](https://en.wikipedia.org/wiki/Bonferroni_correction), [here](https://en.wikipedia.org/wiki/Holm_Bonferroni_method),
+and [here](https://en.wikipedia.org/wiki/False_discovery_rate). In general,
 **Bonferroni** is more conservative, while **Holm** provides higher power. The
 `fdr` method minimizes the false discovery rate. The methods presented here
 cover **Benjamini-

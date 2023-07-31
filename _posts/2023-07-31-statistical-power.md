@@ -128,9 +128,8 @@ is far from the $$\alpha$$ of 5% we assume for a single test.
 This is the **crux of the multiple comparison problem**. When you have a batch of tests, even
 maintaining an alpha around 0.05 in a single test, the chance of having at least
 one false discovery across the collection of tests is much higher and increases
-as the number of tests in a batch increases. That means some of our significant
-results can be false positives and hard to replicate when we run multiple
-comparisons!
+as the number of tests in a batch increases. **That means some of our significant results 
+can be false positives and hard to replicate!**
 
 The key to any adjustment of multiple comparison testing is to find a balance
 between minimizing false positives (errors where you incorrectly reject the null
@@ -163,7 +162,7 @@ I created some simple simulation methods in Python to design and assess the
 experimental data. I use simulation because it's simpler to accommodate
 different scenarios and metrics. The downside is that it requires more computer
 power, but we can live with that :smile:. [You can find the power class
-here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter)
+here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter).
 
 These methods are helpful, especially with multiple variants, different
 allocations or MDE by group. As we will see, these methods only provide an
@@ -222,7 +221,7 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 `nsim` represents the number of simulations. Variants are set to 1, so we are
 only comparing control and treatment: `comparisons = (0,1)`. This example is too
-simple. Let's assume we have two variants (treatments): 
+simple. Let's now assume two variants (treatments): 
 
 
 
@@ -283,7 +282,7 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 The function provides the power of all comparisons between groups with a sample
 size 3000 for each group. We can see a reduction in power due to multiple
 comparisons. As the effect of each variant is the same `(0.03)`, the comparison
-between variants 1 and 2 doesn't make sense here (in practice it will always be
+between *variants 1 and 2* doesn't make sense here (in practice it will always be
 0). We can define custom comparisons using a list of tuples. For instance,
 `comparisons=[(0,1), (0,2)]`:
 
@@ -338,24 +337,24 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 <br>
 
 Only using two comparisons (each variant with a control), the power decreases
-considerably if we compare with the one-variant example.  For now, our function
+considerably if we compare with the one-variant example.  For now, method function
 includes only three types of p-value corrections: `bonferroni` , `holm` and
-`fdr`. You can read more about them here, here, and here. In general,
+`fdr`. You can read more about them [here](https://en.wikipedia.org/wiki/Bonferroni_correction), [here](https://en.wikipedia.org/wiki/Holm%E2%80%93Bonferroni_method), and [here](https://en.wikipedia.org/wiki/False_discovery_rate). In general,
 **Bonferroni** is more conservative, while **Holm** provides higher power. The
-`fdr` method minimizes the false discovery rate. This covers **Benjamini-
-Hochberg** for independent or positively correlated and **Benjamini-Yekutieli**
+`fdr` method minimizes the false discovery rate. The methods presented here cover **Benjamini-
+Hochberg** for independent or positively correlated, and **Benjamini-Yekutieli**
 for general or negatively correlated tests. When defining the power class, you
-can specify the parameter `fdr_method`. If `indep`, it implements **Benjamini-
-Hochberg**. If `negcorr`, **Benjamini-Yekutieli**.
+can specify the parameter `fdr_method`: if `indep` **Benjamini-
+Hochberg** is used, if `negcorr`, **Benjamini-Yekutieli**.
 
 The function will only correct for the comparisons defined in the parameter
 comparisons. When you run additional tests (e.g., comparing the performance of
 group A versus group B, or differences by demographic groups), you must make
 additional multiple comparison corrections in your analysis.
 
-Back to our methods, we can add more variability into the experimental design
-and plot the expected power under different scenarios. To specify parameters, we
-need nested lists and use the method `grid_sim_power`. Things can become
+Back to the functions, we can add more variability into the experimental design
+and plot the expected power under different scenarios. To specify parameters, we will 
+need nested lists and use the method `grid_sim_power`. Things become
 convoluted pretty fast.
 
 The effect of the first and second variants over control varies: `[0.01, 0.03],
@@ -431,11 +430,11 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
 We can also use other metrics (e.g., average or counts).  For instance, we can
-define an experiment for the number of visits (counts). The simulator will use a
-Poisson distribution where the only parameter, $$\lambda$$ (lambda), is the mean
-number of events. In this example, we set a baseline rate (lambda) of 1.2 visits
+design an experiment where the outcome is the number of visits (counts). The simulator will use a
+Poisson distribution with the parameter, $$\lambda$$ (lambda) or the mean
+number of events. In this example, I set a baseline rate (lambda) of 1.2 visits
 and a relative increase of $$0.05 (1.2*1.05) = 1.26$$, with a control group of
-3000 users and a treatment with 5000 users:
+3000 users and a treatment of 5000 users:
 
 
 {% highlight python %}
@@ -535,17 +534,19 @@ p.get_power(baseline=[1500], effect=[100], standard_deviation=[600], sample_size
 ## Complex models 
 
 When using uplift or mixed models, things become more complicated. As Aleksander
-Molak put it: The question of defining a "safe" dataset size for S-Learner and
+Molak put it: 
+
+> The question of defining a "safe" dataset size for S-Learner and
 other causal models is difficult to answer. Power calculations for machine
 learning models are often difficult, if possible at all. 
 
-There are some tricks you can apply, though: If you can afford a pilot study or
-you have some historical data that represents a problem similar to the one that
+There are some tricks we can apply, though, as Harrell suggests: 
+
+> If you can afford a pilot study or you have some historical data that represents a problem similar to the one that
 you’re interested in, you can find a subgroup in your data that is as homogenous
 as possible. You can estimate the sample size for this group using some of the
 traditional statistical power tools. Finally, scale your overall sample size so
-that this subgroup is properly powered relative to the entire sample (Harrell,
-2023).
+that this subgroup is properly powered relative to the entire sample 
 
 There are also some traditional ways to optimize the power of our tests:
 
@@ -553,7 +554,7 @@ There are also some traditional ways to optimize the power of our tests:
 - Stratification and covariate adjustments (regression)
 
 For instance, after learning from our uplift models, we can identify the key
-features defining users' responses to intervention. We can use those features to
+features associated to users' responses. We can use those features to
 design our experiments (blocking). We can also evaluate the results of our
 uplift models in a new sample, and see if we can replicate the expected
 `uplift`.
@@ -562,11 +563,11 @@ uplift models in a new sample, and see if we can replicate the expected
 
 ## References
 
-- Molak, Aleksander. Causal Inference and Discovery in Python: Unlock the
-secrets of modern causal machine learning with DoWhy, EconML, PyTorch and more
+- Molak, Aleksander. *Causal Inference and Discovery in Python: Unlock the
+secrets of modern causal machine learning with DoWhy, EconML, PyTorch and more*
 . 
 - https://www.fharrell.com/
-- Ron Kohavi. Trustworthy Online Controlled Experiments.
+- Ron Kohavi. *Trustworthy Online Controlled Experiments*.
 
 
 

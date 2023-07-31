@@ -64,7 +64,7 @@ size we need to reach a statistically significant result. We must consider this
 issue when designing our experiments, but also when analyzing ourt data (e.g.,
 post hoc analyses).
 
-To get a better intuition about why multiple comparison testing is an issue,
+To get an intuition about why multiple comparison testing is an issue,
 let's simulate a simple example. Assume we have one control group, and three
 variants (treatments). For the sake of the example, we simulate data with no
 effect or differences between control and treatment groups. That is, the null
@@ -150,18 +150,18 @@ an intervention and minimize the sample size across variants. In other cases, we
 might want to reduce the control group size or allocate more units to each
 variant based on their MDE.
 
-Finally, an excellent rule to define the **minimum MDE** is using the slightest
-effect to justify the intervention or change being tested. We can estimate an
+Finally, a good rule to define the **minimum MDE** is using the smallest
+effect that would justify an intervention at all. We can estimate the
 intervention's ROI (return on investment) and define the minimum change in a
-critical metric (e.g., conversion rate) to reach an acceptable return. The
+critical metric (e.g., conversion rate) to reach an acceptable profit. The
 minimum MDE doesn't have to be the same by variant, as intervention costs or
 campaigns might differ.
 
 ## Tools can help
 
-We created some simple simulation methods in Python to design and assess the
-experimental data. We use simulation because it's simpler to accommodate
-different scenarios and metrics.  The downside is that it requires more computer
+I created some simple simulation methods in Python to design and assess the
+experimental data. I use simulation because it's simpler to accommodate
+different scenarios and metrics. The downside is that it requires more computer
 power, but we can live with that :smile:. [You can find the power class
 here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter)
 

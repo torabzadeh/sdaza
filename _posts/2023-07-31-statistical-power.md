@@ -29,6 +29,10 @@ references.
 Each time we conduct a statistical test to estimate an effect, we can have any
 of these outcomes:
 
+<p align="center">
+  <img src="/assets/img/pregnant-power.jpg" alt="Image" width="70%" height="70%" />
+</p>
+
 These errors and probabilities of success are related to some standard
 statistical terms we use when making inferences:
 
@@ -121,8 +125,9 @@ After 1000 iterations, **the probability of at least one Type I error in a batch
 of 3 tests is 12.6%**. This probability is also known as **Family-wise Error
 Rate (FWER)** and represents the probability of making at least one **Type I
 error** among the entire family (or batch) of comparisons. We can see that 12.6%
-is far from the alpha of 5% we assume for a single test. This is the **crux of
-the multiple comparison problem**. When you have a batch of tests, even
+is far from the $$\alpha$$ of 5% we assume for a single test. 
+
+This is the **crux of the multiple comparison problem**. When you have a batch of tests, even
 maintaining an alpha around 0.05 in a single test, the chance of having at least
 one false discovery across the collection of tests is much higher and increases
 as the number of tests in a batch increases. That means some of our significant

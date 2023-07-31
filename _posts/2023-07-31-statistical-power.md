@@ -47,7 +47,7 @@ As a standard, $$\alpha$$ is set to 0.05 and power to .80. Also, we will general
 have a control group (no intervention) and different treatments (variants). 
 
 
-# There are some challenges
+## There are some challenges
 
 There are some challenges associated with basic power calculations (e.g., web
 calculators): 
@@ -532,7 +532,7 @@ p.get_power(baseline=[1500], effect=[100], standard_deviation=[600], sample_size
 <br>
 
 
-# Complex models 
+## Complex models 
 
 When using uplift or mixed models, things become more complicated. As Aleksander
 Molak put it: The question of defining a "safe" dataset size for S-Learner and
@@ -560,7 +560,7 @@ uplift models in a new sample, and see if we can replicate the expected
 
 *** 
 
-# References
+## References
 
 - Molak, Aleksander. Causal Inference and Discovery in Python: Unlock the
 secrets of modern causal machine learning with DoWhy, EconML, PyTorch and more

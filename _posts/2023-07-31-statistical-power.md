@@ -181,8 +181,6 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 {% endhighlight %}
 
 
-
-
 <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -276,6 +274,7 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 </div>
 
 
+<br>
 
 The function provides the power of all comparisons between groups with a sample
 size 3000 for each group. We can see a reduction in power due to multiple
@@ -332,8 +331,7 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 </table>
 </div>
 
-
-
+<br>
 
 Only using two comparisons (each variant with a control), the power decreases
 considerably if we compare with the one-variant example.  For now, our function
@@ -357,7 +355,7 @@ need nested lists and use the method `grid_sim_power`. Things can become
 convoluted pretty fast.
 
 The effect of the first and second variants over control varies: `[0.01, 0.03],
-[0.03, 0.05], [0.03, 0.07]``. Sample sizes are the same for each group, but they
+[0.03, 0.05], [0.03, 0.07]`. Sample sizes are the same for each group, but they
 increase linearly. We use the `holm` correction. 
 
 
@@ -478,6 +476,7 @@ p.get_power(baseline=[1.2], effect=[0.05], sample_size=[3000, 5000])
 </div>
 
 
+<br>
 
 The effect is small, so our test is underpowered (<0.80). We can also use
 averages (e.g., revenue), but in that case, we need to specify the standard
@@ -526,7 +525,7 @@ p.get_power(baseline=[1500], effect=[100], standard_deviation=[600], sample_size
 </table>
 </div>
 
-
+<br>
 
 
 # Complex models 
@@ -554,6 +553,8 @@ features defining users' responses to intervention. We can use those features to
 design our experiments (blocking). We can also evaluate the results of our
 uplift models in a new sample, and see if we can replicate the expected
 `uplift`.
+
+*** 
 
 # References
 

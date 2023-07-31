@@ -10,18 +10,16 @@ tags:
   - simulation
 ---
 
-I would like to share some helpful tools for designing and evaluating
+In this post I share some tools for designing and evaluating
 experiments. These tools provide a user-friendly method for estimating
 statistical power when dealing with multiple treatments or variants.
 Additionally, they assist with sample allocation, including determining sample
 size for both treatment and control groups. Lastly, they to estimate power
 assuming different expected effects (e.g., minimum detectable effects or MDE).
 
-Calculating power for complex and uplift models using ML is a significantly
-difficult task. I will share some general guidelines and references at the
-conclusion of this post.or complex and uplift models using ML is far more
-challenging. At the end of this post, we provide some rules of thumb and
-references.
+Calculating power for complex and uplift models using ML is a more
+difficult task. I share some general guidelines and references at the
+conclusion of this post.
 
 
 ## Let's start with some terms
@@ -54,9 +52,9 @@ have a control group (no intervention) and different treatments (variants). 
 There are some challenges associated with basic power calculations (e.g., web
 calculators): 
 
-- (Simultaneous) multiple comparisons
-- Sample allocation
-- Different MDEs by variant
+- **(Simultaneous) multiple comparisons**
+- **Sample allocation**
+- **Different MDEs by variant**
 
 In the case of multiple comparisons, conducting multiple statistical tests or
 comparisons within a study or analysis can inflate the likelihood of obtaining

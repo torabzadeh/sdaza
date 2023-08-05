@@ -1,13 +1,14 @@
 ---
 layout: post
 author: Sebastian Daza
-title: "Tools for statistical power analysis"
+title: "Tools for statistical power analysis with multiple comparisons"
 date: 2023-07-31
 giscus_comments: true
 tags:
   - python
   - simulation
   - statistics
+  - multiple-comparisons
 ---
 
 In this post I share some tools for designing and evaluating

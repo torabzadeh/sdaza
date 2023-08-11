@@ -1,39 +1,39 @@
 ---
 layout: post
 author: Sebastian Daza
-title: "Tools for statistical power analysis with multiple comparisons"
-date: 2023-07-31
+title: "Tools for power analysis with multiple comparisons"
+date: 2023-08-11
 giscus_comments: true
 tags:
-  - python
   - simulation
-  - statistics
-  - multiple-comparisons
+  - python
+  - power
+  - experiments
 ---
 
-In this post I share some tools for designing and evaluating
-experiments. These tools provide a user-friendly method for estimating
-statistical power when dealing with multiple treatments or variants.
-Additionally, they assist with sample allocation, including determining sample
-size for both treatment and control groups. Lastly, they to estimate power
-assuming different expected effects (e.g., minimum detectable effects or MDE).
+This post will discuss tools for designing and evaluating experiments. These
+tools offer user-friendly methods to estimate statistical power when working
+with multiple treatments or variants. They also help with sample allocation,
+including determining sample sizes for treatment and control groups. Lastly,
+they estimate power based on different expected effects (e.g., minimum
+detectable effects or MDE).
 
-Calculating power for complex and uplift models using ML is a more
-difficult task. I share some general guidelines and references at the
-conclusion of this post.
+Calculating power for complex and uplift models using machine learning can be
+challenging. I will provide some general guidelines and references at the end of
+this post.
 
 ## Let's start with some terms
 
-Each time we conduct a statistical test to estimate an effect, we can have any
-of these outcomes:
+When conducting a statistical test to estimate an effect, we can have any of the
+following outcomes:
 
 <p align="center">
   <img src="/assets/img/pregnant-power.jpg" alt="Image" width="70%" height="70%"
 />
 </p>
 
-These errors and probabilities of success are related to some standard
-statistical terms we use when making inferences:
+These errors and success probabilities are associated with standard statistical
+terms used in making inferences.
 
 - **Type I Error ($$\alpha$$)**: the probability of rejecting the null
 hypothesis
@@ -58,21 +58,21 @@ calculators): 
 - **Sample allocation**
 - **Different MDEs by variant**
 
-In the case of multiple comparisons, conducting multiple statistical tests or
-comparisons within a study or analysis can inflate the likelihood of obtaining
-false positive results. We need then to adjust our alpha according to the
-different number of tests performed. In general, that will increase the sample
-size we need to reach a statistically significant result. We must consider this
-issue when designing our experiments, but also when analyzing ourt data (e.g.,
-post hoc analyses).
+When conducting multiple statistical tests or comparisons within a study or
+analysis, there is a risk of obtaining false positive results. To address this,
+we need to adjust our $$\alpha$$ level based on the number of tests performed.
+This adjustment increases the required sample size to achieve statistical
+significance. It is important to consider this issue during experiment design
+and data analysis, including post hoc analyses.
 
-To get an intuition about why multiple comparison testing is an issue,
-let's simulate a simple example. Assume we have one control group, and three
-variants (treatments). For the sake of the example, we simulate data with no
-effect or differences between control and treatment groups. That is, the null
-hypothesis (i.e., no effect) is always true. For each iteration, we test the
-control group with each treatment and count if we get one or more significant
-results using $$\alpha=0.05$$. We know there is no differences between groups.
+To gain an understanding of why multiple comparison testing poses a challenge,
+let's consider a simple example. Suppose we have a control group and three
+treatment variants. In this example, we will simulate data where there are no
+effects or differences between the control and treatment groups. In other words,
+the null hypothesis (i.e., no effect) is always true. In each iteration, we test
+the control group against each treatment and count the number of significant
+results we obtain using a significance level ($$\alpha=0.05$$). It is important
+to note that we already know there are no differences between the groups.
 
 
 {% highlight python %}
@@ -123,58 +123,61 @@ print(f"Probability of at least one Type I error in a batch of {groups} tests: {
     Probability of at least one Type I error in a batch of 3 tests: 12.6%
 
 
-After 1000 iterations, **the probability of at least one Type I error in a batch
-of 3 tests is 12.6%**. This probability is also known as **Family-wise Error
-Rate (FWER)** and represents the probability of making at least one **Type I
-error** among the entire family (or batch) of comparisons. We can see that 12.6%
-is far from the $$\alpha$$ of 5% we assume for a single test.
+After 1000 iterations, the probability of encountering at least one Type I error
+in a batch of 3 tests is 12.6%. This probability is referred to as the **Family-
+wise Error Rate (FWER)**, which signifies the likelihood of committing at least
+one Type I error within the entire family (or batch) of comparisons. It is
+evident that 12.6% is significantly higher than the assumed α value of 5% for a
+single test.
 
-This is the **crux of the multiple comparison problem**. When you have a batch
-of tests, even
-maintaining an alpha around 0.05 in a single test, the chance of having at least
-one false discovery across the collection of tests is much higher and increases
-as the number of tests in a batch increases. **That means some of our
-significant results
-can be false positives and hard to replicate!**
+This is the essence of the multiple comparison problem. When conducting multiple
+tests, even if you maintain an $$\alpha$$ level of approximately 0.05 for each
+individual test, the likelihood of experiencing at least one false discovery
+among the entire set of tests is significantly higher and increases as the
+number of tests in the batch grows. Consequently, some of our significant
+findings may actually be false positives and difficult to replicate.
 
-The key to any adjustment of multiple comparison testing is to find a balance
-between minimizing false positives (errors where you incorrectly reject the null
-hypothesis) and not overly reducing the power of your test (the ability to
-correctly reject the null hypothesis when it's false). Some methods, such as
-Bonferroni or Holm, try to minimize the FWER. Others, like Benjamini-Hochberg,
-minimize the **False Discovery Rate (FDR)** or the expected proportion of Type I
-errors among all declared significant hypotheses. The aim here is to reduce the
-ratio of Type I errors among significant results, but not necessarily seeking to
-eliminate all false discoveries like FWER methods do. FDR methods tend to
-provide higher statistical power and are less conservative.
+The key to adjusting multiple comparison testing is to strike a balance between
+reducing false positives (incorrectly rejecting the null hypothesis) and
+maintaining test power (the ability to correctly reject the null hypothesis when
+it's false). Some methods, such as Bonferroni or Holm, minimize the Family-Wise
+Error Rate (FWER). Others, like Benjamini-Hochberg, minimize the False Discovery
+Rate (FDR), which is the expected proportion of Type I errors among all declared
+significant hypotheses. FDR methods aim to reduce the ratio of Type I errors
+among significant results without eliminating all false discoveries like FWER
+methods. FDR methods generally offer higher statistical power and are less
+conservative.
 
-Another aspect of experiment design is **sample allocation**. Sample allocation
-might be different by group (e.g., 50/50), which can impact the power of our
-tests. In some cases, we want to minimize the potentially disruptive impact of
-an intervention and minimize the sample size across variants. In other cases, we
-might want to reduce the control group size or allocate more units to each
-variant based on their MDE.
+A crucial element of experimental design lies in sample allocation. Variations
+in the distribution of samples among groups can influence the statistical power
+of our tests. Sometimes, the goal is to limit the potential disruption from an
+intervention by scaling down the sample size across various variants.
+Alternatively, we might opt to shrink the control group's size or allot more
+units to each variant, contingent on their Minimum Detectable Effect (MDE).
 
-Finally, a good rule to define the **minimum MDE** is using the smallest
-effect that would justify an intervention at all. We can estimate the
-intervention's ROI (return on investment) and define the minimum change in a
-critical metric (e.g., conversion rate) to reach an acceptable profit. The
-minimum MDE doesn't have to be the same by variant, as intervention costs or
-campaigns might differ.
+Let's not forget to consider expected effects. In figuring out the smallest
+minimum detectable effect (MDE), think about the least significant change that
+would still make the intervention worthwhile. It's all about balancing the
+books: estimate the return on investment (ROI) from the intervention, then
+determine the tiniest shift in a key metric (like conversion rates) that would
+still make the effort profitable. The MDE doesn't have to be identical across
+all variants - after all, not all interventions or campaigns cost the same.
 
 ## Tools can help
 
-I created some simple simulation methods in Python to design and assess the
-experimental data. I use simulation because it's simpler to accommodate
-different scenarios and metrics. The downside is that it requires more computer
-power, but we can live with that :smile:. [You can find the power class
-here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/power_tools.py
-).
+I've developed a set of straightforward simulation methods in Python, primarily
+to construct and evaluate our experimental data. The choice to use simulation
+was driven by its flexibility in handling diverse scenarios and metrics.
+However, it does come with a trade-off, as it demands a higher computational
+power. We can live with that :smile:. [Feel free to explore the code for the
+power class here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/po
+wer_tools.py).
 
-These methods are helpful, especially with multiple variants, different
-allocations or MDE by group. As we will see, these methods only provide an
-estimate of power given a set of parameters, so we will need to do some grid
-search to assess multiple scenarios and find the optimal one. 
+These methods are useful, particularly for handling multiple variants, different
+allocations, or MDE by group. However, it's important to note that these methods
+only offer a power estimate based on a given set of parameters. Therefore, we
+will need to conduct a grid search to evaluate various scenarios and determine
+the optimal one.
 
 Let's start with a simple example using a proportion as the metric of interest:
 
@@ -218,14 +221,11 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
 
-The function provides the power of all comparisons between groups with a sample
-size 3000 for each group. We can see a reduction in power due to multiple
-comparisons. As the effect of each variant is the same `(0.03)`, the comparison
-between *variants 1 and 2* doesn't make sense here (in practice it will always
-be
-0). We can define custom comparisons using a list of tuples. For instance,
-`comparisons=[(0,1), (0,2)]`:
-
+The function calculates the power of group comparisons with a sample size of
+3000 for each group. Multiple comparisons result in reduced power. Since the
+effect of each variant is the same (0.03), comparing *variants 1 and 2* is not
+meaningful here (it will always be 0 in practice). Custom comparisons can be
+defined using a list of tuples, such as `comparisons=[(0,1), (0,2)]`.
 
 
 {% highlight python %}
@@ -244,34 +244,34 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
 
-Only using two comparisons (each variant with a control), the power decreases
-considerably if we compare with the one-variant example.  For now, method
-function
-includes only three types of p-value corrections: `bonferroni` , `holm` and
-`fdr`. You can read more about them [here](https://en.wikipedia.org/wiki/Bonferroni_correction), [here](https://en.wikipedia.org/wiki/Holm_Bonferroni_method),
-and [here](https://en.wikipedia.org/wiki/False_discovery_rate). In general,
+Using only two comparisons (each variant with a control), the power
+significantly decreases compared to the one-variant example. Currently, the
+method function offers three types of p-value corrections: `bonferroni`, `holm`,
+and `fdr`. You can learn more about them
+[here](https://en.wikipedia.org/wiki/Bonferroni_correction),
+[here](https://en.wikipedia.org/wiki/Holm_Bonferroni_method), and
+[here](https://en.wikipedia.org/wiki/False_discovery_rate). Generally,
 **Bonferroni** is more conservative, while **Holm** provides higher power. The
-`fdr` method minimizes the false discovery rate. The methods presented here
-cover **Benjamini-
-Hochberg** for independent or positively correlated, and **Benjamini-Yekutieli**
-for general or negatively correlated tests. When defining the power class, you
-can specify the parameter `fdr_method`: if `indep` **Benjamini-
-Hochberg** is used, if `negcorr`, **Benjamini-Yekutieli**.
+`fdr` method aims to minimize the false discovery rate. The methods described
+here include **Benjamini-Hochberg** for independent or positively correlated
+tests, and **Benjamini-Yekutieli** for general or negatively correlated tests.
+When defining the power class, you can specify the parameter fdr_method: use
+`indep` for Benjamini-Hochberg, and `negcorr` for Benjamini-Yekutieli.
 
-The function will only correct for the comparisons defined in the parameter
-comparisons. When you run additional tests (e.g., comparing the performance of
-group A versus group B, or differences by demographic groups), you must make
-additional multiple comparison corrections in your analysis.
+The function corrects only for the comparisons specified in the "comparisons"
+parameter. If you conduct additional tests, such as comparing the performance of
+group A versus group B or examining differences among demographic groups, you
+need to apply additional multiple comparison corrections in your analysis.
 
-Back to the functions, we can add more variability into the experimental design
-and plot the expected power under different scenarios. To specify parameters, we
-will
-need nested lists and use the method `grid_sim_power`. Things become
-convoluted pretty fast.
+We can introduce greater variability into the experimental design. We can then
+plot the expected power for different scenarios. To specify parameters, we'll
+utilize nested lists and the `grid_sim_power` method. However, things can
+quickly become convoluted.
 
-The effect of the first and second variants over control varies: `[0.01, 0.03],
-[0.03, 0.05], [0.03, 0.07]`. Sample sizes are the same for each group, but they
-increase linearly. We use the `holm` correction. 
+Let's consider a more complex example. The impact of the first and second
+variants on the control group varies as follows: [0.01, 0.03], [0.03, 0.05],
+[0.03, 0.07]. The sample sizes are equal for each group, but they increase
+linearly. We apply the `holm` correction.
 
 
 {% highlight python %}
@@ -286,19 +286,19 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_10_0.png)
+![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_10_0.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_10_1.png)
+![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_10_1.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_10_2.png)
+![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_10_2.png)
     
 
 
@@ -324,19 +324,19 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_12_0.png)
+![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_12_0.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_12_1.png)
+![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_12_1.png)
     
 
 
 
     
-![png](/assets/img/2023-07-31-statistical-power_files/2023-07-31-statistical-power_12_2.png)
+![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_12_2.png)
     
 
 

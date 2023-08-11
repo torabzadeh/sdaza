@@ -23,7 +23,7 @@ echo "Moving images..."
 mv ./_posts/$foldername ./assets/img/
 
 # Remove the now empty folder.
-rmdir ./_posts/$foldername
+# rmdir ./_posts/$foldername
 
 # Gets the title of the post
 echo "What's the title of this post going to be?"

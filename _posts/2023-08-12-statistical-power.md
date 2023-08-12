@@ -2,12 +2,11 @@
 layout: post
 author: Sebastian Daza
 title: "Tools for power analysis with multiple comparisons"
-date: 2023-08-11
+date: 2023-08-12
 giscus_comments: true
 tags:
   - simulation
   - python
-  - power
   - experiments
 ---
 
@@ -140,13 +139,13 @@ findings may actually be false positives and difficult to replicate.
 The key to adjusting multiple comparison testing is to strike a balance between
 reducing false positives (incorrectly rejecting the null hypothesis) and
 maintaining test power (the ability to correctly reject the null hypothesis when
-it's false). Some methods, such as Bonferroni or Holm, minimize the Family-Wise
-Error Rate (FWER). Others, like Benjamini-Hochberg, minimize the False Discovery
-Rate (FDR), which is the expected proportion of Type I errors among all declared
-significant hypotheses. FDR methods aim to reduce the ratio of Type I errors
-among significant results without eliminating all false discoveries like FWER
-methods. FDR methods generally offer higher statistical power and are less
-conservative.
+it's false). Some methods, such as *Bonferroni* or *Holm*, minimize the
+**Family-Wise Error Rate (FWER)**. Others, like *Benjamini-Hochberg*, minimize
+the **False Discovery Rate (FDR)**, which is the expected proportion of Type I
+errors among all declared significant hypotheses. FDR methods aim to reduce the
+ratio of Type I errors among significant results without eliminating all false
+discoveries like FWER methods. FDR methods generally offer higher statistical
+power and are less conservative.
 
 A crucial element of experimental design lies in sample allocation. Variations
 in the distribution of samples among groups can influence the statistical power
@@ -170,8 +169,8 @@ to construct and evaluate our experimental data. The choice to use simulation
 was driven by its flexibility in handling diverse scenarios and metrics.
 However, it does come with a trade-off, as it demands a higher computational
 power. We can live with that :smile:. [Feel free to explore the code for the
-power class here](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/po
-wer_tools.py).
+power class](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/power_t
+ools.py).
 
 These methods are useful, particularly for handling multiple variants, different
 allocations, or MDE by group. However, it's important to note that these methods
@@ -251,12 +250,12 @@ and `fdr`. You can learn more about them
 [here](https://en.wikipedia.org/wiki/Bonferroni_correction),
 [here](https://en.wikipedia.org/wiki/Holm_Bonferroni_method), and
 [here](https://en.wikipedia.org/wiki/False_discovery_rate). Generally,
-**Bonferroni** is more conservative, while **Holm** provides higher power. The
-`fdr` method aims to minimize the false discovery rate. The methods described
-here include **Benjamini-Hochberg** for independent or positively correlated
-tests, and **Benjamini-Yekutieli** for general or negatively correlated tests.
-When defining the power class, you can specify the parameter fdr_method: use
-`indep` for Benjamini-Hochberg, and `negcorr` for Benjamini-Yekutieli.
+Bonferroni is more conservative, while Holm provides higher power. The `fdr`
+method aims to minimize the false discovery rate. The methods described here
+include **Benjamini-Hochberg** for independent or positively correlated tests,
+and **Benjamini-Yekutieli** for general or negatively correlated tests. When
+defining the power class, you can specify the parameter fdr_method: use `indep`
+for Benjamini-Hochberg, and `negcorr` for Benjamini-Yekutieli.
 
 The function corrects only for the comparisons specified in the "comparisons"
 parameter. If you conduct additional tests, such as comparing the performance of
@@ -286,19 +285,19 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_10_0.png)
+![png](/assets/img/2023-08-12-statistical-power_files/2023-08-12-statistical-power_10_0.png)
     
 
 
 
     
-![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_10_1.png)
+![png](/assets/img/2023-08-12-statistical-power_files/2023-08-12-statistical-power_10_1.png)
     
 
 
 
     
-![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_10_2.png)
+![png](/assets/img/2023-08-12-statistical-power_files/2023-08-12-statistical-power_10_2.png)
     
 
 
@@ -324,19 +323,19 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_12_0.png)
+![png](/assets/img/2023-08-12-statistical-power_files/2023-08-12-statistical-power_12_0.png)
     
 
 
 
     
-![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_12_1.png)
+![png](/assets/img/2023-08-12-statistical-power_files/2023-08-12-statistical-power_12_1.png)
     
 
 
 
     
-![png](/assets/img/2023-08-11-statistical-power_files/2023-08-11-statistical-power_12_2.png)
+![png](/assets/img/2023-08-12-statistical-power_files/2023-08-12-statistical-power_12_2.png)
     
 
 
@@ -411,6 +410,11 @@ features associated to users' responses. We can use those features to
 design our experiments (blocking). We can also evaluate the results of our
 uplift models in a new sample, and see if we can replicate the expected
 `uplift`.
+
+Here's a brief and general overview of the key features to keep in mind when
+designing experiments or improving models. I hope it's helpful.
+
+<br>
 
 ***
 

@@ -236,18 +236,24 @@ class PowerSim:
 
                 l_pvalues.append(pvalue)
 
-            if self.correction == 'bonferroni':
-                l_pvalues = np.array(l_pvalues) * len(self.comparisons)
-            elif self.correction == 'holm': 
-                l_pvalues = self.__holm_bonferroni(np.array(l_pvalues))
-            elif self.correction == 'fdr':
-                _, l_pvalues= self.__fdr_correction(np.array(l_pvalues))
+            pvalue_adjustment = {
+                'two-tailed': 1,
+                'greater': 2,
+                'smaller': 2
+            }
 
-            for v, p in enumerate(l_pvalues):
-                if self.alternative == 'two-tailed':
-                    pvalues[v].append(p < self.alpha)
-                elif self.alternative in ['greater', 'smaller']:
-                    pvalues[v].append((p/2 < self.alpha))
+            correction_methods = {
+                'bonferroni': self.bonferroni,
+                'holm': self.holm_bonferroni,
+                'hochberg': self.hochberg,
+                'sidak': self.sidak,
+                'fdr': self.lsu
+            }
+
+        if self.correction in correction_methods:
+            significant = correction_methods[self.correction](np.array(l_pvalues), self.alpha/pvalue_adjustment[self.alternative])
+
+        pvalues[v].append(significant)
    
         # results.append(int(np.sum(pvalues)) >= len(self.comparisons))
         power = pd.DataFrame(pd.DataFrame(pvalues).mean()).reset_index()
@@ -356,79 +362,201 @@ class PowerSim:
             columns=dictionary.keys())
 
 
-    # holm bonferroni correction
-    def __holm_bonferroni(self, p_values):
-        # Sort the p-values in ascending order
-        sorted_indices = np.argsort(p_values)
-        sorted_p_values = p_values[sorted_indices]
+    # # holm bonferroni correction
+    # def __holm_bonferroni(self, p_values):
+    #     # Sort the p-values in ascending order
+    #     sorted_indices = np.argsort(p_values)
+    #     sorted_p_values = p_values[sorted_indices]
 
-        # Get the total number of p-values
-        n = len(p_values)
+    #     # Get the total number of p-values
+    #     n = len(p_values)
 
-        # Initialize an array to store the adjusted p-values
-        adjusted_p_values = np.zeros_like(p_values)
+    #     # Initialize an array to store the adjusted p-values
+    #     adjusted_p_values = np.zeros_like(p_values)
 
-        # Iterate over the sorted p-values and compute the adjusted p-values
-        for i, p in enumerate(sorted_p_values):
-            rank = i + 1
-            adjusted_p = min((n - rank + 1) * p, 1)
-            adjusted_p_values[sorted_indices[i]] = adjusted_p
+    #     # Iterate over the sorted p-values and compute the adjusted p-values
+    #     for i, p in enumerate(sorted_p_values):
+    #         rank = i + 1
+    #         adjusted_p = min((n - rank + 1) * p, 1)
+    #         adjusted_p_values[sorted_indices[i]] = adjusted_p
 
-        return adjusted_p_values
+    #     return adjusted_p_values
     
 
-    def __ecdf(self, x):
-        """No frills empirical cdf used in FDR correction."""
-        nobs = len(x)
-        return np.arange(1, nobs + 1) / float(nobs)
+    # def __ecdf(self, x):
+    #     """No frills empirical cdf used in FDR correction."""
+    #     nobs = len(x)
+    #     return np.arange(1, nobs + 1) / float(nobs)
     
 
-    def __fdr_correction(self, pvals):
-        """P-value correction with False Discovery Rate (FDR).
+    # def __fdr_correction(self, pvals):
+    #     """P-value correction with False Discovery Rate (FDR).
 
-        This covers Benjamini/Hochberg for independent or positively correlated and
-        Benjamini/Yekutieli for general or negatively correlated tests.
+    #     This covers Benjamini/Hochberg for independent or positively correlated and
+    #     Benjamini/Yekutieli for general or negatively correlated tests.
+
+    #     Parameters
+    #     ----------
+    #     pvals : array_like
+    #         Set of p-values of the individual tests.
+
+    #     Returns
+    #     -------
+    #     reject : array, bool
+    #     True if a hypothesis is rejected, False if not.
+    #     pval_corrected : array
+    #         P-values adjusted for multiple hypothesis testing to limit FDR.
+    # """
+    
+    #     pvals = np.asarray(pvals)
+    #     shape_init = pvals.shape
+    #     pvals = pvals.ravel()
+
+    #     pvals_sortind = np.argsort(pvals)
+    #     pvals_sorted = pvals[pvals_sortind]
+    #     sortrevind = pvals_sortind.argsort()
+
+    #     if self.fdr_method in ["i", "indep", "p", "poscorr"]:
+    #         ecdffactor = self.__ecdf(pvals_sorted)
+    #     elif self.fdr_method in ["n", "negcorr"]:
+    #         cm = np.sum(1.0 / np.arange(1, len(pvals_sorted) + 1))
+    #         ecdffactor = self.__ecdf(pvals_sorted) / cm
+    #     else:
+    #         raise ValueError("Method should be 'indep' and 'negcorr'")
+
+    #     reject = pvals_sorted < (ecdffactor * self.alpha)
+    #     if reject.any():
+    #         rejectmax = max(np.nonzero(reject)[0])
+    #     else:
+    #         rejectmax = 0
+    #     reject[:rejectmax] = True
+
+    #     pvals_corrected_raw = pvals_sorted / ecdffactor
+    #     pvals_corrected = np.minimum.accumulate(pvals_corrected_raw[::-1])[::-1]
+    #     pvals_corrected[pvals_corrected > 1.0] = 1.0
+    #     pvals_corrected = pvals_corrected[sortrevind].reshape(shape_init)
+    #     reject = reject[sortrevind].reshape(shape_init)
+        
+    #     return reject, pvals_corrected
+    
+
+    # new functions 
+    def bonferroni(self, pvals, alpha=0.05):
+        """A function for controlling the FWER at some level alpha using the
+        classical Bonferroni procedure.
 
         Parameters
         ----------
         pvals : array_like
             Set of p-values of the individual tests.
+        alpha: float
+            The desired family-wise error rate.
 
-        Returns
+        Output: 
+        significant: array, bool
+            True if a hypothesis is rejected, False if not.
+        """
+        m, pvals = len(pvals), np.asarray(pvals)
+        return pvals < alpha/float(m)
+
+
+    def hochberg(self, pvals, alpha=0.05):
+        """A function for controlling the FWER using Hochberg's procedure.
+
+        Parameters
+        ----------
+        pvals : array_like
+            Set of p-values of the individual tests.
+        alpha: float
+            The desired family-wise error rate.
+
+        Output
         -------
-        reject : array, bool
-        True if a hypothesis is rejected, False if not.
-        pval_corrected : array
-            P-values adjusted for multiple hypothesis testing to limit FDR.
-    """
-    
-        pvals = np.asarray(pvals)
-        shape_init = pvals.shape
-        pvals = pvals.ravel()
+        significant: array, bool
+            True if a hypothesis is rejected, False if not.
+        """
+        m, pvals = len(pvals), np.asarray(pvals)
+        # sort the p-values into ascending order
+        ind = np.argsort(pvals)
 
-        pvals_sortind = np.argsort(pvals)
-        pvals_sorted = pvals[pvals_sortind]
-        sortrevind = pvals_sortind.argsort()
+        """Here we have k+1 (and not just k) since Python uses zero-based
+        indexing."""
+        test = [p <= alpha/(m+1-(k+1)) for k, p in enumerate(pvals[ind])]
+        significant = np.zeros(np.shape(pvals), dtype='bool')
+        significant[ind[0:np.sum(test)]] = True
+        return significant
 
-        if self.fdr_method in ["i", "indep", "p", "poscorr"]:
-            ecdffactor = self.__ecdf(pvals_sorted)
-        elif self.fdr_method in ["n", "negcorr"]:
-            cm = np.sum(1.0 / np.arange(1, len(pvals_sorted) + 1))
-            ecdffactor = self.__ecdf(pvals_sorted) / cm
-        else:
-            raise ValueError("Method should be 'indep' and 'negcorr'")
 
-        reject = pvals_sorted < (ecdffactor * self.alpha)
-        if reject.any():
-            rejectmax = max(np.nonzero(reject)[0])
-        else:
-            rejectmax = 0
-        reject[:rejectmax] = True
+    def holm_bonferroni(self, pvals, alpha=0.05):
+        """A function for controlling the FWER using the Holm-Bonferroni
+        procedure.
 
-        pvals_corrected_raw = pvals_sorted / ecdffactor
-        pvals_corrected = np.minimum.accumulate(pvals_corrected_raw[::-1])[::-1]
-        pvals_corrected[pvals_corrected > 1.0] = 1.0
-        pvals_corrected = pvals_corrected[sortrevind].reshape(shape_init)
-        reject = reject[sortrevind].reshape(shape_init)
+        Parameters
+        ----------
+        pvals : array_like
+            Set of p-values of the individual tests.
+        alpha: float
+            The desired family-wise error rate.
         
-        return reject, pvals_corrected
+        Output
+        -------
+        significant: array, bool
+            True if a hypothesis is rejected, False if not.
+        """
+
+        m, pvals = len(pvals), np.asarray(pvals)
+        ind = np.argsort(pvals)
+        test = [p > alpha/(m+1-k) for k, p in enumerate(pvals[ind])]
+
+        """The minimal index k is m-np.sum(test)+1 and the hypotheses 1, ..., k-1
+        are rejected. Hence m-np.sum(test) gives the correct number."""
+        significant = np.zeros(np.shape(pvals), dtype='bool')
+        significant[ind[0:m-np.sum(test)]] = True
+        return significant
+
+
+    def sidak(self, pvals, alpha=0.05):
+        """A function for controlling the FWER at some level alpha using the
+        procedure by Sidak.
+
+        Parameters
+        ----------
+        pvals : array_like
+            Set of p-values of the individual tests.
+        alpha: float
+            The desired family-wise error rate.
+
+        Output
+        ------
+        significant: array, bool
+            True if a hypothesis is rejected, False if not.
+        """
+        n, pvals = len(pvals), np.asarray(pvals)
+        return pvals < 1. - (1.-alpha) ** (1./n)
+
+
+    def lsu(self, pvals, q=0.05):
+        """The (non-adaptive) one-stage linear step-up procedure (LSU) for
+        controlling the false discovery rate, i.e. the classic FDR method
+        proposed by Benjamini & Hochberg (1995).
+
+        Parameters
+        ----------
+        pvals: array_like  
+            Set of p-values of the individual tests.
+        q: float
+            The desired false discovery rate.
+
+        Output:
+        --------
+        significant: array, bool
+            True if a hypothesis is rejected, False if not.
+        """
+
+        m = len(pvals)
+        sort_ind = np.argsort(pvals)
+        k = [i for i, p in enumerate(pvals[sort_ind]) if p < (i+1.)*q/m]
+        significant = np.zeros(m, dtype='bool')
+        if k:
+            significant[sort_ind[0:k[-1]+1]] = True
+        return significant

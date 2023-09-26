@@ -2,7 +2,7 @@
 layout: post
 author: Sebastian Daza
 title: "Tools for power analysis with multiple comparisons"
-date: 2023-09-25
+date: 2023-09-26
 giscus_comments: true
 tags:
   - simulation
@@ -196,25 +196,11 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 {% endhighlight %}
 
 
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    /Users/sebastian.daza/Documents/git/sdaza.github.io/_jupyter/statistical-power.ipynb Cell 5 line 7
-          <a href='vscode-notebook-cell:/Users/sebastian.daza/Documents/git/sdaza.github.io/_jupyter/statistical-power.ipynb#W4sZmlsZQ%3D%3D?line=3'>4</a> p = PowerSim(metric='proportion', relative_effect=False, variants=1, nsim=1000, alpha=0.05, alternative='two-tailed')
-          <a href='vscode-notebook-cell:/Users/sebastian.daza/Documents/git/sdaza.github.io/_jupyter/statistical-power.ipynb#W4sZmlsZQ%3D%3D?line=5'>6</a> # get power
-    ----> <a href='vscode-notebook-cell:/Users/sebastian.daza/Documents/git/sdaza.github.io/_jupyter/statistical-power.ipynb#W4sZmlsZQ%3D%3D?line=6'>7</a> p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
-    File ~/Documents/git/sdaza.github.io/_jupyter/power_tools.py:256, in PowerSim.get_power(self, baseline, effect, sample_size, compliance, standard_deviation)
-        253 if self.correction in correction_methods:
-        254     significant = correction_methods[self.correction](np.array(l_pvalues), self.alpha/pvalue_adjustment[self.alternative])
-    --> 256 pvalues[v].append(significant)
-        258 # results.append(int(np.sum(pvalues)) >= len(self.comparisons))
-        259 power = pd.DataFrame(pd.DataFrame(pvalues).mean()).reset_index()
+      comparisons  power
+    0      (0, 1)  0.706
 
-
-    NameError: name 'v' is not defined
 
 
 `nsim` represents the number of simulations. Variants are set to 1, so we are
@@ -262,12 +248,12 @@ p.get_power(baseline=[0.33], effect=[0.03], sample_size=[3000])
 
 
 Using only two comparisons (each variant with a control), the power
-significantly decreases compared to the one-variant example. Currently, the
-method function offers three types of p-value corrections:
+significantly decreases compared to the one-variant example. I have currently
+implemented the following p-value corrections:
 
 - `bonferroni`
 - `holm_bonferroni`
-- `hochberg``
+- `hochberg`
 - `sidak`
 - `fdr`
 
@@ -287,14 +273,14 @@ utilize nested lists and the `grid_sim_power` method. However, things can
 quickly become convoluted.
 
 Let's consider a more complex example. The impact of the first and second
-variants on the control group varies as follows: [0.01, 0.03], [0.03, 0.05],
-[0.03, 0.07]. The sample sizes are equal for each group, but they increase
+variants on the control group varies as follows: `[0.01, 0.03]`, `[0.03, 0.05]`,
+`[0.03, 0.07]`. The sample sizes are equal for each group, but they increase
 linearly. We apply the `holm` correction.
 
 
 {% highlight python %}
 p = PowerSim(metric='proportion', relative_effect=False, variants=2, alternative='two-tailed', 
-	nsim=500, correction='fdr')
+	nsim=1000, correction='holm')
 rr = p.grid_sim_power(baseline_rates=[[0.33]], 
                 effects=[[0.01, 0.03], [0.03, 0.05], [0.03, 0.07]],
                 sample_sizes= [[1000], [2000], [3000], [4000], [5000], [6000], [7000], [8000], [9000]], 
@@ -304,31 +290,32 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](2023-09-25-statistical-power_files/2023-09-25-statistical-power_10_0.png)
+![png](/assets/img/2023-09-26-statistical-power_files/2023-09-26-statistical-power_10_0.png)
     
 
 
 
     
-![png](2023-09-25-statistical-power_files/2023-09-25-statistical-power_10_1.png)
+![png](/assets/img/2023-09-26-statistical-power_files/2023-09-26-statistical-power_10_1.png)
     
 
 
 
     
-![png](2023-09-25-statistical-power_files/2023-09-25-statistical-power_10_2.png)
+![png](/assets/img/2023-09-26-statistical-power_files/2023-09-26-statistical-power_10_2.png)
     
 
 
-As expected, the best scenario is when effect sizes are big enough to be
-detected.  We can also use different sample allocations and explore their
-consequences. You see that in the case of the effects `[0.03, 0.05]` , the
-allocation `[3000, 7000, 7000]` provides relatively good results.  
+As expected, the best scenario occurs when the effect sizes are large enough to
+be detected. We can also analyze the results of different sample allocations.
+For example, when we look at the effects `[0.03, 0.05]`, the allocation `[3000,
+7000, 7000]` produces fairly good results, although it doesn't always meet the
+0.8 threshold.
 
 
 {% highlight python %}
 p = PowerSim(metric='proportion', relative_effect=False, variants=2, 
-             alternative='two-tailed', nsim=500, correction='holm')
+             alternative='two-tailed', nsim=1000, correction='holm')
 rr = p.grid_sim_power(baseline_rates=[[0.33]], 
                 effects=[[0.01, 0.03], [0.03, 0.05], [0.03, 0.07]],
                 sample_sizes= [[1000, 3000, 3000], 
@@ -342,19 +329,19 @@ rr = p.grid_sim_power(baseline_rates=[[0.33]],
 
 
     
-![png](2023-09-25-statistical-power_files/2023-09-25-statistical-power_12_0.png)
+![png](/assets/img/2023-09-26-statistical-power_files/2023-09-26-statistical-power_12_0.png)
     
 
 
 
     
-![png](2023-09-25-statistical-power_files/2023-09-25-statistical-power_12_1.png)
+![png](/assets/img/2023-09-26-statistical-power_files/2023-09-26-statistical-power_12_1.png)
     
 
 
 
     
-![png](2023-09-25-statistical-power_files/2023-09-25-statistical-power_12_2.png)
+![png](/assets/img/2023-09-26-statistical-power_files/2023-09-26-statistical-power_12_2.png)
     
 
 
@@ -377,7 +364,7 @@ p.get_power(baseline=[1.2], effect=[0.05], sample_size=[3000, 5000])
 
 
       comparisons  power
-    0      (0, 1)   0.63
+    0      (0, 1)   0.59
 
 
 
@@ -397,7 +384,7 @@ p.get_power(baseline=[1000], effect=[100], standard_deviation=[600], sample_size
 
 
       comparisons   power
-    0      (0, 1)  0.6602
+    0      (0, 1)  0.6592
 
 
 

@@ -196,7 +196,6 @@ class PowerSim:
         # create empty values for results
         results = []
         ncomparisons = len(self.comparisons)
-        new_alpha = self.alpha / ncomparisons
         
         pvalues = {}
         for c in range(len(self.comparisons)):
@@ -250,10 +249,11 @@ class PowerSim:
                 'fdr': self.lsu
             }
 
-        if self.correction in correction_methods:
-            significant = correction_methods[self.correction](np.array(l_pvalues), self.alpha/pvalue_adjustment[self.alternative])
+            if self.correction in correction_methods:
+                significant = correction_methods[self.correction](np.array(l_pvalues), self.alpha/pvalue_adjustment[self.alternative])
 
-        pvalues[v].append(significant)
+            for v, p in enumerate(significant):
+                pvalues[v].append(p)
    
         # results.append(int(np.sum(pvalues)) >= len(self.comparisons))
         power = pd.DataFrame(pd.DataFrame(pvalues).mean()).reset_index()
@@ -360,87 +360,9 @@ class PowerSim:
         '''
         return pd.DataFrame([row for row in itertools.product(*dictionary.values())], 
             columns=dictionary.keys())
-
-
-    # # holm bonferroni correction
-    # def __holm_bonferroni(self, p_values):
-    #     # Sort the p-values in ascending order
-    #     sorted_indices = np.argsort(p_values)
-    #     sorted_p_values = p_values[sorted_indices]
-
-    #     # Get the total number of p-values
-    #     n = len(p_values)
-
-    #     # Initialize an array to store the adjusted p-values
-    #     adjusted_p_values = np.zeros_like(p_values)
-
-    #     # Iterate over the sorted p-values and compute the adjusted p-values
-    #     for i, p in enumerate(sorted_p_values):
-    #         rank = i + 1
-    #         adjusted_p = min((n - rank + 1) * p, 1)
-    #         adjusted_p_values[sorted_indices[i]] = adjusted_p
-
-    #     return adjusted_p_values
     
 
-    # def __ecdf(self, x):
-    #     """No frills empirical cdf used in FDR correction."""
-    #     nobs = len(x)
-    #     return np.arange(1, nobs + 1) / float(nobs)
-    
-
-    # def __fdr_correction(self, pvals):
-    #     """P-value correction with False Discovery Rate (FDR).
-
-    #     This covers Benjamini/Hochberg for independent or positively correlated and
-    #     Benjamini/Yekutieli for general or negatively correlated tests.
-
-    #     Parameters
-    #     ----------
-    #     pvals : array_like
-    #         Set of p-values of the individual tests.
-
-    #     Returns
-    #     -------
-    #     reject : array, bool
-    #     True if a hypothesis is rejected, False if not.
-    #     pval_corrected : array
-    #         P-values adjusted for multiple hypothesis testing to limit FDR.
-    # """
-    
-    #     pvals = np.asarray(pvals)
-    #     shape_init = pvals.shape
-    #     pvals = pvals.ravel()
-
-    #     pvals_sortind = np.argsort(pvals)
-    #     pvals_sorted = pvals[pvals_sortind]
-    #     sortrevind = pvals_sortind.argsort()
-
-    #     if self.fdr_method in ["i", "indep", "p", "poscorr"]:
-    #         ecdffactor = self.__ecdf(pvals_sorted)
-    #     elif self.fdr_method in ["n", "negcorr"]:
-    #         cm = np.sum(1.0 / np.arange(1, len(pvals_sorted) + 1))
-    #         ecdffactor = self.__ecdf(pvals_sorted) / cm
-    #     else:
-    #         raise ValueError("Method should be 'indep' and 'negcorr'")
-
-    #     reject = pvals_sorted < (ecdffactor * self.alpha)
-    #     if reject.any():
-    #         rejectmax = max(np.nonzero(reject)[0])
-    #     else:
-    #         rejectmax = 0
-    #     reject[:rejectmax] = True
-
-    #     pvals_corrected_raw = pvals_sorted / ecdffactor
-    #     pvals_corrected = np.minimum.accumulate(pvals_corrected_raw[::-1])[::-1]
-    #     pvals_corrected[pvals_corrected > 1.0] = 1.0
-    #     pvals_corrected = pvals_corrected[sortrevind].reshape(shape_init)
-    #     reject = reject[sortrevind].reshape(shape_init)
-        
-    #     return reject, pvals_corrected
-    
-
-    # new functions 
+    # pvalue adjustment functions 
     def bonferroni(self, pvals, alpha=0.05):
         """A function for controlling the FWER at some level alpha using the
         classical Bonferroni procedure.

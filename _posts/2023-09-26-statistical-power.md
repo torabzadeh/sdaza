@@ -173,8 +173,7 @@ to construct and evaluate our experimental data. The choice to use simulation
 was driven by its flexibility in handling diverse scenarios and metrics.
 However, it does come with a trade-off, as it demands a higher computational
 power. We can live with that :smile:. [Feel free to explore the code for the
-power class](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/power_t
-ools.py).
+power class](https://github.com/sdaza/sdaza.github.io/tree/main/_jupyter/power_tools.py).
 
 These methods are useful, particularly for handling multiple variants, different
 allocations, or MDE by group. However, it's important to note that these methods
